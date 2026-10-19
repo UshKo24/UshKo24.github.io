@@ -92,7 +92,23 @@ body {
 		</style>
 		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
 <link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
-
+<style>html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#0d1330}#canvas{position:fixed;left:0;top:0;width:100vw!important;height:100vh!important}</style>
+<script>
+/* Холст рисуется в ~720p и растягивается браузером: на весь экран так же быстро, как в окне */
+(function(){
+  function fit(){
+    var c=document.getElementById("canvas"); if(!c) return;
+    var w=window.innerWidth||1280, h=window.innerHeight||720;
+    var H=Math.min(window.__maxH||720, Math.round(h*(window.devicePixelRatio||1)));
+    var W=Math.round(H*w/h);
+    if(c.width!==W||c.height!==H){c.width=W;c.height=H;}
+  }
+  window.addEventListener("resize",fit);
+  document.addEventListener("fullscreenchange",fit);
+  document.addEventListener("DOMContentLoaded",fit);
+  setInterval(fit,500);
+})();
+</script>
 	</head>
 	<body>
 		<canvas id="canvas">
@@ -111,7 +127,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":2740916,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":0,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":2741572,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
