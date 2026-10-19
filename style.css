@@ -213,3 +213,16 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   section { padding: 48px 0; }
   .section-title h2 { font-size: 30px; }
 }
+
+/* «Развернуть»: плеер на всё окно браузера */
+.bar-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.player.max { position: fixed; inset: 0; z-index: 100; width: 100vw; height: 100vh; max-width: none; aspect-ratio: auto; border-radius: 0; border: 0; margin: 0; }
+body.noscroll { overflow: hidden; }
+.unmax {
+  display: none; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); z-index: 6;
+  font: 500 13px "Rubik", sans-serif; color: var(--foam); cursor: pointer;
+  background: rgba(8, 12, 32, 0.55); border: 1px solid var(--border); border-radius: 8px; padding: 4px 12px;
+  opacity: .55; transition: opacity .15s;
+}
+.unmax:hover { opacity: 1; }
+.player.max .unmax { display: block; }

@@ -40,10 +40,14 @@
       <small>Загрузка займёт несколько секунд · прогресс сохраняется в браузере</small>
     </div>
     <div class="rotate">Переверни телефон горизонтально ↻</div>
+    <button class="unmax" id="unmax" title="Свернуть">✕&nbsp; Свернуть</button>
   </div>
   <div class="player-bar">
-    <span class="hint" id="hint">Лучше всего — в Chrome, Edge или Firefox. На телефоне игра откроется на весь экран.</span>
-    <button class="btn btn-small" id="fs">⛶&nbsp; На весь экран</button>
+    <span class="hint" id="hint">«Развернуть» + клавиша F11 — весь экран без тормозов. Свернуть — кнопка ✕ сверху.</span>
+    <span class="bar-buttons">
+      <button class="btn btn-small" id="max">⛶&nbsp; Развернуть</button>
+      <button class="btn btn-small" id="fs">Полный экран</button>
+    </span>
   </div>
 </div>
 
@@ -188,6 +192,17 @@
     }
   });
   player.addEventListener("click", focusGame);
+
+  // «Развернуть» — игра на всё окно браузера без Fullscreen API (в некоторых браузерах он сильно тормозит).
+  // Вместе с F11 это тот же весь экран, но быстрый.
+  function setMax(on) {
+    player.classList.toggle("max", on);
+    document.body.classList.toggle("noscroll", on);
+    setTimeout(focusGame, 50);
+  }
+  document.getElementById("max").addEventListener("click", function () { setMax(true); });
+  document.getElementById("unmax").addEventListener("click", function (e) { e.stopPropagation(); setMax(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && player.classList.contains("max")) setMax(false); });
 
   if (isPhone) {
     document.getElementById("hint").textContent = "На телефоне игра откроется на весь экран. Держи телефон горизонтально.";
