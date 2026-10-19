@@ -79,7 +79,7 @@ h1, h2, h3 { line-height: 1.1; margin: 0 0 0.5em; }
 .hero p { font-size: clamp(18px, 2.2vw, 22px); color: var(--muted); max-width: 34ch; margin: 0 0 32px; }
 .hero .lighthouse { position: absolute; right: 9%; bottom: 72px; width: 46px; z-index: 1; }
 .beam {
-  position: absolute; right: calc(9% + 20px); bottom: 190px; width: 75vw; height: 160px;
+  position: absolute; right: calc(9% + 23px); bottom: 106px; width: 75vw; height: 160px;
   transform-origin: right center;
   background: linear-gradient(270deg, rgba(247, 214, 90, 0.32), rgba(247, 214, 90, 0));
   clip-path: polygon(100% 48%, 0 0, 0 100%, 100% 52%);
@@ -208,7 +208,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
   .cols { grid-template-columns: 1fr; }
   .hero { padding: 64px 0 130px; }
   .hero .lighthouse { right: 7%; width: 34px; bottom: 70px; }
-  .beam { right: calc(7% + 15px); bottom: 160px; }
+  .beam { right: calc(7% + 17px); bottom: 74px; }
   .brand small { display: none; }
   section { padding: 48px 0; }
   .section-title h2 { font-size: 30px; }
@@ -226,3 +226,4 @@ body.noscroll { overflow: hidden; }
 }
 .unmax:hover { opacity: 1; }
 .player.max .unmax { display: block; }
+.hero .wrap { position: relative; z-index: 2; }
