@@ -10,7 +10,7 @@
 <meta property="og:image" content="../img/cover.webp">
 <meta name="theme-color" content="#0b1029">
 <link rel="icon" href="../img/devyatyi-icon.png">
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../style.css?v=4">
 </head>
 <body>
 
@@ -172,7 +172,7 @@
 
   document.getElementById("play").addEventListener("click", function () {
     var frame = document.createElement("iframe");
-    frame.src = "../games/devyatyi-val/index.html";
+    frame.src = "../games/devyatyi-val/index.html?v=101";
     frame.allow = "autoplay; fullscreen; gamepad";
     frame.setAttribute("allowfullscreen", "");
     frame.title = "Девятый вал";
@@ -195,8 +195,12 @@
 
   // «Развернуть» — игра на всё окно браузера без Fullscreen API (в некоторых браузерах он сильно тормозит).
   // Вместе с F11 это тот же весь экран, но быстрый.
+  var MAX_CSS = "position:fixed;left:0;top:0;right:0;bottom:0;z-index:100;width:100vw;height:100vh;max-width:none;aspect-ratio:auto;border-radius:0;border:0;margin:0;";
   function setMax(on) {
     player.classList.toggle("max", on);
+    // стили прямо на элементе — работает, даже если браузер держит старый style.css в кэше
+    player.style.cssText = "background-image:url(../img/cover.webp);" + (on ? MAX_CSS : "");
+    document.getElementById("unmax").style.display = on ? "block" : "none";
     document.body.classList.toggle("noscroll", on);
     setTimeout(focusGame, 50);
   }
