@@ -3,7 +3,9 @@
 index.html                 — главная со списком игр
 devyatyi-val/index.html    — страница «Девятого вала» (плеер, описание, управление)
 turniket/index.html        — страница «Турникета»
-games/<игра>/              — веб-сборки игр из Godot (index.html, .wasm, .pck, .js)
+engine/godot-<версия>/      — общий движок Godot для всех игр (godot.wasm, godot.js) — браузер качает его один раз
+games/<игра>/              — пакет игры (index.pck) и страница запуска (index.html), без своей копии движка
+tools/add_web_build.py     — подключает веб-экспорт Godot к общему движку
 img/                       — обложки и скриншоты (полный размер и уменьшенные *_s.webp)
 downloads/                 — версии для Windows и Android
 style.css, theme.js        — оформление и темы игр
@@ -16,7 +18,9 @@ fonts/                     — шрифты (Oswald, Rubik — SIL OFL)
 - Страница игры всегда в своей теме (<html data-theme="...">).
 
 Как добавить новую игру:
-1. В Godot: Проект → Экспорт → Web, выключить «Thread Support», экспортировать в games/<имя-игры>/index.html
+1. В Godot: Проект → Экспорт → Web, выключить «Thread Support», экспортировать в любую папку,
+   потом: python3 tools/add_web_build.py <папка экспорта> <имя-игры> [цвет фона загрузки]
+   Скрипт возьмёт только index.pck и иконки, а движок подключит общий (новая версия Godot добавится сама).
 2. Скопировать папку turniket/ в <имя-игры>/ и поменять тексты, картинки, data-theme, MayakTheme.remember и путь в frame.src
 3. Добавить карточку на главную (index.html, блок class="games") с data-game="<тема>" и
    data-shots="кадр1 кадр2 ..." — имена картинок из img/ без _s.webp. Эти кадры сами попадут в мозаику.
