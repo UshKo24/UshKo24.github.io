@@ -81,10 +81,6 @@ html[data-theme="devyatyi"] {
   --start-veil: radial-gradient(ellipse at center, rgba(11, 16, 41, 0.25), rgba(11, 16, 41, 0.7));
   --start-text: #cfe2f3;
   --start-shadow: 0 1px 4px #000;
-  --head-font: "Oswald", "Rubik", sans-serif;
-  --head-weight: 700;
-  --head-spacing: 0.01em;
-  --h1-scale: 1;
   --logo-lamp: #f7d65a;
   --logo-body: #efe3d5;
   --logo-stripe: #d93a2b;
@@ -126,10 +122,6 @@ html[data-theme="turniket"] {
   --start-veil: radial-gradient(ellipse at center, rgba(247, 247, 247, 0.1), rgba(247, 247, 247, 0.55));
   --start-text: #111111;
   --start-shadow: 0 0 6px #fff;
-  --head-font: "Rubik", sans-serif;
-  --head-weight: 900;
-  --head-spacing: -0.01em;
-  --h1-scale: 0.8;
   --logo-lamp: #111111;
   --logo-body: #111111;
   --logo-stripe: #f4f4f2;
@@ -147,8 +139,6 @@ html.theming *, html.theming *::before, html.theming *::after {
   transition: background-color .5s ease, color .5s ease, border-color .5s ease, border-width .5s ease,
               border-radius .5s ease, box-shadow .5s ease, fill .5s ease, stroke .5s ease, opacity .5s ease, transform .5s ease !important;
 }
-html.theming h1, html.theming h2, html.theming h3, html.theming .brand-name { animation: headswap .5s ease; }
-@keyframes headswap { 0% { opacity: 1; } 35% { opacity: .15; } 100% { opacity: 1; } }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; background: var(--bg); }
@@ -165,8 +155,8 @@ a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 img { max-width: 100%; display: block; }
 h1, h2, h3, .brand-name { font-family: var(--head-font); font-weight: var(--head-weight); letter-spacing: var(--head-spacing); }
-.btn { font-family: "Oswald", "Rubik", sans-serif; letter-spacing: 0.01em; }
-html[data-theme="turniket"] .btn { font-family: "Rubik", sans-serif; font-weight: 800; }
+/* Шрифты одинаковые во всех темах: темы игр меняют только цвета, фон и декор */
+.btn { font-family: "Rubik", sans-serif; letter-spacing: 0.01em; }
 h1, h2, h3 { line-height: 1.1; margin: 0 0 0.5em; }
 
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
@@ -200,7 +190,7 @@ html[data-theme="turniket"] .top { border-bottom-width: 2px; }
   min-height: 48px; padding: 0 26px;
   border-radius: 10px; border: var(--bw) solid var(--border);
   background: var(--btn2); color: var(--btn2-text);
-  font-size: 20px; font-weight: 600; text-transform: uppercase;
+  font-size: 20px; font-weight: 700; text-transform: uppercase;
   cursor: pointer; transition: background-color .15s, transform .1s, border-color .15s;
 }
 .btn:hover { text-decoration: none; border-color: var(--border-hover); background: var(--btn2-hover); }
