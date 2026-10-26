@@ -480,3 +480,5 @@ html[data-theme="turniket"] .player .start small { background: #fff; border: 2px
 }
 @media (max-width: 820px) { .mosaic { width: 120%; right: -40%; opacity: .7; } }
 @media (prefers-reduced-motion: reduce) { .mosaic { animation: none; } }
+/* «Играть» в шапке ведёт к списку игр — не прятать заголовок под липкой шапкой */
+#games, #about { scroll-margin-top: 64px; }
