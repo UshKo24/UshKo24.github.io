@@ -92,7 +92,7 @@
     <div class="games">
       <article class="card" data-game="turniket" data-href="turniket/"
                data-shots="turniket_station turniket_stadium turniket_fest turniket_airport turniket_menu turniket_cover">
-        <div class="cover" style="background-image:url(img/turniket_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.6 · «Свобода»</span></div>
+        <div class="cover" style="background-image:url(img/turniket_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.6.1 · «Свобода»</span></div>
         <div class="body">
           <h3>Турникет</h3>
           <p>Гигантская вращающаяся дверь и бесконечная толпа. Крути вертушку мышкой, пропускай людей, запускай их в полёт и прокачай пять карт — от вокзала до фестиваля.</p>
@@ -138,6 +138,7 @@
 </footer>
 
 <script src="theme.js?v=1"></script>
+<script src="preload.js?v=1"></script>
 <script>
 (function () {
   var T = window.MayakTheme;
@@ -188,6 +189,10 @@
   shots = shots.slice(0, 18);
   var mz = document.getElementById("mosaic");
   for (var k = 0; k < 2; k++) shots.forEach(function (n) { var i = document.createElement("i"); i.style.backgroundImage = "url(img/" + n + "_s.webp)"; mz.appendChild(i); });
+
+  // движок общий для всех игр — на компьютере качаем его заранее, когда страница уже загрузилась
+  var phone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1100);
+  if (!phone) MayakPreload.startIdle("", [], 2500);
 
   // толпа, идущая в вертушку
   var g = document.getElementById("crowd"), NS = "http://www.w3.org/2000/svg";

@@ -97,7 +97,7 @@
       <div class="box">
         <h3>Об игре</h3>
         <dl class="meta">
-          <dt>Версия</dt><dd>0.6 «Свобода»</dd>
+          <dt>Версия</dt><dd>0.6.1 «Свобода»</dd>
           <dt>Жанр</dt><dd>idle, кликер</dd>
           <dt>Платформы</dt><dd>браузер, Windows</dd>
           <dt>Управление</dt><dd>мышка</dd>
@@ -110,13 +110,14 @@
         <h3>Скачать</h3>
         <p style="margin:0 0 14px;color:var(--muted);font-size:15px">Версия для Windows быстрее браузерной: толпа считается в несколько раз быстрее, можно до 4000 человек.</p>
         <div class="downloads">
-          <a class="btn btn-small" href="../downloads/Turniket_v0.6_windows.zip" download>Windows · 37 МБ</a>
+          <a class="btn btn-small" href="../downloads/Turniket_v0.6.1_windows.zip" download>Windows · 37 МБ</a>
         </div>
       </div>
 
       <div class="box">
         <h3>Что нового</h3>
         <ul class="changelog">
+          <li><b>0.6.1:</b> авто-качество — если игра тормозит, графика упрощается сама; настройки «Сглаживание» и «Чёткость картинки»</li>
           <li><b>0.6 «Свобода»:</b></li>
           <li><b>Кампания</b> на 11 проходов и финал со статистикой</li>
           <li><b>Свободный режим</b> и коллекция из 55 предметов</li>
@@ -139,6 +140,7 @@
 </footer>
 
 <script src="../theme.js?v=1"></script>
+<script src="../preload.js?v=1"></script>
 <script>
 (function () {
   MayakTheme.remember("turniket");
@@ -164,9 +166,24 @@
     if (f) { try { f.focus(); f.contentWindow.focus(); } catch (e) {} }
   }
 
+  // движок начинает качаться в фоне сразу, пока читаешь страницу
+  MayakPreload.startIdle("../", ["../games/turniket/index.pck"], 200);
+
   document.getElementById("play").addEventListener("click", function () {
+    var btn = this;
+    if (isPhone) goFull();   // полный экран можно включить только сразу по нажатию
+    if (!MayakPreload.busy()) { launch(); return; }
+    // фоновая загрузка ещё идёт — показываем её прогресс и запускаем, когда закончится
+    btn.disabled = true;
+    var tick = setInterval(function () {
+      btn.textContent = "Загрузка " + Math.round(MayakPreload.progress() * 100) + "%";
+    }, 150);
+    MayakPreload.wait(function () { clearInterval(tick); launch(); });
+  });
+
+  function launch() {
     var frame = document.createElement("iframe");
-    frame.src = "../games/turniket/index.html?v=060";
+    frame.src = "../games/turniket/index.html?v=061";
     frame.allow = "autoplay; fullscreen; gamepad";
     frame.setAttribute("allowfullscreen", "");
     frame.title = "Турникет";
@@ -174,9 +191,8 @@
     player.appendChild(frame);
     player.classList.add("running");
     start.remove();
-    if (isPhone) goFull();
     setTimeout(focusGame, 300);
-  });
+  }
 
   document.getElementById("fs").addEventListener("click", function () {
     if (document.fullscreenElement || document.webkitFullscreenElement) {

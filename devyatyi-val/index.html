@@ -152,6 +152,7 @@
 </footer>
 
 <script src="../theme.js?v=1"></script>
+<script src="../preload.js?v=1"></script>
 <script>
 (function () {
   MayakTheme.remember("devyatyi");
@@ -175,7 +176,22 @@
     if (f) { try { f.focus(); f.contentWindow.focus(); } catch (e) {} }
   }
 
+  // движок начинает качаться в фоне сразу, пока читаешь страницу
+  MayakPreload.startIdle("../", ["../games/devyatyi-val/index.pck"], 200);
+
   document.getElementById("play").addEventListener("click", function () {
+    var btn = this;
+    if (isPhone) goFull();   // полный экран можно включить только сразу по нажатию
+    if (!MayakPreload.busy()) { launch(); return; }
+    // фоновая загрузка ещё идёт — показываем её прогресс и запускаем, когда закончится
+    btn.disabled = true;
+    var tick = setInterval(function () {
+      btn.textContent = "Загрузка " + Math.round(MayakPreload.progress() * 100) + "%";
+    }, 150);
+    MayakPreload.wait(function () { clearInterval(tick); launch(); });
+  });
+
+  function launch() {
     var frame = document.createElement("iframe");
     frame.src = "../games/devyatyi-val/index.html?v=110";
     frame.allow = "autoplay; fullscreen; gamepad";
@@ -185,9 +201,8 @@
     player.appendChild(frame);
     player.classList.add("running");
     start.remove();
-    if (isPhone) goFull();
     setTimeout(focusGame, 300);
-  });
+  }
 
   document.getElementById("fs").addEventListener("click", function () {
     if (document.fullscreenElement || document.webkitFullscreenElement) {
