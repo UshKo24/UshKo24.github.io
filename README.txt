@@ -1,13 +1,12 @@
 МАЯК — сайт с играми (статический, без сервера)
 
 index.html                 — главная со списком игр
-devyatyi-val/index.html    — страница «Девятого вала» (плеер, описание, управление)
-turniket/index.html        — страница «Турникета»
+turniket/index.html        — страница «Турникета» (плеер, описание, управление)
 engine/godot-<версия>/      — общий движок Godot для всех игр (godot.wasm, godot.js) — браузер качает его один раз
 games/<игра>/              — пакет игры (index.pck) и страница запуска (index.html), без своей копии движка
 tools/add_web_build.py     — подключает веб-экспорт Godot к общему движку
 img/                       — обложки и скриншоты (полный размер и уменьшенные *_s.webp)
-downloads/                 — версии для Windows и Android
+downloads/                 — версии для Windows
 style.css, theme.js        — оформление и темы игр
 fonts/                     — шрифты (Oswald, Rubik — SIL OFL)
 
@@ -26,3 +25,7 @@ fonts/                     — шрифты (Oswald, Rubik — SIL OFL)
 3. Добавить карточку на главную (index.html, блок class="games") с data-game="<тема>" и
    data-shots="кадр1 кадр2 ..." — имена картинок из img/ без _s.webp. Эти кадры сами попадут в мозаику.
 4. Добавить тему в style.css (html[data-theme="<тема>"] { ... }) и её цвет в theme.js (COLORS).
+
+«Девятый вал» временно убран с сайта (коммит «Убрать Девятый вал…»). Его тема devyatyi в style.css,
+декор в .hero главной и цвет в theme.js оставлены — чтобы вернуть игру, достаточно восстановить файлы из git
+(git checkout <коммит до удаления> -- devyatyi-val games/devyatyi-val img downloads) и вернуть карточку.

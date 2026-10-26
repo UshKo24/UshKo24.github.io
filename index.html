@@ -6,10 +6,10 @@
 <title>МАЯК — игры в браузере</title>
 <meta name="description" content="Мои инди-игры, в которые можно играть прямо в браузере: бесплатно, без скачивания и регистрации.">
 <meta property="og:title" content="МАЯК — игры в браузере">
-<meta property="og:description" content="Бесплатные игры прямо в браузере: «Турникет» и «Девятый вал».">
-<meta property="og:image" content="img/cover.webp">
+<meta property="og:description" content="Бесплатные игры прямо в браузере. Сейчас — «Турникет»: крути дверь, пропускай толпу.">
+<meta property="og:image" content="img/turniket_cover.webp">
 <meta name="theme-color" content="#0e0e10">
-<link rel="icon" href="img/devyatyi-icon.png">
+<link rel="icon" href="img/mayak.svg" type="image/svg+xml">
 <script>try { var t = sessionStorage.getItem("mayak-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
 <link rel="stylesheet" href="style.css?v=10">
 </head>
@@ -96,18 +96,8 @@
         <div class="body">
           <h3>Турникет</h3>
           <p>Гигантская вращающаяся дверь и бесконечная толпа. Крути вертушку мышкой, пропускай людей, запускай их в полёт и прокачай пять карт — от вокзала до фестиваля.</p>
-          <div class="tags"><span class="tag">idle</span><span class="tag">толпа</span><span class="tag">ПК</span><span class="tag">кампания ~5 часов</span></div>
+          <div class="tags"><span class="tag">idle</span><span class="tag">толпа</span><span class="tag">ПК</span><span class="tag">кампания ~6 часов</span></div>
           <div class="go"><a class="btn btn-main btn-small" href="turniket/" data-open="turniket">▶&nbsp; Играть</a></div>
-        </div>
-      </article>
-      <article class="card" data-game="devyatyi" data-href="devyatyi-val/"
-               data-shots="cover storm sea_map market cutaway port_map">
-        <div class="cover" style="background-image:url(img/cover_s.webp)"><span class="badge">v1.1 · «Открытое море»</span></div>
-        <div class="body">
-          <h3>Девятый вал</h3>
-          <p>Маленький буксир, ночные шторма и 13 мест на свободной карте. Торгуй между портами, держи нос к волне и доведи корабль до рассвета.</p>
-          <div class="tags"><span class="tag">выживание</span><span class="tag">корабли</span><span class="tag">ПК и телефон</span><span class="tag">торговля</span></div>
-          <div class="go"><a class="btn btn-main btn-small" href="devyatyi-val/" data-open="devyatyi">▶&nbsp; Играть</a></div>
         </div>
       </article>
       <div class="card soon">
@@ -148,6 +138,7 @@
     document.querySelectorAll(".card[data-game]").forEach(function (c) { c.classList.toggle("sel", c.dataset.game === cur); });
     document.querySelectorAll("[data-theme-set]").forEach(function (b) { b.classList.toggle("on", b.dataset.themeSet === cur); });
   }
+  if (T.get() && !document.querySelector('.card[data-game="' + T.get() + '"]')) T.set("", true);
   T.onChange = markSelected;
   markSelected();
 
