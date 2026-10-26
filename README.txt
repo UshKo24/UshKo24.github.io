@@ -2,14 +2,22 @@
 
 index.html                 — главная со списком игр
 devyatyi-val/index.html    — страница «Девятого вала» (плеер, описание, управление)
-games/devyatyi-val/        — веб-сборка игры из Godot (index.html, .wasm, .pck, .js)
-img/                       — обложки и скриншоты
+turniket/index.html        — страница «Турникета»
+games/<игра>/              — веб-сборки игр из Godot (index.html, .wasm, .pck, .js)
+img/                       — обложки и скриншоты (полный размер и уменьшенные *_s.webp)
 downloads/                 — версии для Windows и Android
-style.css, fonts/          — оформление и шрифты (Oswald, Rubik — SIL OFL)
+style.css, theme.js        — оформление и темы игр
+fonts/                     — шрифты (Oswald, Rubik — SIL OFL)
+
+Темы:
+- Без темы сайт нейтральный: тёмный фон, янтарные кнопки, справа плывёт мозаика из кадров всех игр.
+- У каждой игры своя тема: html[data-theme="<игра>"] в style.css (цвета, шрифт заголовков, декор в .hero).
+- Клик по карточке на главной плавно перекрашивает сайт в стиль игры. «Все игры» и логотип — обратно.
+- Страница игры всегда в своей теме (<html data-theme="...">).
 
 Как добавить новую игру:
 1. В Godot: Проект → Экспорт → Web, выключить «Thread Support», экспортировать в games/<имя-игры>/index.html
-2. Скопировать папку devyatyi-val/ в <имя-игры>/ и поменять тексты, картинки и путь в frame.src
-3. Добавить карточку на главную (index.html, блок class="games")
-
-Сайт работает на любом бесплатном статическом хостинге: GitHub Pages, Netlify, itch.io.
+2. Скопировать папку turniket/ в <имя-игры>/ и поменять тексты, картинки, data-theme, MayakTheme.remember и путь в frame.src
+3. Добавить карточку на главную (index.html, блок class="games") с data-game="<тема>" и
+   data-shots="кадр1 кадр2 ..." — имена картинок из img/ без _s.webp. Эти кадры сами попадут в мозаику.
+4. Добавить тему в style.css (html[data-theme="<тема>"] { ... }) и её цвет в theme.js (COLORS).

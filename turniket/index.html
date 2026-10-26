@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ru" data-theme="turniket">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Турникет — играть онлайн · МАЯК</title>
+<meta name="description" content="«Турникет» — idle-игра про гигантскую вращающуюся дверь и бесконечную толпу. Играй бесплатно прямо в браузере.">
+<meta property="og:title" content="Турникет — крути дверь, пропускай толпу">
+<meta property="og:description" content="Гигантская вертушка, тысячи человечков и пять карт. Играй бесплатно прямо в браузере.">
+<meta property="og:image" content="../img/turniket_cover.webp">
+<meta name="theme-color" content="#f4f4f2">
+<link rel="icon" href="../img/turniket-icon.png">
+<link rel="stylesheet" href="../style.css?v=7">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" id="logo">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><circle class="l-glow" cx="15" cy="7" r="6" opacity=".25"/><rect class="l-lamp" x="12" y="5" width="6" height="4" rx="1"/><path class="l-body" d="M11 10h8l2 17H9z"/><path class="l-stripe" d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z"/></svg>
+      <span class="brand-name">МАЯК</span> <small>игры в браузере</small>
+    </a>
+    <nav class="nav">
+      <a href="../#games" class="on">Игры</a>
+      <a href="../#about">О сайте</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="game-head">
+    <div class="crumbs"><a href="../#games">Игры</a> / Турникет</div>
+    <h1>Турникет</h1>
+    <p class="sub">Крути дверь — пропускай толпу</p>
+  </div>
+
+  <div class="player" id="player" style="background-image:url(../img/turniket_cover.webp)">
+    <div class="start" id="start">
+      <button class="btn btn-main" id="play">▶&nbsp; Играть</button>
+      <small>Загрузка займёт несколько секунд · прогресс сохраняется в браузере</small>
+    </div>
+    <div class="rotate">Переверни телефон горизонтально ↻</div>
+    <button class="unmax" id="unmax" title="Свернуть">✕&nbsp; Свернуть</button>
+  </div>
+  <div class="player-bar">
+    <span class="hint" id="hint">«Развернуть» + клавиша F11 — весь экран без тормозов. Свернуть — кнопка ✕ сверху.</span>
+    <span class="bar-buttons">
+      <button class="btn btn-small" id="max">⛶&nbsp; Развернуть</button>
+      <button class="btn btn-small" id="fs">Полный экран</button>
+    </span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap cols">
+    <div>
+      <h2>Об игре</h2>
+      <p>Посреди площади стоит гигантская вращающаяся дверь, а к ней идёт бесконечная толпа. Зажми левую кнопку мыши и тяни дверь по кругу: каждый, кто прошёл, приносит деньги. Раскрутишь слишком сильно — люди полетят в воздух. За это тоже платят.</p>
+      <p>Покупай улучшения — рекламу, мотор, билеты, катапульту, VIP-зону, ураган — и прокачивай их до максимума. Тогда откроется следующая карта: вокзал, аэропорт, стадион, торговый центр и фестиваль. После пятой карты — перерождение: доход удваивается, появляется новое улучшение, а время суток меняется.</p>
+      <ul class="features">
+        <li>Кампания: 11 проходов по 5 картам — около пяти часов игры</li>
+        <li>20 улучшений: 10 открыты сразу, ещё по одному за каждое перерождение</li>
+        <li>С каждой картой деньги растут в тысячу раз — до чисел, у которых странные названия</li>
+        <li>Толпа до 4000 человечков со своей физикой: толкаются, кувыркаются и встают</li>
+        <li>День, утро, вечер и ночь — у каждого прохода своё время суток</li>
+        <li>55 предметов коллекции: двери, лопасти и образы толпы — по одному за каждую пройденную карту</li>
+        <li>Свободный режим с самого начала: собери свою дверь из найденных предметов</li>
+        <li>Песочница после кампании: десятки ползунков, меняй что угодно</li>
+        <li>Случайные события, транспорт с толпами, VIP-гости, батут и мега-бросок</li>
+      </ul>
+
+      <h2 style="margin-top:40px">Скриншоты</h2>
+      <div class="shots">
+        <button data-full="../img/turniket_station.webp"><img src="../img/turniket_station_s.webp" alt="Вокзал днём" loading="lazy"></button>
+        <button data-full="../img/turniket_airport.webp"><img src="../img/turniket_airport_s.webp" alt="Аэропорт вечером" loading="lazy"></button>
+        <button data-full="../img/turniket_stadium.webp"><img src="../img/turniket_stadium_s.webp" alt="Стадион ночью" loading="lazy"></button>
+        <button data-full="../img/turniket_fest.webp"><img src="../img/turniket_fest_s.webp" alt="Фестиваль утром, все улучшения на максимуме" loading="lazy"></button>
+        <button data-full="../img/turniket_menu.webp"><img src="../img/turniket_menu_s.webp" alt="Главное меню" loading="lazy"></button>
+      </div>
+    </div>
+
+    <aside>
+      <div class="box">
+        <h3>Управление</h3>
+        <table class="keys">
+          <tr><td>ЛКМ + тянуть</td><td>крутить дверь</td></tr>
+          <tr><td>1 – 0</td><td>купить улучшение</td></tr>
+          <tr><td>Q</td><td>ураган</td></tr>
+          <tr><td>WASD / стрелки</td><td>двигать камеру</td></tr>
+          <tr><td>ПКМ + тянуть</td><td>двигать камеру мышкой</td></tr>
+          <tr><td>Колесо</td><td>приблизить / отдалить</td></tr>
+          <tr><td>Пробел</td><td>камера к двери</td></tr>
+          <tr><td>Esc</td><td>пауза</td></tr>
+        </table>
+      </div>
+
+      <div class="box">
+        <h3>Об игре</h3>
+        <dl class="meta">
+          <dt>Версия</dt><dd>0.6 «Свобода»</dd>
+          <dt>Жанр</dt><dd>idle, кликер</dd>
+          <dt>Платформы</dt><dd>браузер, Windows</dd>
+          <dt>Управление</dt><dd>мышка</dd>
+          <dt>Язык</dt><dd>русский</dd>
+          <dt>Движок</dt><dd>Godot 4</dd>
+        </dl>
+      </div>
+
+      <div class="box">
+        <h3>Скачать</h3>
+        <p style="margin:0 0 14px;color:var(--muted);font-size:15px">Версия для Windows быстрее браузерной: толпа считается в несколько раз быстрее, можно до 4000 человек.</p>
+        <div class="downloads">
+          <a class="btn btn-small" href="../downloads/Turniket_v0.6_windows.zip" download>Windows · 37 МБ</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Что нового</h3>
+        <ul class="changelog">
+          <li><b>0.6 «Свобода»:</b></li>
+          <li><b>Кампания</b> на 11 проходов и финал со статистикой</li>
+          <li><b>Свободный режим</b> и коллекция из 55 предметов</li>
+          <li><b>Песочница</b> с ползунками после кампании</li>
+          <li><b>Вторая дверь</b> и 20 улучшений</li>
+          <li><b>Закрыты проходы</b> по бокам от двери на всех картах</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 МАЯК</span>
+    <span>Игры на <a href="https://godotengine.org" target="_blank" rel="noopener">Godot Engine</a></span>
+  </div>
+</footer>
+
+<script src="../theme.js?v=1"></script>
+<script>
+(function () {
+  MayakTheme.remember("turniket");
+  document.getElementById("logo").addEventListener("click", function () { MayakTheme.remember(""); });
+
+  var COVER = "../img/turniket_cover.webp";
+  var player = document.getElementById("player");
+  var start = document.getElementById("start");
+  var isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1100);
+
+  function goFull() {
+    var req = player.requestFullscreen || player.webkitRequestFullscreen;
+    if (!req) return Promise.resolve();
+    return Promise.resolve(req.call(player)).then(function () {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(function () {});
+      }
+    }).catch(function () {});
+  }
+
+  function focusGame() {
+    var f = player.querySelector("iframe");
+    if (f) { try { f.focus(); f.contentWindow.focus(); } catch (e) {} }
+  }
+
+  document.getElementById("play").addEventListener("click", function () {
+    var frame = document.createElement("iframe");
+    frame.src = "../games/turniket/index.html?v=060";
+    frame.allow = "autoplay; fullscreen; gamepad";
+    frame.setAttribute("allowfullscreen", "");
+    frame.title = "Турникет";
+    frame.addEventListener("load", focusGame);
+    player.appendChild(frame);
+    player.classList.add("running");
+    start.remove();
+    if (isPhone) goFull();
+    setTimeout(focusGame, 300);
+  });
+
+  document.getElementById("fs").addEventListener("click", function () {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else {
+      goFull().then(focusGame);
+    }
+  });
+  player.addEventListener("click", focusGame);
+
+  var MAX_CSS = "position:fixed;left:0;top:0;right:0;bottom:0;z-index:100;width:100vw;height:100vh;max-width:none;aspect-ratio:auto;border-radius:0;border:0;margin:0;";
+  function setMax(on) {
+    player.classList.toggle("max", on);
+    player.style.cssText = "background-image:url(" + COVER + ");" + (on ? MAX_CSS : "");
+    document.getElementById("unmax").style.display = on ? "block" : "none";
+    document.body.classList.toggle("noscroll", on);
+    setTimeout(focusGame, 50);
+  }
+  document.getElementById("max").addEventListener("click", function () { setMax(true); });
+  document.getElementById("unmax").addEventListener("click", function (e) { e.stopPropagation(); setMax(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && player.classList.contains("max")) setMax(false); });
+
+  if (isPhone) {
+    document.getElementById("hint").textContent = "Игра сделана для компьютера с мышкой — на телефоне запустится, но играть удобнее на ПК.";
+  }
+
+  var lb = document.getElementById("lightbox");
+  document.querySelectorAll(".shots button").forEach(function (b) {
+    b.addEventListener("click", function () { lb.querySelector("img").src = b.dataset.full; lb.classList.add("on"); });
+  });
+  lb.addEventListener("click", function () { lb.classList.remove("on"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("on"); });
+})();
+</script>
+</body>
+</html>

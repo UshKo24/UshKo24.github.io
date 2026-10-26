@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-theme="devyatyi">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,15 +10,15 @@
 <meta property="og:image" content="../img/cover.webp">
 <meta name="theme-color" content="#0b1029">
 <link rel="icon" href="../img/devyatyi-icon.png">
-<link rel="stylesheet" href="../style.css?v=6">
+<link rel="stylesheet" href="../style.css?v=7">
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="../">
-      <svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="7" r="6" fill="#f7d65a" opacity=".25"/><rect x="12" y="5" width="6" height="4" rx="1" fill="#f7d65a"/><path d="M11 10h8l2 17H9z" fill="#efe3d5"/><path d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z" fill="#d93a2b"/></svg>
-      МАЯК <small>игры в браузере</small>
+    <a class="brand" href="../" id="logo">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><circle class="l-glow" cx="15" cy="7" r="6" opacity=".25"/><rect class="l-lamp" x="12" y="5" width="6" height="4" rx="1"/><path class="l-body" d="M11 10h8l2 17H9z"/><path class="l-stripe" d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z"/></svg>
+      <span class="brand-name">МАЯК</span> <small>игры в браузере</small>
     </a>
     <nav class="nav">
       <a href="../#games" class="on">Игры</a>
@@ -29,14 +29,14 @@
 
 <div class="wrap">
   <div class="game-head">
-    <div class="crumbs"><a href="../">Игры</a> / Девятый вал</div>
+    <div class="crumbs"><a href="../#games">Игры</a> / Девятый вал</div>
     <h1>Девятый вал</h1>
     <p class="sub">Доведи корабль до рассвета</p>
   </div>
 
   <div class="player" id="player" style="background-image:url(../img/cover.webp)">
     <div class="start" id="start">
-      <button class="btn btn-red" id="play">▶&nbsp; Играть</button>
+      <button class="btn btn-main" id="play">▶&nbsp; Играть</button>
       <small>Загрузка займёт несколько секунд · прогресс сохраняется в браузере</small>
     </div>
     <div class="rotate">Переверни телефон горизонтально ↻</div>
@@ -151,8 +151,11 @@
   </div>
 </footer>
 
+<script src="../theme.js?v=1"></script>
 <script>
 (function () {
+  MayakTheme.remember("devyatyi");
+  document.getElementById("logo").addEventListener("click", function () { MayakTheme.remember(""); });
   var player = document.getElementById("player");
   var start = document.getElementById("start");
   var isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1100);

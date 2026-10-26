@@ -6,19 +6,20 @@
 <title>МАЯК — игры в браузере</title>
 <meta name="description" content="Мои инди-игры, в которые можно играть прямо в браузере: бесплатно, без скачивания и регистрации.">
 <meta property="og:title" content="МАЯК — игры в браузере">
-<meta property="og:description" content="Бесплатные игры прямо в браузере. Первая — «Девятый вал»: доведи корабль до рассвета.">
+<meta property="og:description" content="Бесплатные игры прямо в браузере: «Турникет» и «Девятый вал».">
 <meta property="og:image" content="img/cover.webp">
-<meta name="theme-color" content="#0b1029">
+<meta name="theme-color" content="#0e0e10">
 <link rel="icon" href="img/devyatyi-icon.png">
-<link rel="stylesheet" href="style.css?v=6">
+<script>try { var t = sessionStorage.getItem("mayak-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="./">
-      <svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="7" r="6" fill="#f7d65a" opacity=".25"/><rect x="12" y="5" width="6" height="4" rx="1" fill="#f7d65a"/><path d="M11 10h8l2 17H9z" fill="#efe3d5"/><path d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z" fill="#d93a2b"/></svg>
-      МАЯК <small>игры в браузере</small>
+    <a class="brand" href="./" id="logo">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><circle class="l-glow" cx="15" cy="7" r="6" opacity=".25"/><rect class="l-lamp" x="12" y="5" width="6" height="4" rx="1"/><path class="l-body" d="M11 10h8l2 17H9z"/><path class="l-stripe" d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z"/></svg>
+      <span class="brand-name">МАЯК</span> <small>игры в браузере</small>
     </a>
     <nav class="nav">
       <a href="#games" class="on">Игры</a>
@@ -28,40 +29,87 @@
 </header>
 
 <div class="hero">
-  <div class="beam"></div>
-  <svg class="lighthouse" viewBox="0 0 46 130" aria-hidden="true">
-    <circle cx="23" cy="16" r="14" fill="#f7d65a" opacity=".22"/>
-    <rect x="15" y="9" width="16" height="12" rx="2" fill="#f7d65a"/>
-    <path d="M12 6h22l-3-5H15z" fill="#1a1d33"/>
-    <path d="M13 22h20l5 104H8z" fill="#cfd6e3"/>
-    <path d="M12 44h22l1.3 14H10.7zM10.1 78h25.8l1 14H9.1z" fill="#d93a2b"/>
-  </svg>
+  <!-- нейтральный вид сайта: мозаика из кадров всех игр (берутся из data-shots у карточек) -->
+  <div class="deco d-neutral" aria-hidden="true"><div class="mosaic" id="mosaic"></div></div>
+  <!-- «Девятый вал»: ночное небо, маяк и море -->
+  <div class="deco d-night"><div class="stars"></div></div>
+  <div class="deco d-mayak">
+    <div class="beam"></div>
+    <svg class="rock" viewBox="0 0 114 76" preserveAspectRatio="none" aria-hidden="true"><path d="M0 76 C10 52 22 40 38 34 C48 22 70 20 80 30 C96 34 106 50 114 76z" fill="#1b2350"/><path d="M38 34 C48 22 70 20 80 30 C70 28 54 30 44 40z" fill="#26306a"/></svg>
+    <svg class="lighthouse" viewBox="0 0 46 130" aria-hidden="true">
+      <circle cx="23" cy="16" r="14" fill="#f7d65a" opacity=".22"/>
+      <rect x="15" y="9" width="16" height="12" rx="2" fill="#f7d65a"/>
+      <path d="M12 6h22l-3-5H15z" fill="#1a1d33"/>
+      <path d="M13 22h20l5 104H8z" fill="#cfd6e3"/>
+      <path d="M12 44h22l1.3 14H10.7zM10.1 78h25.8l1 14H9.1z" fill="#d93a2b"/>
+    </svg>
+  </div>
+  <!-- «Девятый вал»: море -->
+  <div class="deco d-sea">
+    <div class="sea">
+      <svg viewBox="0 0 2400 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 Q150 20 300 50 T600 50 T900 50 T1200 50 T1500 50 T1800 50 T2100 50 T2400 50 V120 H0z" fill="#11365a"/></svg>
+      <svg viewBox="0 0 2400 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 75 Q200 50 400 75 T800 75 T1200 75 T1600 75 T2000 75 T2400 75 V120 H0z" fill="#154670"/><path d="M0 75 Q200 50 400 75 T800 75 T1200 75 T1600 75 T2000 75 T2400 75" fill="none" stroke="#cfe2f3" stroke-width="3" opacity=".8"/></svg>
+    </div>
+  </div>
+  <!-- «Турникет»: площадь, вертушка, толпа -->
+  <div class="deco d-turn" aria-hidden="true">
+    <div class="tiles"></div>
+    <div class="door">
+      <svg viewBox="0 0 400 400">
+        <g class="crowd" id="crowd"></g>
+        <circle cx="200" cy="200" r="170" fill="#ffffff"/>
+        <circle cx="200" cy="200" r="170" fill="none" stroke="#111" stroke-width="16" stroke-dasharray="464 70" stroke-dashoffset="-35"/>
+        <circle cx="200" cy="200" r="150" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="6 9" opacity=".35"/>
+        <g class="blades">
+          <path d="M200 168 C236 128 252 92 226 44" fill="none" stroke="#111" stroke-width="17" stroke-linecap="round"/>
+          <path d="M200 168 C236 128 252 92 226 44" fill="none" stroke="#111" stroke-width="17" stroke-linecap="round" transform="rotate(90 200 200)"/>
+          <path d="M200 168 C236 128 252 92 226 44" fill="none" stroke="#111" stroke-width="17" stroke-linecap="round" transform="rotate(180 200 200)"/>
+          <path d="M200 168 C236 128 252 92 226 44" fill="none" stroke="#111" stroke-width="17" stroke-linecap="round" transform="rotate(270 200 200)"/>
+          <circle cx="200" cy="200" r="38" fill="#fff" stroke="#111" stroke-width="9"/>
+          <path d="M200 166v68M166 200h68" stroke="#111" stroke-width="6"/>
+          <circle cx="200" cy="200" r="15" fill="#fff" stroke="#111" stroke-width="5"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
   <div class="wrap">
     <h1>Игры, которые открываются за&nbsp;секунду</h1>
     <p>Бесплатно, прямо в браузере — без скачивания и регистрации. На компьютере и на телефоне.</p>
-    <a class="btn btn-red" href="devyatyi-val/">▶&nbsp; Играть в «Девятый вал»</a>
-  </div>
-  <div class="sea">
-    <svg viewBox="0 0 2400 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 Q150 20 300 50 T600 50 T900 50 T1200 50 T1500 50 T1800 50 T2100 50 T2400 50 V120 H0z" fill="#11365a"/></svg>
-    <svg viewBox="0 0 2400 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 75 Q200 50 400 75 T800 75 T1200 75 T1600 75 T2000 75 T2400 75 V120 H0z" fill="#154670"/><path d="M0 75 Q200 50 400 75 T800 75 T1200 75 T1600 75 T2000 75 T2400 75" fill="none" stroke="#cfe2f3" stroke-width="3" opacity=".8"/></svg>
+    <a class="btn btn-main" href="turniket/" data-open="turniket">▶&nbsp; Играть в «Турникет»</a>
   </div>
 </div>
 
-<section id="games" class="sea-bg">
+<section id="games" class="games-bg">
   <div class="wrap">
     <div class="section-title">
       <h2>Игры</h2>
-      <span>новые появляются по мере готовности</span>
+      <div class="chips" id="chips">
+        <span style="color:var(--muted);font-size:14px;margin-right:4px">нажми на игру — сайт примет её стиль</span>
+        <button class="chip" data-theme-set="">Все игры</button>
+      </div>
     </div>
     <div class="games">
-      <a class="card" href="devyatyi-val/">
+      <article class="card" data-game="turniket" data-href="turniket/"
+               data-shots="turniket_station turniket_stadium turniket_fest turniket_airport turniket_menu turniket_cover">
+        <div class="cover" style="background-image:url(img/turniket_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.6 · «Свобода»</span></div>
+        <div class="body">
+          <h3>Турникет</h3>
+          <p>Гигантская вращающаяся дверь и бесконечная толпа. Крути вертушку мышкой, пропускай людей, запускай их в полёт и прокачай пять карт — от вокзала до фестиваля.</p>
+          <div class="tags"><span class="tag">idle</span><span class="tag">толпа</span><span class="tag">ПК</span><span class="tag">кампания ~5 часов</span></div>
+          <div class="go"><a class="btn btn-main btn-small" href="turniket/" data-open="turniket">▶&nbsp; Играть</a></div>
+        </div>
+      </article>
+      <article class="card" data-game="devyatyi" data-href="devyatyi-val/"
+               data-shots="cover storm sea_map market cutaway port_map">
         <div class="cover" style="background-image:url(img/cover_s.webp)"><span class="badge">v1.1 · «Открытое море»</span></div>
         <div class="body">
           <h3>Девятый вал</h3>
           <p>Маленький буксир, ночные шторма и 13 мест на свободной карте. Торгуй между портами, держи нос к волне и доведи корабль до рассвета.</p>
           <div class="tags"><span class="tag">выживание</span><span class="tag">корабли</span><span class="tag">ПК и телефон</span><span class="tag">торговля</span></div>
+          <div class="go"><a class="btn btn-main btn-small" href="devyatyi-val/" data-open="devyatyi">▶&nbsp; Играть</a></div>
         </div>
-      </a>
+      </article>
       <div class="card soon">
         <div class="q">?</div>
         <h3>Скоро</h3>
@@ -89,5 +137,75 @@
   </div>
 </footer>
 
+<script src="theme.js?v=1"></script>
+<script>
+(function () {
+  var T = window.MayakTheme;
+
+  function markSelected() {
+    var cur = document.documentElement.dataset.theme || "";
+    document.querySelectorAll(".card[data-game]").forEach(function (c) { c.classList.toggle("sel", c.dataset.game === cur); });
+    document.querySelectorAll("[data-theme-set]").forEach(function (b) { b.classList.toggle("on", b.dataset.themeSet === cur); });
+  }
+  T.onChange = markSelected;
+  markSelected();
+
+  // клик по карточке — сайт перекрашивается в стиль игры; повторный клик открывает игру
+  document.querySelectorAll(".card[data-game]").forEach(function (c) {
+    c.addEventListener("click", function (e) {
+      if (e.target.closest("a")) return;
+      if (T.get() === c.dataset.game) { location.href = c.dataset.href; return; }
+      T.set(c.dataset.game);
+    });
+  });
+  // «Играть»: сначала плавно перекрасить, потом перейти
+  document.querySelectorAll("a[data-open]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return;
+      if (T.get() === a.dataset.open) return;
+      e.preventDefault();
+      T.set(a.dataset.open);
+      setTimeout(function () { location.href = a.getAttribute("href"); }, 480);
+    });
+  });
+  // «Все игры» и логотип — обычный вид
+  document.querySelectorAll("[data-theme-set]").forEach(function (b) {
+    b.addEventListener("click", function () { T.set(b.dataset.themeSet); });
+  });
+  document.getElementById("logo").addEventListener("click", function (e) {
+    e.preventDefault();
+    T.set("");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // мозаика из кадров всех игр: берёт data-shots у каждой карточки (img/<имя>_s.webp) и перемешивает игры между собой
+  var lists = [];
+  document.querySelectorAll(".card[data-shots]").forEach(function (c) { lists.push(c.dataset.shots.trim().split(/\s+/)); });
+  var shots = [];
+  for (var r = 0; lists.length && r < 40 && shots.length < 18; r++)
+    lists.forEach(function (l) { if (r < l.length) shots.push(l[r]); });
+  while (shots.length && shots.length < 15) shots = shots.concat(shots);
+  shots = shots.slice(0, 18);
+  var mz = document.getElementById("mosaic");
+  for (var k = 0; k < 2; k++) shots.forEach(function (n) { var i = document.createElement("i"); i.style.backgroundImage = "url(img/" + n + "_s.webp)"; mz.appendChild(i); });
+
+  // толпа, идущая в вертушку
+  var g = document.getElementById("crowd"), NS = "http://www.w3.org/2000/svg";
+  for (var i = 0; i < 26; i++) {
+    var out = i >= 18;
+    var c = document.createElementNS(NS, "circle");
+    var y = 168 + Math.random() * 64;
+    var x0 = out ? 372 : -300 + Math.random() * 200;
+    var len = out ? 240 + Math.random() * 120 : 330 - x0 - 300 + Math.random() * 10;
+    c.setAttribute("cx", x0); c.setAttribute("cy", y); c.setAttribute("r", 9);
+    c.setAttribute("fill", "#111"); c.setAttribute("stroke", "#fff"); c.setAttribute("stroke-width", "2.5");
+    c.style.setProperty("--dx", len + "px");
+    c.style.setProperty("--dy", (out ? (Math.random() - 0.5) * 120 : 200 - y) * 0.6 + "px");
+    c.style.animation = "walk " + (out ? 3 + Math.random() * 2 : 5 + Math.random() * 3) + "s linear infinite";
+    c.style.animationDelay = (-Math.random() * 8) + "s";
+    g.appendChild(c);
+  }
+})();
+</script>
 </body>
 </html>

@@ -1,38 +1,172 @@
-/* МАЯК — сайт с играми. Ночная палитра из «Девятого вала». */
+/* МАЯК — сайт с играми.
+   У каждой игры своя тема: html[data-theme="..."]. Без темы — нейтральный «Маяк».
+   Тема меняет только оформление: цвета, шрифт заголовков, фон и декор. Тексты и раскладка остаются на месте. */
 @font-face { font-family: "Oswald"; src: url("fonts/Oswald.ttf") format("truetype"); font-weight: 200 700; font-display: swap; }
 @font-face { font-family: "Rubik"; src: url("fonts/Rubik.ttf") format("truetype"); font-weight: 300 900; font-display: swap; }
 
+/* ---------- нейтральный вид сайта: тёмный, янтарный акцент, мозаика из кадров всех игр ---------- */
 :root {
-  --sky: #0b1029;
-  --sky-2: #121a3d;
-  --sea: #154670;
-  --panel: rgba(8, 12, 32, 0.72);
-  --border: rgba(207, 226, 243, 0.16);
-  --text: #efe3d5;
-  --muted: #9aa6c4;
-  --lamp: #f7d65a;
-  --red: #d93a2b;
-  --red-hover: #ef4a3a;
-  --foam: #cfe2f3;
+  --bg: #0e0e10;
+  --bg-2: #141416;
+  --section: #141416;
+  --panel: rgba(255, 255, 255, 0.045);
+  --panel-solid: #1c1c20;
+  --border: rgba(255, 255, 255, 0.12);
+  --border-hover: rgba(255, 182, 72, 0.6);
+  --bw: 1px;
+  --text: #f2f2f2;
+  --muted: #a1a1a9;
+  --accent: #ffb648;
+  --on-accent: #1a1206;
+  --btn: #ffb648;
+  --btn-text: #1a1206;
+  --btn-border: #ffd08a;
+  --btn-hover: #ffc56c;
+  --btn2: rgba(255, 255, 255, 0.06);
+  --btn2-hover: rgba(255, 255, 255, 0.12);
+  --btn2-text: #f2f2f2;
+  --tag-bg: rgba(255, 255, 255, 0.07);
+  --tag-text: #dddde2;
+  --header-bg: rgba(17, 17, 19, 0.85);
+  --badge-bg: rgba(17, 17, 19, 0.85);
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  --player-bg: #111113;
+  --start-veil: radial-gradient(ellipse at center, rgba(17, 17, 19, 0.2), rgba(17, 17, 19, 0.7));
+  --start-text: #eeeeee;
+  --start-shadow: 0 1px 4px #000;
+  --head-font: "Rubik", sans-serif;
+  --head-weight: 700;
+  --head-spacing: -0.015em;
+  --h1-scale: 0.86;
+  --logo-lamp: #ffb648;
+  --logo-body: #f2f2f2;
+  --logo-stripe: #111113;
   --radius: 14px;
   --wrap: 1120px;
+  /* видимость декора */
+  --d-neutral: 1;
+  --d-night: 0;
+  --d-mayak: 0;
+  --d-sea: 0;
+  --d-turn: 0;
+  color-scheme: dark;
+}
+/* ---------- «Девятый вал»: ночь, маяк и море ---------- */
+html[data-theme="devyatyi"] {
+  --bg: #0b1029;
+  --bg-2: #121a3d;
+  --section: #154670;
+  --panel: rgba(8, 12, 32, 0.72);
+  --panel-solid: #0e1736;
+  --border: rgba(207, 226, 243, 0.16);
+  --border-hover: rgba(247, 214, 90, 0.55);
+  --bw: 1px;
+  --text: #efe3d5;
+  --muted: #9aa6c4;
+  --accent: #f7d65a;
+  --on-accent: #0b1029;
+  --btn: #d93a2b;
+  --btn-text: #ffffff;
+  --btn-border: #f08a7a;
+  --btn-hover: #ef4a3a;
+  --btn2: rgba(8, 12, 32, 0.6);
+  --btn2-hover: rgba(30, 40, 80, 0.85);
+  --btn2-text: #efe3d5;
+  --tag-bg: rgba(207, 226, 243, 0.08);
+  --tag-text: #cfe2f3;
+  --header-bg: rgba(11, 16, 41, 0.82);
+  --badge-bg: rgba(8, 12, 32, 0.85);
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  --player-bg: #0d1330;
+  --start-veil: radial-gradient(ellipse at center, rgba(11, 16, 41, 0.25), rgba(11, 16, 41, 0.7));
+  --start-text: #cfe2f3;
+  --start-shadow: 0 1px 4px #000;
+  --head-font: "Oswald", "Rubik", sans-serif;
+  --head-weight: 700;
+  --head-spacing: 0.01em;
+  --h1-scale: 1;
+  --logo-lamp: #f7d65a;
+  --logo-body: #efe3d5;
+  --logo-stripe: #d93a2b;
+  --d-neutral: 0;
+  --d-night: 1;
+  --d-mayak: 1;
+  --d-sea: 1;
+  --d-turn: 0;
+  color-scheme: dark;
 }
 
+/* ---------- «Турникет»: чёрно-белый, как в игре ---------- */
+html[data-theme="turniket"] {
+  --bg: #f4f4f2;
+  --bg-2: #ecece9;
+  --section: #e3e3df;
+  --panel: #ffffff;
+  --panel-solid: #ffffff;
+  --border: #111111;
+  --border-hover: #111111;
+  --bw: 2.5px;
+  --text: #111111;
+  --muted: #5d5d5d;
+  --accent: #111111;
+  --on-accent: #ffffff;
+  --btn: #111111;
+  --btn-text: #ffffff;
+  --btn-border: #111111;
+  --btn-hover: #333333;
+  --btn2: #ffffff;
+  --btn2-hover: #ececec;
+  --btn2-text: #111111;
+  --tag-bg: #ececea;
+  --tag-text: #111111;
+  --header-bg: rgba(246, 246, 244, 0.9);
+  --badge-bg: #ffffff;
+  --shadow: 0 7px 0 rgba(0, 0, 0, 0.14);
+  --player-bg: #f7f7f7;
+  --start-veil: radial-gradient(ellipse at center, rgba(247, 247, 247, 0.1), rgba(247, 247, 247, 0.55));
+  --start-text: #111111;
+  --start-shadow: 0 0 6px #fff;
+  --head-font: "Rubik", sans-serif;
+  --head-weight: 900;
+  --head-spacing: -0.01em;
+  --h1-scale: 0.8;
+  --logo-lamp: #111111;
+  --logo-body: #111111;
+  --logo-stripe: #f4f4f2;
+  --radius: 18px;
+  --d-neutral: 0;
+  --d-night: 0;
+  --d-mayak: 0;
+  --d-sea: 0;
+  --d-turn: 1;
+  color-scheme: light;
+}
+
+/* плавная смена темы: класс .theming висит на <html> ~0,6 с */
+html.theming *, html.theming *::before, html.theming *::after {
+  transition: background-color .5s ease, color .5s ease, border-color .5s ease, border-width .5s ease,
+              border-radius .5s ease, box-shadow .5s ease, fill .5s ease, stroke .5s ease, opacity .5s ease, transform .5s ease !important;
+}
+html.theming h1, html.theming h2, html.theming h3, html.theming .brand-name { animation: headswap .5s ease; }
+@keyframes headswap { 0% { opacity: 1; } 35% { opacity: .15; } 100% { opacity: 1; } }
+
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: var(--bg); }
 body {
   margin: 0;
-  background: var(--sky);
+  background: var(--bg);
   color: var(--text);
   font-family: "Rubik", system-ui, sans-serif;
   font-size: 17px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
-a { color: var(--lamp); text-decoration: none; }
+a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 img { max-width: 100%; display: block; }
-h1, h2, h3, .brand, .btn { font-family: "Oswald", "Rubik", sans-serif; letter-spacing: 0.01em; }
+h1, h2, h3, .brand-name { font-family: var(--head-font); font-weight: var(--head-weight); letter-spacing: var(--head-spacing); }
+.btn { font-family: "Oswald", "Rubik", sans-serif; letter-spacing: 0.01em; }
+html[data-theme="turniket"] .btn { font-family: "Rubik", sans-serif; font-weight: 800; }
 h1, h2, h3 { line-height: 1.1; margin: 0 0 0.5em; }
 
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
@@ -40,15 +174,21 @@ h1, h2, h3 { line-height: 1.1; margin: 0 0 0.5em; }
 /* ---------- шапка ---------- */
 .top {
   position: sticky; top: 0; z-index: 20;
-  background: rgba(11, 16, 41, 0.82);
+  background: var(--header-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: var(--bw) solid var(--border);
 }
+html[data-theme="turniket"] .top { border-bottom-width: 2px; }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
-.brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-size: 26px; font-weight: 700; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-size: 26px; }
+.brand-name { font-family: "Oswald", "Rubik", sans-serif; font-weight: 700; letter-spacing: 0.01em; }
 .brand:hover { text-decoration: none; }
 .brand svg { width: 30px; height: 30px; }
+.brand .l-glow { fill: var(--logo-lamp); }
+.brand .l-lamp { fill: var(--logo-lamp); }
+.brand .l-body { fill: var(--logo-body); }
+.brand .l-stripe { fill: var(--logo-stripe); }
 .brand small { font-family: "Rubik", sans-serif; font-size: 14px; font-weight: 400; color: var(--muted); letter-spacing: 0; }
 .nav { display: flex; gap: 22px; font-size: 16px; }
 .nav a { color: var(--muted); }
@@ -58,78 +198,169 @@ h1, h2, h3 { line-height: 1.1; margin: 0 0 0.5em; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   min-height: 48px; padding: 0 26px;
-  border-radius: 10px; border: 1px solid var(--border);
-  background: var(--panel); color: var(--text);
+  border-radius: 10px; border: var(--bw) solid var(--border);
+  background: var(--btn2); color: var(--btn2-text);
   font-size: 20px; font-weight: 600; text-transform: uppercase;
-  cursor: pointer; transition: background .15s, transform .1s, border-color .15s;
+  cursor: pointer; transition: background-color .15s, transform .1s, border-color .15s;
 }
-.btn:hover { text-decoration: none; border-color: rgba(207, 226, 243, 0.5); background: rgba(30, 40, 80, 0.85); }
+.btn:hover { text-decoration: none; border-color: var(--border-hover); background: var(--btn2-hover); }
 .btn:active { transform: translateY(1px); }
-.btn-red { background: var(--red); border-color: #f08a7a; }
-.btn-red:hover { background: var(--red-hover); border-color: #ffb3a6; }
+.btn-main { background: var(--btn); color: var(--btn-text); border-color: var(--btn-border); }
+.btn-main:hover { background: var(--btn-hover); border-color: var(--btn-border); }
 .btn-small { min-height: 40px; padding: 0 16px; font-size: 16px; }
+html[data-theme="turniket"] .btn { border-radius: 14px; }
 
 /* ---------- первый экран ---------- */
 .hero {
   position: relative; overflow: hidden;
   padding: 96px 0 150px;
-  background: linear-gradient(180deg, var(--sky) 0%, var(--sky-2) 100%);
+  background: var(--bg);
 }
-.hero h1 { font-size: clamp(44px, 8vw, 92px); font-weight: 700; max-width: 12ch; }
+.hero h1 { font-size: calc(clamp(44px, 8vw, 92px) * var(--h1-scale)); max-width: 12ch; min-height: calc(clamp(44px, 8vw, 92px) * 3.3); }
+.hero h1 { display: flex; flex-direction: column; justify-content: center; }
 .hero p { font-size: clamp(18px, 2.2vw, 22px); color: var(--muted); max-width: 34ch; margin: 0 0 32px; }
-.hero .lighthouse { position: absolute; right: 9%; bottom: 72px; width: 46px; z-index: 1; }
+.hero .wrap { position: relative; z-index: 2; }
+
+/* слои декора: каждая тема включает свои, переход — плавное появление */
+.deco { position: absolute; inset: 0; pointer-events: none; transition: opacity .6s ease, transform .6s ease; }
+.d-night { opacity: var(--d-night); background: linear-gradient(180deg, #0b1029 0%, #121a3d 100%); }
+.d-night .stars {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 8% 22%, rgba(255,255,255,.75) 1px, transparent 2px),
+    radial-gradient(circle at 18% 64%, rgba(255,255,255,.4) 1px, transparent 2px),
+    radial-gradient(circle at 34% 12%, rgba(255,255,255,.55) 1px, transparent 2px),
+    radial-gradient(circle at 47% 41%, rgba(255,255,255,.35) 1px, transparent 2px),
+    radial-gradient(circle at 56% 9%, rgba(255,255,255,.6) 1px, transparent 2px),
+    radial-gradient(circle at 63% 30%, rgba(255,255,255,.5) 1px, transparent 2px),
+    radial-gradient(circle at 72% 55%, rgba(255,255,255,.35) 1px, transparent 2px),
+    radial-gradient(circle at 88% 14%, rgba(255,255,255,.6) 1px, transparent 2px),
+    radial-gradient(circle at 95% 47%, rgba(255,255,255,.4) 1px, transparent 2px),
+    radial-gradient(circle at 26% 36%, rgba(255,255,255,.45) 1px, transparent 2px);
+  animation: twinkle 5s ease-in-out infinite alternate;
+}
+@keyframes twinkle { from { opacity: .65; } to { opacity: 1; } }
+
+.d-mayak { opacity: var(--d-mayak); }
+.d-mayak .lighthouse { position: absolute; right: 9%; bottom: 72px; width: 46px; }
+html[data-theme="devyatyi"] .d-mayak .lighthouse { bottom: 72px; }
 .beam {
   position: absolute; right: calc(9% + 23px); bottom: 106px; width: 75vw; height: 160px;
   transform-origin: right center;
   background: linear-gradient(270deg, rgba(247, 214, 90, 0.32), rgba(247, 214, 90, 0));
   clip-path: polygon(100% 48%, 0 0, 0 100%, 100% 52%);
   animation: sweep 7s ease-in-out infinite alternate;
-  pointer-events: none;
 }
 @keyframes sweep { from { transform: rotate(-9deg); } to { transform: rotate(7deg); } }
+/* без моря маяк стоит на скале */
+.rock { position: absolute; right: calc(9% - 34px); bottom: 0; width: 114px; height: 76px; transition: opacity .6s; }
+html[data-theme="devyatyi"] .rock { display: none; }
+
+.d-sea { opacity: var(--d-sea); transform: translateY(calc((1 - var(--d-sea)) * 60px)); }
 .sea { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; }
 .sea svg { position: absolute; bottom: 0; width: 200%; height: 100%; animation: drift 14s linear infinite; }
 .sea svg + svg { animation-duration: 9s; opacity: .9; }
 @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+/* «Турникет»: плитка площади, дверь-вертушка и толпа */
+.d-turn { opacity: var(--d-turn); }
+.d-turn .tiles {
+  position: absolute; inset: -40%;
+  background-image:
+    linear-gradient(rgba(0,0,0,.075) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(0,0,0,.075) 1.5px, transparent 1.5px);
+  background-size: 64px 64px;
+  transform: perspective(900px) rotateX(55deg) rotateZ(-32deg);
+  transform-origin: 70% 50%;
+}
+.d-turn .road {
+  position: absolute; left: -10%; right: -10%; top: 6%; height: 70px;
+  border-top: 2px solid #111; border-bottom: 2px solid #111; background: #ecece9;
+  transform: rotate(-17deg); transform-origin: left top;
+}
+.d-turn .road::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 4px; margin-top: -2px;
+  background: repeating-linear-gradient(90deg, #111 0 40px, transparent 40px 90px);
+  animation: roadmove 3s linear infinite;
+}
+@keyframes roadmove { from { background-position: 0 0; } to { background-position: 90px 0; } }
+.d-turn .door {
+  position: absolute; right: 6%; top: 50%; width: 420px; height: 420px; margin-top: -170px;
+  transform: perspective(1100px) rotateX(52deg) rotateZ(-30deg);
+}
+.d-turn .door svg { width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 16px 0 rgba(0,0,0,.10)); }
+.d-turn .blades { transform-origin: 200px 200px; animation: spin 7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.d-turn .crowd { position: absolute; inset: 0; }
+.d-turn .crowd i {
+  position: absolute; width: 11px; height: 11px; border-radius: 50%; background: #111;
+  left: 0; top: 0; opacity: 0;
+  animation: walk 6s linear infinite;
+}
+@keyframes walk {
+  0% { transform: translate(0, 0); opacity: 0; }
+  10% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)); opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .beam, .sea svg { animation: none; }
+  .beam, .sea svg, .d-turn .blades, .d-turn .crowd i, .d-turn .road::after, .d-night .stars { animation: none; }
 }
 
 /* ---------- секции ---------- */
 section { padding: 64px 0; }
-.section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 26px; }
+.section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 26px; flex-wrap: wrap; }
 .section-title h2 { font-size: 38px; margin: 0; }
 .section-title span { color: var(--muted); font-size: 15px; }
-.sea-bg { background: var(--sea); }
+.games-bg { background: var(--section); transition: background-color .5s; }
+html[data-theme="turniket"] .games-bg { border-top: 2px solid #111; border-bottom: 2px solid #111; }
+
+.chips { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.chip {
+  font: inherit; font-size: 14px; cursor: pointer;
+  padding: 5px 14px; border-radius: 999px;
+  background: transparent; color: var(--muted); border: var(--bw) solid var(--border);
+}
+.chip:hover { color: var(--text); }
+.chip.on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
 
 /* ---------- карточки игр ---------- */
 .games { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
 .card {
-  display: flex; flex-direction: column;
-  background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+  display: flex; flex-direction: column; position: relative;
+  background: var(--panel); border: var(--bw) solid var(--border); border-radius: var(--radius);
   overflow: hidden; color: var(--text);
   transition: transform .15s, border-color .15s, box-shadow .15s;
 }
-a.card:hover { text-decoration: none; transform: translateY(-3px); border-color: rgba(247, 214, 90, 0.55); box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35); }
-.card .cover { aspect-ratio: 16 / 9; background: var(--sky-2) center / cover no-repeat; position: relative; }
+.card[data-game] { cursor: pointer; }
+.card[data-game]:hover { transform: translateY(-3px); border-color: var(--border-hover); box-shadow: var(--shadow); }
+.card.sel { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), var(--shadow); }
+.card .cover { aspect-ratio: 16 / 9; background: var(--panel-solid) center / cover no-repeat; position: relative; }
 .card .badge {
   position: absolute; bottom: 12px; right: 12px;
-  background: rgba(8, 12, 32, 0.85); border: 1px solid var(--border); border-radius: 8px;
-  padding: 2px 10px; font-size: 13px; color: var(--lamp);
+  background: var(--badge-bg); border: var(--bw) solid var(--border); border-radius: 8px;
+  padding: 2px 10px; font-size: 13px; color: var(--accent);
+}
+.card .new {
+  position: absolute; top: 12px; left: 12px;
+  background: var(--btn); color: var(--btn-text); border-radius: 8px;
+  padding: 2px 10px; font-size: 13px; font-weight: 600;
 }
 .card .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .card h3 { font-size: 28px; margin: 0; }
 .card p { margin: 0; color: var(--muted); font-size: 15px; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
-.tag { font-size: 12.5px; padding: 3px 10px; border-radius: 99px; background: rgba(207, 226, 243, 0.08); color: var(--foam); }
+.tag { font-size: 12.5px; padding: 3px 10px; border-radius: 99px; background: var(--tag-bg); color: var(--tag-text); }
+.card .go { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 6px; }
+.card .go small { color: var(--muted); font-size: 13px; }
 .card.soon { border-style: dashed; justify-content: center; align-items: center; text-align: center; min-height: 300px; padding: 24px; }
-.card.soon .q { font-family: "Oswald", sans-serif; font-size: 64px; color: rgba(207, 226, 243, 0.25); line-height: 1; }
+.card.soon .q { font-family: var(--head-font); font-size: 64px; color: var(--muted); opacity: .45; line-height: 1; }
 
 /* ---------- о сайте ---------- */
 .about { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
-.about div { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
-.about h3 { font-size: 22px; color: var(--lamp); }
+.about div { background: var(--panel); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: 22px; }
+.about h3 { font-size: 22px; color: var(--accent); }
 .about p { margin: 0; color: var(--muted); font-size: 15.5px; }
 
 /* ---------- страница игры ---------- */
@@ -143,16 +374,16 @@ a.card:hover { text-decoration: none; transform: translateY(-3px); border-color:
 .player {
   position: relative; aspect-ratio: 16 / 9; width: 100%;
   border-radius: var(--radius); overflow: hidden;
-  background: #000 center / cover no-repeat; border: 1px solid var(--border);
+  background: var(--player-bg) center / cover no-repeat; border: var(--bw) solid var(--border);
 }
-.player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; background: #0d1330; }
+.player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; background: var(--player-bg); }
 .player .start {
   position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
-  background: radial-gradient(ellipse at center, rgba(11, 16, 41, 0.25), rgba(11, 16, 41, 0.7));
+  background: var(--start-veil);
   text-align: center; padding: 16px;
 }
 .player .start .btn { font-size: 26px; min-height: 64px; padding: 0 40px; }
-.player .start small { color: var(--foam); font-size: 14px; text-shadow: 0 1px 4px #000; }
+.player .start small { color: var(--start-text); font-size: 14px; text-shadow: var(--start-shadow); }
 .player:fullscreen { border-radius: 0; border: 0; aspect-ratio: auto; width: 100vw; height: 100vh; }
 .player:-webkit-full-screen { border-radius: 0; border: 0; aspect-ratio: auto; width: 100vw; height: 100vh; }
 .player-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
@@ -161,7 +392,7 @@ a.card:hover { text-decoration: none; transform: translateY(-3px); border-color:
 .player-bar .hint { color: var(--muted); font-size: 14.5px; }
 .rotate {
   display: none; position: absolute; inset: 0; z-index: 5;
-  background: rgba(11, 16, 41, 0.96); color: var(--text);
+  background: var(--bg); color: var(--text);
   align-items: center; justify-content: center; text-align: center; padding: 20px; font-size: 18px;
 }
 @media (orientation: portrait) { .player.running:fullscreen .rotate { display: flex; } }
@@ -170,28 +401,30 @@ a.card:hover { text-decoration: none; transform: translateY(-3px); border-color:
 .cols h2 { font-size: 30px; margin-top: 8px; }
 .features { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 10px; }
 .features li { padding-left: 28px; position: relative; color: var(--text); }
-.features li::before { content: ""; position: absolute; left: 4px; top: 9px; width: 10px; height: 10px; border-radius: 50%; background: var(--lamp); box-shadow: 0 0 10px rgba(247, 214, 90, 0.6); }
-.box { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 22px; }
-.box h3 { font-size: 22px; color: var(--lamp); }
+.features li::before { content: ""; position: absolute; left: 4px; top: 9px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(247, 214, 90, 0.6); }
+html[data-theme="turniket"] .features li::before { box-shadow: none; }
+.box { background: var(--panel); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 22px; }
+.box h3 { font-size: 22px; color: var(--accent); }
 .keys { width: 100%; border-collapse: collapse; font-size: 15px; }
-.keys td { padding: 6px 0; border-bottom: 1px solid rgba(207, 226, 243, 0.08); vertical-align: top; }
-.keys td:first-child { white-space: nowrap; padding-right: 14px; color: var(--lamp); font-weight: 600; }
+.keys td { padding: 6px 0; border-bottom: 1px solid var(--tag-bg); vertical-align: top; }
+.keys td:first-child { white-space: nowrap; padding-right: 14px; color: var(--accent); font-weight: 600; }
 .keys tr:last-child td { border-bottom: 0; }
 .tabs { display: flex; gap: 6px; margin-bottom: 12px; }
 .tabs button {
   font: inherit; font-size: 14px; color: var(--muted); background: transparent;
-  border: 1px solid var(--border); border-radius: 8px; padding: 4px 12px; cursor: pointer;
+  border: var(--bw) solid var(--border); border-radius: 8px; padding: 4px 12px; cursor: pointer;
 }
-.tabs button.on { color: var(--sky); background: var(--lamp); border-color: var(--lamp); }
+.tabs button.on { color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
 .meta { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; font-size: 15px; margin: 0; }
 .meta dt { color: var(--muted); }
 .meta dd { margin: 0; }
 
 .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
-.shots button { padding: 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; cursor: zoom-in; background: none; }
+.shots button { padding: 0; border: var(--bw) solid var(--border); border-radius: 10px; overflow: hidden; cursor: zoom-in; background: none; }
 .shots img { aspect-ratio: 16 / 9; width: 100%; object-fit: cover; transition: transform .2s; }
 .shots button:hover img { transform: scale(1.04); }
 .lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(5, 8, 20, 0.92); display: none; align-items: center; justify-content: center; padding: 16px; cursor: zoom-out; }
+html[data-theme="turniket"] .lightbox { background: rgba(244, 244, 242, 0.95); }
 .lightbox.on { display: flex; }
 .lightbox img { max-height: 92vh; border-radius: 10px; }
 
@@ -201,14 +434,16 @@ a.card:hover { text-decoration: none; transform: translateY(-3px); border-color:
 .changelog b { color: var(--text); font-weight: 500; }
 
 /* ---------- подвал ---------- */
-footer { border-top: 1px solid var(--border); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+footer { border-top: var(--bw) solid var(--border); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
 @media (max-width: 820px) {
   .cols { grid-template-columns: 1fr; }
   .hero { padding: 64px 0 130px; }
-  .hero .lighthouse { right: 7%; width: 34px; bottom: 70px; }
+  .d-mayak .lighthouse { right: 7%; width: 34px; bottom: 70px; }
   .beam { right: calc(7% + 17px); bottom: 74px; }
+  .rock { right: calc(7% - 26px); width: 86px; height: 60px; }
+  .d-turn .door { width: 260px; height: 260px; right: -40px; top: auto; bottom: 20px; margin-top: 0; }
   .brand small { display: none; }
   section { padding: 48px 0; }
   .section-title h2 { font-size: 30px; }
@@ -220,10 +455,28 @@ footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wr
 body.noscroll { overflow: hidden; }
 .unmax {
   display: none; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); z-index: 6;
-  font: 500 13px "Rubik", sans-serif; color: var(--foam); cursor: pointer;
-  background: rgba(8, 12, 32, 0.55); border: 1px solid var(--border); border-radius: 8px; padding: 4px 12px;
+  font: 500 13px "Rubik", sans-serif; color: var(--text); cursor: pointer;
+  background: var(--badge-bg); border: 1px solid var(--border); border-radius: 8px; padding: 4px 12px;
   opacity: .55; transition: opacity .15s;
 }
 .unmax:hover { opacity: 1; }
 .player.max .unmax { display: block; }
-.hero .wrap { position: relative; z-index: 2; }
+html[data-theme="turniket"] .player .start small { background: #fff; border: 2px solid #111; border-radius: 10px; padding: 4px 12px; }
+
+/* ---------- нейтральный вид: стена из кадров всех игр, медленно плывёт ---------- */
+.d-neutral { opacity: var(--d-neutral); overflow: hidden; }
+.mosaic {
+  position: absolute; right: -8%; top: -30%; width: 75%;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-content: start;
+  transform: rotate(-10deg);
+  animation: mosaicmove 40s linear infinite;
+}
+.mosaic i { display: block; aspect-ratio: 16 / 9; border-radius: 10px; background: #222 center / cover no-repeat; }
+@keyframes mosaicmove { from { translate: 0 0; } to { translate: 0 -50%; } }
+.d-neutral::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, #0e0e10 0%, rgba(14,14,16,.92) 38%, rgba(14,14,16,.55) 70%, rgba(14,14,16,.35) 100%),
+              linear-gradient(0deg, #0e0e10 0%, transparent 25%);
+}
+@media (max-width: 820px) { .mosaic { width: 120%; right: -40%; opacity: .7; } }
+@media (prefers-reduced-motion: reduce) { .mosaic { animation: none; } }
