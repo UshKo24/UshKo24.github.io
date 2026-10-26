@@ -11,9 +11,9 @@
   --section: #141416;
   --panel: rgba(255, 255, 255, 0.045);
   --panel-solid: #1c1c20;
-  --border: rgba(255, 255, 255, 0.12);
+  --border: rgba(255, 255, 255, 0.09);
   --border-hover: rgba(255, 182, 72, 0.6);
-  --bw: 1px;
+  --bw: 2px;
   --text: #f2f2f2;
   --muted: #a1a1a9;
   --accent: #ffb648;
@@ -44,6 +44,7 @@
   --radius: 14px;
   --wrap: 1120px;
   /* видимость декора */
+  --section-line: transparent;
   --d-neutral: 1;
   --d-night: 0;
   --d-mayak: 0;
@@ -58,9 +59,9 @@ html[data-theme="devyatyi"] {
   --section: #154670;
   --panel: rgba(8, 12, 32, 0.72);
   --panel-solid: #0e1736;
-  --border: rgba(207, 226, 243, 0.16);
+  --border: rgba(207, 226, 243, 0.12);
   --border-hover: rgba(247, 214, 90, 0.55);
-  --bw: 1px;
+  --bw: 2px;
   --text: #efe3d5;
   --muted: #9aa6c4;
   --accent: #f7d65a;
@@ -101,7 +102,7 @@ html[data-theme="turniket"] {
   --panel-solid: #ffffff;
   --border: #111111;
   --border-hover: #111111;
-  --bw: 2.5px;
+  --bw: 2px;
   --text: #111111;
   --muted: #5d5d5d;
   --accent: #111111;
@@ -126,6 +127,7 @@ html[data-theme="turniket"] {
   --logo-body: #111111;
   --logo-stripe: #f4f4f2;
   --radius: 18px;
+  --section-line: #111111;
   --d-neutral: 0;
   --d-night: 0;
   --d-mayak: 0;
@@ -136,8 +138,8 @@ html[data-theme="turniket"] {
 
 /* плавная смена темы: класс .theming висит на <html> ~0,6 с */
 html.theming *, html.theming *::before, html.theming *::after {
-  transition: background-color .5s ease, color .5s ease, border-color .5s ease, border-width .5s ease,
-              border-radius .5s ease, box-shadow .5s ease, fill .5s ease, stroke .5s ease, opacity .5s ease, transform .5s ease !important;
+  transition: background-color .6s ease-in-out, color .6s ease-in-out, border-color .6s ease-in-out, border-radius .6s ease-in-out,
+              box-shadow .6s ease-in-out, fill .6s ease-in-out, stroke .6s ease-in-out, opacity .6s ease-in-out !important;
 }
 
 * { box-sizing: border-box; }
@@ -169,7 +171,6 @@ h1, h2, h3 { line-height: 1.1; margin: 0 0 0.5em; }
   -webkit-backdrop-filter: blur(10px);
   border-bottom: var(--bw) solid var(--border);
 }
-html[data-theme="turniket"] .top { border-bottom-width: 2px; }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-size: 26px; }
 .brand-name { font-family: "Oswald", "Rubik", sans-serif; font-weight: 700; letter-spacing: 0.01em; }
@@ -302,8 +303,7 @@ section { padding: 64px 0; }
 .section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 26px; flex-wrap: wrap; }
 .section-title h2 { font-size: 38px; margin: 0; }
 .section-title span { color: var(--muted); font-size: 15px; }
-.games-bg { background: var(--section); transition: background-color .5s; }
-html[data-theme="turniket"] .games-bg { border-top: 2px solid #111; border-bottom: 2px solid #111; }
+.games-bg { background: var(--section); border-top: 2px solid var(--section-line); border-bottom: 2px solid var(--section-line); }
 
 .chips { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .chip {

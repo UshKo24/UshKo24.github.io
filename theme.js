@@ -13,7 +13,7 @@ window.MayakTheme = (function () {
       if (!instant) {
         root.classList.add("theming");
         clearTimeout(timer);
-        timer = setTimeout(function () { root.classList.remove("theming"); }, 650);
+        timer = setTimeout(function () { root.classList.remove("theming"); }, 750);
       }
       if (t) root.dataset.theme = t; else delete root.dataset.theme;
       try { sessionStorage.setItem(KEY, t); } catch (e) {}
