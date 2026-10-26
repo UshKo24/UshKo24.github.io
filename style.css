@@ -188,7 +188,7 @@ html[data-theme="turniket"] .top { border-bottom-width: 2px; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   min-height: 48px; padding: 0 26px;
-  border-radius: 10px; border: var(--bw) solid var(--border);
+  border-radius: 10px; border: 2px solid var(--border);  /* одинаковая во всех темах — кнопки одного размера */
   background: var(--btn2); color: var(--btn2-text);
   font-size: 20px; font-weight: 700; text-transform: uppercase;
   cursor: pointer; transition: background-color .15s, transform .1s, border-color .15s;
@@ -198,7 +198,6 @@ html[data-theme="turniket"] .top { border-bottom-width: 2px; }
 .btn-main { background: var(--btn); color: var(--btn-text); border-color: var(--btn-border); }
 .btn-main:hover { background: var(--btn-hover); border-color: var(--btn-border); }
 .btn-small { min-height: 40px; padding: 0 16px; font-size: 16px; }
-html[data-theme="turniket"] .btn { border-radius: 14px; }
 
 /* ---------- первый экран ---------- */
 .hero {
