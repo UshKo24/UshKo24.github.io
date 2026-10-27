@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ru" data-theme="metro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Метро — играть онлайн · МАЯК</title>
+<meta name="description" content="«Метро» — idle-игра: строй метро в пяти городах, запускай составы и развози пассажиров. Играй бесплатно в браузере, на ПК и телефоне.">
+<meta property="og:title" content="Метро — строй метро, развози город">
+<meta property="og:description" content="Пять городов, кольцевая линия, часы пик и пушеры. Играй бесплатно прямо в браузере.">
+<meta property="og:image" content="../img/metro_cover.webp">
+<meta name="theme-color" content="#f4f2ec">
+<link rel="icon" href="../img/metro-icon.png">
+<link rel="stylesheet" href="../style.css?v=10">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" id="logo">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><circle class="l-glow" cx="15" cy="7" r="6" opacity=".25"/><rect class="l-lamp" x="12" y="5" width="6" height="4" rx="1"/><path class="l-body" d="M11 10h8l2 17H9z"/><path class="l-stripe" d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z"/></svg>
+      <span class="brand-name">МАЯК</span> <small>игры в браузере</small>
+    </a>
+    <nav class="nav">
+      <a href="../#games" class="on">Игры</a>
+      <a href="../#about">О сайте</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="game-head">
+    <div class="crumbs"><a href="../#games">Игры</a> / Метро</div>
+    <h1>Метро</h1>
+    <p class="sub">Строй метро — развози город</p>
+  </div>
+
+  <div class="player" id="player" style="background-image:url(../img/metro_cover.webp)">
+    <div class="start" id="start">
+      <button class="btn btn-main" id="play">▶&nbsp; Играть</button>
+      <small>Загрузка займёт несколько секунд · прогресс сохраняется в браузере</small>
+    </div>
+    <div class="rotate">Переверни телефон горизонтально ↻</div>
+    <button class="unmax" id="unmax" title="Свернуть">✕&nbsp; Свернуть</button>
+  </div>
+  <div class="player-bar">
+    <span class="hint" id="hint">«Развернуть» + клавиша F11 — весь экран. Свернуть — кнопка ✕ сверху.</span>
+    <span class="bar-buttons">
+      <button class="btn btn-small" id="max">⛶&nbsp; Развернуть</button>
+      <button class="btn btn-small" id="fs">Полный экран</button>
+    </span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap cols">
+    <div>
+      <h2>Об игре</h2>
+      <p>В городе пока одна короткая линия. Покупай станции — и метро потянется через реку, к аэропорту и к стадиону. Поезда ездят сами: подбирают людей, развозят по станциям и приносят деньги за каждую поездку.</p>
+      <p>Утром и вечером — час пик: людей вдвое больше. Нажми на станцию — и пушеры утрамбуют толпу в вагоны, чем быстрее жмёшь, тем дороже поездка. Днём у стадиона начинается концерт, в аэропорт прилетает рейс, к морскому вокзалу причаливает лайнер — и туда идёт толпа.</p>
+      <p>Достроил город — переезжай в следующий: деньги и улучшения начнутся заново, но доход навсегда станет вдвое больше.</p>
+      <ul class="features">
+        <li>Кампания из пяти городов: Заречье, Приморск, Наукоград, Промград и Столица — около четырёх часов игры</li>
+        <li>У каждого города своя фишка: море и паромы, ночь без сна, три смены на заводах, кольцевая линия</li>
+        <li>Схема в стиле настоящего метро: пересадки, мосты через реку, город и знакомые места под линиями</li>
+        <li>Час пик и пушеры: жми на станцию, собирай серию до ×3</li>
+        <li>Больше полусотни событий у мест на карте — концерты, рейсы, регаты, запуск коллайдера</li>
+        <li>День и ночь: ночью город темнеет, в окнах загорается свет</li>
+        <li>10 улучшений: тариф, вагоны, составы, скорость, эскалаторы, реклама, пересадки, пушеры, экраны, диспетчер</li>
+        <li>Метро работает и без тебя: зайдёшь — заберёшь, что набежало</li>
+      </ul>
+
+      <h2 style="margin-top:40px">Скриншоты</h2>
+      <div class="shots">
+        <button data-full="../img/metro_city1.webp"><img src="../img/metro_city1_s.webp" alt="Заречье — первый город" loading="lazy"></button>
+        <button data-full="../img/metro_city2.webp"><img src="../img/metro_city2_s.webp" alt="Приморск — город у моря" loading="lazy"></button>
+        <button data-full="../img/metro_city3.webp"><img src="../img/metro_city3_s.webp" alt="Наукоград ночью" loading="lazy"></button>
+        <button data-full="../img/metro_city4.webp"><img src="../img/metro_city4_s.webp" alt="Промград" loading="lazy"></button>
+        <button data-full="../img/metro_city5.webp"><img src="../img/metro_city5_s.webp" alt="Столица с кольцевой линией" loading="lazy"></button>
+        <button data-full="../img/metro_push.webp"><img src="../img/metro_push_s.webp" alt="Час пик: пушеры заталкивают людей" loading="lazy"></button>
+      </div>
+    </div>
+
+    <aside>
+      <div class="box">
+        <h3>Управление</h3>
+        <table class="keys">
+          <tr><td>«+» у конца линии</td><td>построить станцию</td></tr>
+          <tr><td>Кнопки внизу</td><td>улучшения</td></tr>
+          <tr><td>1 – 0</td><td>улучшения с клавиатуры</td></tr>
+          <tr><td>Станция в час пик</td><td>пушеры</td></tr>
+          <tr><td>Esc</td><td>пауза</td></tr>
+        </table>
+      </div>
+
+      <div class="box">
+        <h3>Об игре</h3>
+        <dl class="meta">
+          <dt>Версия</dt><dd>0.6 «Пять городов»</dd>
+          <dt>Жанр</dt><dd>idle, стратегия</dd>
+          <dt>Платформы</dt><dd>браузер, Windows, Android</dd>
+          <dt>Управление</dt><dd>мышка или палец</dd>
+          <dt>Язык</dt><dd>русский</dd>
+          <dt>Движок</dt><dd>Godot 4</dd>
+        </dl>
+      </div>
+
+      <div class="box">
+        <h3>Скачать</h3>
+        <p style="margin:0 0 14px;color:var(--muted);font-size:15px">Прогресс в браузере и в скачанной версии — свой у каждой.</p>
+        <div class="downloads">
+          <a class="btn btn-small" href="../downloads/Metro_v0.6_windows.zip" download>Windows · 38 МБ</a>
+          <a class="btn btn-small" href="../downloads/Metro_v0.6_android.apk" download>Android · 53 МБ</a>
+        </div>
+      </div>
+      </div>
+
+      <div class="box">
+        <h3>Что нового</h3>
+        <ul class="changelog">
+          <li><b>0.6 «Пять городов»:</b> кампания — Заречье, Приморск, Наукоград, Промград, Столица; переезд в новый город даёт доход ×2 навсегда; кольцевая линия</li>
+          <li><b>0.5:</b> события у мест на карте, доход пока игры нет</li>
+          <li><b>0.4:</b> день и ночь, город под схемой, поезда больше не сбиваются в пробки</li>
+          <li><b>0.3:</b> пересадки одним кругом, компактные поезда</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 МАЯК</span>
+    <span>Игры на <a href="https://godotengine.org" target="_blank" rel="noopener">Godot Engine</a></span>
+  </div>
+</footer>
+
+<script src="../theme.js?v=2"></script>
+<script src="../preload.js?v=1"></script>
+<script>
+(function () {
+  MayakTheme.remember("metro");
+  document.getElementById("logo").addEventListener("click", function () { MayakTheme.remember(""); });
+
+  var COVER = "../img/metro_cover.webp";
+  var player = document.getElementById("player");
+  var start = document.getElementById("start");
+  var isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1100);
+
+  function goFull() {
+    var req = player.requestFullscreen || player.webkitRequestFullscreen;
+    if (!req) return Promise.resolve();
+    return Promise.resolve(req.call(player)).then(function () {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(function () {});
+      }
+    }).catch(function () {});
+  }
+
+  function focusGame() {
+    var f = player.querySelector("iframe");
+    if (f) { try { f.focus(); f.contentWindow.focus(); } catch (e) {} }
+  }
+
+  // движок начинает качаться в фоне сразу, пока читаешь страницу
+  MayakPreload.startIdle("../", ["../games/metro/index.pck"], 200);
+
+  document.getElementById("play").addEventListener("click", function () {
+    var btn = this;
+    if (isPhone) goFull();   // полный экран можно включить только сразу по нажатию
+    if (!MayakPreload.busy()) { launch(); return; }
+    // фоновая загрузка ещё идёт — показываем её прогресс и запускаем, когда закончится
+    btn.disabled = true;
+    var tick = setInterval(function () {
+      btn.textContent = "Загрузка " + Math.round(MayakPreload.progress() * 100) + "%";
+    }, 150);
+    MayakPreload.wait(function () { clearInterval(tick); launch(); });
+  });
+
+  function launch() {
+    var frame = document.createElement("iframe");
+    frame.src = "../games/metro/index.html?v=06";
+    frame.allow = "autoplay; fullscreen; gamepad";
+    frame.setAttribute("allowfullscreen", "");
+    frame.title = "Метро";
+    frame.addEventListener("load", focusGame);
+    player.appendChild(frame);
+    player.classList.add("running");
+    start.remove();
+    setTimeout(focusGame, 300);
+  }
+
+  document.getElementById("fs").addEventListener("click", function () {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else {
+      goFull().then(focusGame);
+    }
+  });
+  player.addEventListener("click", focusGame);
+
+  var MAX_CSS = "position:fixed;left:0;top:0;right:0;bottom:0;z-index:100;width:100vw;height:100vh;max-width:none;aspect-ratio:auto;border-radius:0;border:0;margin:0;";
+  function setMax(on) {
+    player.classList.toggle("max", on);
+    player.style.cssText = "background-image:url(" + COVER + ");" + (on ? MAX_CSS : "");
+    document.getElementById("unmax").style.display = on ? "block" : "none";
+    document.body.classList.toggle("noscroll", on);
+    setTimeout(focusGame, 50);
+  }
+  document.getElementById("max").addEventListener("click", function () { setMax(true); });
+  document.getElementById("unmax").addEventListener("click", function (e) { e.stopPropagation(); setMax(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && player.classList.contains("max")) setMax(false); });
+
+  if (isPhone) {
+    document.getElementById("hint").textContent = "Поверни телефон горизонтально. Для телефона есть и приложение — Android, справа внизу.";
+  }
+
+  var lb = document.getElementById("lightbox");
+  document.querySelectorAll(".shots button").forEach(function (b) {
+    b.addEventListener("click", function () { lb.querySelector("img").src = b.dataset.full; lb.classList.add("on"); });
+  });
+  lb.addEventListener("click", function () { lb.classList.remove("on"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("on"); });
+})();
+</script>
+</body>
+</html>

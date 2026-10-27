@@ -30,6 +30,34 @@
 
 <div class="hero">
   <!-- нейтральный вид сайта: мозаика из кадров всех игр (берутся из data-shots у карточек) -->
+  <!-- «Метро»: схема линий, по которой ездят поезда -->
+  <div class="deco d-metro" aria-hidden="true">
+    <svg viewBox="0 0 900 560" preserveAspectRatio="xMaxYMid slice">
+      <path d="M560 470 C 640 420, 760 440, 1000 380" fill="none" stroke="#d3e7f3" stroke-width="56" stroke-linecap="round"/>
+      <path id="mL1" d="M150 70 H360 L480 190 V360 L600 480 H900" fill="none" stroke="#e2412f" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="mL2" d="M60 430 H260 L380 310 L510 180 H760 L860 80 H960" fill="none" stroke="#2f6fe0" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="mL3" d="M640 -20 V300 L760 420 V600" fill="none" stroke="#2ba45b" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M600 480 L700 380 H880" fill="none" stroke="#f2b705" stroke-width="11" stroke-dasharray="3 16" stroke-linecap="round" opacity=".8"/>
+      <g fill="#fff" stroke-width="6">
+        <circle cx="150" cy="70" r="10" stroke="#e2412f"/><circle cx="260" cy="70" r="10" stroke="#e2412f"/><circle cx="360" cy="70" r="10" stroke="#e2412f"/><circle cx="480" cy="290" r="10" stroke="#e2412f"/><circle cx="900" cy="480" r="10" stroke="#e2412f"/>
+        <circle cx="60" cy="430" r="10" stroke="#2f6fe0"/><circle cx="170" cy="430" r="10" stroke="#2f6fe0"/><circle cx="560" cy="180" r="10" stroke="#2f6fe0"/><circle cx="860" cy="80" r="10" stroke="#2f6fe0"/>
+        <circle cx="640" cy="60" r="10" stroke="#2ba45b"/><circle cx="640" cy="260" r="10" stroke="#2ba45b"/><circle cx="760" cy="550" r="10" stroke="#2ba45b"/>
+      </g>
+      <!-- пересадки: один круг, поделённый на цвета линий -->
+      <g stroke="#fff" stroke-width="3">
+        <path d="M440 250 m-15 0 a15 15 0 0 1 30 0 z" fill="#e2412f"/><path d="M440 250 m15 0 a15 15 0 0 1 -30 0 z" fill="#2f6fe0"/>
+        <path d="M640 180 m-15 0 a15 15 0 0 1 30 0 z" fill="#2ba45b"/><path d="M640 180 m15 0 a15 15 0 0 1 -30 0 z" fill="#2f6fe0"/>
+        <path d="M760 480 m-15 0 a15 15 0 0 1 30 0 z" fill="#2ba45b"/><path d="M760 480 m15 0 a15 15 0 0 1 -30 0 z" fill="#e2412f"/>
+      </g>
+      <g fill="#fff"><circle cx="440" cy="250" r="6"/><circle cx="640" cy="180" r="6"/><circle cx="760" cy="480" r="6"/></g>
+      <g id="mTr"><rect x="-17" y="-6" width="34" height="12" rx="5" fill="#fff" stroke-width="3"/></g>
+      <g stroke="#a3271a"><use href="#mTr"><animateMotion dur="11s" repeatCount="indefinite" rotate="auto"><mpath href="#mL1"/></animateMotion></use>
+        <use href="#mTr"><animateMotion dur="11s" begin="-5.5s" repeatCount="indefinite" rotate="auto"><mpath href="#mL1"/></animateMotion></use></g>
+      <g stroke="#1d4a9c"><use href="#mTr"><animateMotion dur="13s" begin="-3s" repeatCount="indefinite" rotate="auto"><mpath href="#mL2"/></animateMotion></use>
+        <use href="#mTr"><animateMotion dur="13s" begin="-9.5s" repeatCount="indefinite" rotate="auto"><mpath href="#mL2"/></animateMotion></use></g>
+      <g stroke="#1b6e3c"><use href="#mTr"><animateMotion dur="9s" begin="-2s" repeatCount="indefinite" rotate="auto"><mpath href="#mL3"/></animateMotion></use></g>
+    </svg>
+  </div>
   <div class="deco d-neutral" aria-hidden="true"><div class="mosaic" id="mosaic"></div></div>
   <!-- «Девятый вал»: ночное небо, маяк и море -->
   <div class="deco d-night"><div class="stars"></div></div>
@@ -90,9 +118,19 @@
       </div>
     </div>
     <div class="games">
+      <article class="card" data-game="metro" data-href="metro/"
+               data-shots="metro_city1 metro_city2 metro_city3 metro_city4 metro_city5 metro_push">
+        <div class="cover" style="background-image:url(img/metro_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.6 · «Пять городов»</span></div>
+        <div class="body">
+          <h3>Метро</h3>
+          <p>Строй метро в пяти городах — от речного городка до столицы с кольцевой. Покупай станции, запускай составы, а в час пик жми на станцию — пушеры утрамбуют толпу в вагоны.</p>
+          <div class="tags"><span class="tag">idle</span><span class="tag">город</span><span class="tag">ПК и телефон</span><span class="tag">5 городов</span></div>
+          <div class="go"><a class="btn btn-main btn-small" href="metro/" data-open="metro">▶&nbsp; Играть</a></div>
+        </div>
+      </article>
       <article class="card" data-game="turniket" data-href="turniket/"
                data-shots="turniket_station turniket_stadium turniket_fest turniket_airport turniket_menu turniket_cover">
-        <div class="cover" style="background-image:url(img/turniket_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.6.3 · «Свобода»</span></div>
+        <div class="cover" style="background-image:url(img/turniket_cover_s.webp)"><span class="badge">v0.6.3 · «Свобода»</span></div>
         <div class="body">
           <h3>Турникет</h3>
           <p>Гигантская вращающаяся дверь и бесконечная толпа. Крути вертушку мышкой, пропускай людей, запускай их в полёт и прокачай пять карт — от вокзала до фестиваля.</p>

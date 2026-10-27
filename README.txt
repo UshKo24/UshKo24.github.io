@@ -2,11 +2,12 @@
 
 index.html                 — главная со списком игр
 turniket/index.html        — страница «Турникета» (плеер, описание, управление)
+metro/index.html           — страница «Метро» (её собирает tools/site_apply.py из проекта игры)
 engine/godot-<версия>/      — общий движок Godot для всех игр (godot.wasm, godot.js) — браузер качает его один раз
 games/<игра>/              — пакет игры (index.pck) и страница запуска (index.html), без своей копии движка
 tools/add_web_build.py     — подключает веб-экспорт Godot к общему движку
 img/                       — обложки и скриншоты (полный размер и уменьшенные *_s.webp)
-downloads/                 — версии для Windows
+downloads/                 — версии для Windows и Android
 style.css, theme.js        — оформление и темы игр
 fonts/                     — шрифты (Oswald, Rubik — SIL OFL)
 
