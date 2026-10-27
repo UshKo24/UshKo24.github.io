@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Безумная лунка — мини-гольф онлайн · МАЯК</title>
-<meta name="description" content="«Безумная лунка» — мини-гольф: 20 уровней с песком, водой, мостиками и отбойниками и игра вдвоём. Играй бесплатно в браузере, на ПК и телефоне.">
+<meta name="description" content="«Безумная лунка» — мини-гольф: 50 уровней с песком, водой, мостиками, отбойниками, склонами, туннелями и льдом, и игра вдвоём. Играй бесплатно в браузере, на ПК и телефоне.">
 <meta property="og:title" content="Безумная лунка — мини-гольф">
-<meta property="og:description" content="20 уровней кампании и дуэль на двоих: выбей мяч соперника! Играй бесплатно прямо в браузере.">
+<meta property="og:description" content="50 уровней кампании и дуэль на двоих: выбей мяч соперника! Играй бесплатно прямо в браузере.">
 <meta property="og:image" content="../img/golf_cover.webp">
 <meta name="theme-color" content="#1f4d31">
 <link rel="icon" href="../img/golf-icon.png">
@@ -31,7 +31,7 @@
   <div class="game-head">
     <div class="crumbs"><a href="../#games">Игры</a> / Безумная лунка</div>
     <h1>Безумная лунка</h1>
-    <p class="sub">Мини-гольф с мостиками, отбойниками и дуэлью</p>
+    <p class="sub">Мини-гольф на 50 лунок — с туннелями, льдом и дуэлью</p>
   </div>
 
   <div class="player" id="player" style="background-image:url(../img/golf_cover.webp)">
@@ -56,14 +56,14 @@
     <div>
       <h2>Об игре</h2>
       <p>Зажми мяч, потяни назад, как рогатку, и отпусти. Чем дальше тянешь, тем сильнее удар. Мяч отскакивает от деревянных бортиков, вязнет в песке, тонет в пруду и с разгона перескакивает лунку, так что силу удара придётся рассчитывать.</p>
-      <p>Кампания учит постепенно: каждые пять уровней появляется что-то новое — стенки, песок, вода с мостиками, отбойники, — а старое продолжает встречаться вместе с новым. За каждую лунку до трёх звёзд: пройти, уложиться в пар и успеть по времени.</p>
+      <p>Кампания учит постепенно: каждые пять уровней появляется что-то новое — стенки, песок, вода с мостиками, отбойники, склоны, вертушки, туннели, лёд и ускорители, — а старое продолжает встречаться вместе с новым. На пятидесятой лунке встретится всё сразу. За каждую лунку до трёх звёзд: пройти, уложиться в пар и успеть по времени.</p>
       <p>А вдвоём за одним компьютером — дуэль: бьёте по очереди, мячи сталкиваются, и чужой мяч можно выбить. Только осторожно: утопишь его — штраф достанется тебе.</p>
       <ul class="features">
-        <li>20 уровней кампании: лёгкие для разгона и средние, где уже нужен расчёт</li>
-        <li>Каждые 5 уровней — новая механика: стенки, песок, вода и мостики, отбойники</li>
+        <li>50 уровней кампании: от лёгких до «Безумия», где нужен точный расчёт</li>
+        <li>Каждые 5 уровней — новая механика: стенки, песок, мостики, отбойники, склоны, вертушки, туннели, лёд, ускорители</li>
         <li>Три звезды за лунку: пройти, уложиться в пар, успеть по времени</li>
         <li>Игра вдвоём на 3, 6 или 9 лунок — мячи сталкиваются, соперника можно выбить</li>
-        <li>Летний и осенний парк вокруг поля: деревья, цветы, пруды с кувшинками</li>
+        <li>Пять окружений: летний и осенний парк, хвойный лес, зима и сумерки</li>
         <li>Лёгкая музыка и звуки, нарисованные и синтезированные кодом</li>
       </ul>
 
@@ -73,7 +73,10 @@
         <button data-full="../img/golf_river.webp"><img src="../img/golf_river_s.webp" alt="Река с двумя мостиками" loading="lazy"></button>
         <button data-full="../img/golf_road.webp"><img src="../img/golf_road_s.webp" alt="Длинная дорога-подкова" loading="lazy"></button>
         <button data-full="../img/golf_bumpers.webp"><img src="../img/golf_bumpers_s.webp" alt="Отбойники" loading="lazy"></button>
-        <button data-full="../img/golf_desert.webp"><img src="../img/golf_desert_s.webp" alt="Пустыня" loading="lazy"></button>
+        <button data-full="../img/golf_spinners.webp"><img src="../img/golf_spinners_s.webp" alt="Две вертушки" loading="lazy"></button>
+        <button data-full="../img/golf_tunnels.webp"><img src="../img/golf_tunnels_s.webp" alt="Туннельный хаос" loading="lazy"></button>
+        <button data-full="../img/golf_ice.webp"><img src="../img/golf_ice_s.webp" alt="Ледяной лабиринт" loading="lazy"></button>
+        <button data-full="../img/golf_finish.webp"><img src="../img/golf_finish_s.webp" alt="Финишная прямая в сумерках" loading="lazy"></button>
         <button data-full="../img/golf_duel.webp"><img src="../img/golf_duel_s.webp" alt="Дуэль на двоих" loading="lazy"></button>
       </div>
     </div>
@@ -94,7 +97,7 @@
       <div class="box">
         <h3>Об игре</h3>
         <dl class="meta">
-          <dt>Версия</dt><dd>0.1.2 «Первый удар»</dd>
+          <dt>Версия</dt><dd>0.2 «Пятьдесят лунок»</dd>
           <dt>Жанр</dt><dd>мини-гольф, головоломка</dd>
           <dt>Игроки</dt><dd>1 или 2 за одним экраном</dd>
           <dt>Платформы</dt><dd>браузер, Windows, Android</dd>
@@ -108,14 +111,15 @@
         <h3>Скачать</h3>
         <p style="margin:0 0 14px;color:var(--muted);font-size:15px">Прогресс в браузере и в скачанной версии — свой у каждой.</p>
         <div class="downloads">
-          <a class="btn btn-small" href="../downloads/BezumnayaLunka_v0.1.2_windows.zip" download>Windows · 37 МБ</a>
-          <a class="btn btn-small" href="../downloads/BezumnayaLunka_v0.1.2_android.apk" download>Android · 51 МБ</a>
+          <a class="btn btn-small" href="../downloads/BezumnayaLunka_v0.2_windows.zip" download>Windows · 37 МБ</a>
+          <a class="btn btn-small" href="../downloads/BezumnayaLunka_v0.2_android.apk" download>Android · 51 МБ</a>
         </div>
       </div>
 
       <div class="box">
         <h3>Что нового</h3>
         <ul class="changelog">
+          <li><b>0.2 «Пятьдесят лунок»:</b> уровни 21–50 — склоны, вертушки, туннели, лёд и ускорители; три новых окружения: хвойный лес, зима и сумерки</li>
           <li><b>0.1.2:</b> исправлено: мяч снова можно тянуть мышкой и пальцем</li>
           <li><b>0.1.1:</b> игра на сайте и на Android; кнопка паузы на экране, «Назад» на телефоне; новые уровни 11 и 17</li>
           <li><b>0.1 «Первый удар»:</b> 20 уровней кампании, звёзды, дуэль на двоих, мостики и отбойники, музыка</li>
@@ -178,7 +182,7 @@
 
   function launch() {
     var frame = document.createElement("iframe");
-    frame.src = "../games/minigolf/index.html?v=012";
+    frame.src = "../games/minigolf/index.html?v=020";
     frame.allow = "autoplay; fullscreen; gamepad";
     frame.setAttribute("allowfullscreen", "");
     frame.title = "Безумная лунка";
