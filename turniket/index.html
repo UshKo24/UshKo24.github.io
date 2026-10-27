@@ -91,16 +91,18 @@
           <tr><td>Колесо</td><td>приблизить / отдалить</td></tr>
           <tr><td>Пробел</td><td>камера к двери</td></tr>
           <tr><td>Esc</td><td>пауза</td></tr>
+          <tr><td>Телефон: палец</td><td>крутить дверь</td></tr>
+          <tr><td>Два пальца</td><td>камера и зум</td></tr>
         </table>
       </div>
 
       <div class="box">
         <h3>Об игре</h3>
         <dl class="meta">
-          <dt>Версия</dt><dd>0.6.3 «Свобода»</dd>
+          <dt>Версия</dt><dd>0.6.4 «Свобода»</dd>
           <dt>Жанр</dt><dd>idle, кликер</dd>
-          <dt>Платформы</dt><dd>браузер, Windows</dd>
-          <dt>Управление</dt><dd>мышка</dd>
+          <dt>Платформы</dt><dd>браузер, Windows, Android</dd>
+          <dt>Управление</dt><dd>мышка или палец</dd>
           <dt>Язык</dt><dd>русский</dd>
           <dt>Движок</dt><dd>Godot 4</dd>
         </dl>
@@ -108,15 +110,17 @@
 
       <div class="box">
         <h3>Скачать</h3>
-        <p style="margin:0 0 14px;color:var(--muted);font-size:15px">Версия для Windows быстрее браузерной: толпа считается в несколько раз быстрее, можно до 4000 человек.</p>
+        <p style="margin:0 0 14px;color:var(--muted);font-size:15px">Версия для Windows быстрее браузерной: толпа считается в несколько раз быстрее, можно до 4000 человек. На телефоне дверь крутится пальцем, камера — двумя пальцами.</p>
         <div class="downloads">
-          <a class="btn btn-small" href="../downloads/Turniket_v0.6.3_windows.zip" download>Windows · 37 МБ</a>
+          <a class="btn btn-small" href="../downloads/Turniket_v0.6.4_windows.zip" download>Windows · 39 МБ</a>
+          <a class="btn btn-small" href="../downloads/Turniket_v0.6.4_android.apk" download>Android · 53 МБ</a>
         </div>
       </div>
 
       <div class="box">
         <h3>Что нового</h3>
         <ul class="changelog">
+          <li><b>0.6.4:</b> версия для Android: дверь крутится пальцем, камера двигается и приближается двумя пальцами</li>
           <li><b>0.6.3:</b> в браузере видны значки ★, ✓ и стрелки</li>
           <li><b>0.6.2:</b> новый баланс — карта идёт около 8 минут, без «взрыва» дохода в конце; Билет и Уровень двери прибавляют, а не перемножаются</li>
           <li><b>0.6.1:</b> авто-качество — если игра тормозит, графика упрощается сама; настройки «Сглаживание» и «Чёткость картинки»</li>
@@ -185,7 +189,7 @@
 
   function launch() {
     var frame = document.createElement("iframe");
-    frame.src = "../games/turniket/index.html?v=063";
+    frame.src = "../games/turniket/index.html?v=064";
     frame.allow = "autoplay; fullscreen; gamepad";
     frame.setAttribute("allowfullscreen", "");
     frame.title = "Турникет";
@@ -218,7 +222,7 @@
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && player.classList.contains("max")) setMax(false); });
 
   if (isPhone) {
-    document.getElementById("hint").textContent = "Игра сделана для компьютера с мышкой — на телефоне запустится, но играть удобнее на ПК.";
+    document.getElementById("hint").textContent = "На телефоне крути дверь пальцем, камеру — двумя пальцами. Для Android есть приложение — справа внизу.";
   }
 
   var lb = document.getElementById("lightbox");
