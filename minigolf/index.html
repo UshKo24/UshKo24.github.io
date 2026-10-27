@@ -94,7 +94,7 @@
       <div class="box">
         <h3>Об игре</h3>
         <dl class="meta">
-          <dt>Версия</dt><dd>0.1.1 «Первый удар»</dd>
+          <dt>Версия</dt><dd>0.1.2 «Первый удар»</dd>
           <dt>Жанр</dt><dd>мини-гольф, головоломка</dd>
           <dt>Игроки</dt><dd>1 или 2 за одним экраном</dd>
           <dt>Платформы</dt><dd>браузер, Windows, Android</dd>
@@ -108,14 +108,15 @@
         <h3>Скачать</h3>
         <p style="margin:0 0 14px;color:var(--muted);font-size:15px">Прогресс в браузере и в скачанной версии — свой у каждой.</p>
         <div class="downloads">
-          <a class="btn btn-small" href="../downloads/BezumnayaLunka_v0.1.1_windows.zip" download>Windows · 37 МБ</a>
-          <a class="btn btn-small" href="../downloads/BezumnayaLunka_v0.1.1_android.apk" download>Android · 51 МБ</a>
+          <a class="btn btn-small" href="../downloads/BezumnayaLunka_v0.1.2_windows.zip" download>Windows · 37 МБ</a>
+          <a class="btn btn-small" href="../downloads/BezumnayaLunka_v0.1.2_android.apk" download>Android · 51 МБ</a>
         </div>
       </div>
 
       <div class="box">
         <h3>Что нового</h3>
         <ul class="changelog">
+          <li><b>0.1.2:</b> исправлено: мяч снова можно тянуть мышкой и пальцем</li>
           <li><b>0.1.1:</b> игра на сайте и на Android; кнопка паузы на экране, «Назад» на телефоне; новые уровни 11 и 17</li>
           <li><b>0.1 «Первый удар»:</b> 20 уровней кампании, звёзды, дуэль на двоих, мостики и отбойники, музыка</li>
         </ul>
@@ -177,7 +178,7 @@
 
   function launch() {
     var frame = document.createElement("iframe");
-    frame.src = "../games/minigolf/index.html?v=011";
+    frame.src = "../games/minigolf/index.html?v=012";
     frame.allow = "autoplay; fullscreen; gamepad";
     frame.setAttribute("allowfullscreen", "");
     frame.title = "Безумная лунка";
