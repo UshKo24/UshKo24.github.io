@@ -3,6 +3,7 @@
 index.html                 — главная со списком игр
 turniket/index.html        — страница «Турникета» (плеер, описание, управление)
 metro/index.html           — страница «Метро» (её собирает tools/site_apply.py из проекта игры)
+minigolf/index.html        — страница «Безумной лунки» (мини-гольф), тема golf
 engine/godot-<версия>/      — общий движок Godot для всех игр (godot.wasm, godot.js) — браузер качает его один раз
 games/<игра>/              — пакет игры (index.pck) и страница запуска (index.html), без своей копии движка
 tools/add_web_build.py     — подключает веб-экспорт Godot к общему движку

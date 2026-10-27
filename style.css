@@ -51,6 +51,50 @@
   --d-sea: 0;
   --d-turn: 0;
   --d-metro: 0;
+  --d-golf: 0;
+  color-scheme: dark;
+}
+/* ---------- «Безумная лунка»: газон, деревянные бортики, кремовые кнопки ---------- */
+html[data-theme="golf"] {
+  --bg: #1f4d31;
+  --bg-2: #24583a;
+  --section: #24583a;
+  --panel: rgba(255, 246, 223, 0.07);
+  --panel-solid: #2a6340;
+  --border: rgba(255, 246, 223, 0.16);
+  --border-hover: #ffd23f;
+  --text: #fff6df;
+  --muted: #b9d3b9;
+  --accent: #ffd23f;
+  --on-accent: #1f3a22;
+  --btn: #fff6df;
+  --btn-text: #2d4a2f;
+  --btn-border: #d6c08e;
+  --btn-hover: #fffbef;
+  --btn2: rgba(255, 246, 223, 0.08);
+  --btn2-hover: rgba(255, 246, 223, 0.16);
+  --btn2-text: #fff6df;
+  --tag-bg: rgba(255, 246, 223, 0.1);
+  --tag-text: #fff6df;
+  --header-bg: rgba(29, 74, 48, 0.88);
+  --badge-bg: rgba(29, 74, 48, 0.88);
+  --shadow: 0 12px 34px rgba(0, 0, 0, 0.3);
+  --player-bg: #245a37;
+  --start-veil: radial-gradient(ellipse at center, rgba(29, 74, 48, 0.15), rgba(29, 74, 48, 0.65));
+  --start-text: #fff6df;
+  --start-shadow: 0 1px 4px #000;
+  --logo-lamp: #ffd23f;
+  --logo-body: #fff6df;
+  --logo-stripe: #ff4d4d;
+  --radius: 20px;
+  --section-line: transparent;
+  --d-neutral: 0;
+  --d-night: 0;
+  --d-mayak: 0;
+  --d-sea: 0;
+  --d-turn: 0;
+  --d-metro: 0;
+  --d-golf: 1;
   color-scheme: dark;
 }
 /* ---------- «Метро»: светлая схема, цветные линии ---------- */
@@ -524,3 +568,11 @@ html[data-theme="turniket"] .player .start small { background: #fff; border: 2px
 .d-metro svg { position: absolute; right: 0; top: 0; width: 50%; height: 100%;
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%); mask-image: linear-gradient(90deg, transparent 0, #000 22%); }
 @media (max-width: 820px) { .d-metro svg { width: 120%; right: -45%; opacity: .55; } }
+/* «Безумная лунка»: полосы газона, поле с прудом и мостиком, мяч катится в лунку */
+.d-golf { opacity: var(--d-golf); background: repeating-linear-gradient(90deg, #214f33 0 70px, #23543a 70px 140px); }
+.d-golf svg { position: absolute; right: 0; top: 0; width: 52%; height: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 24%); mask-image: linear-gradient(90deg, transparent 0, #000 24%); }
+.d-golf .gflag { transform-origin: 712px 150px; animation: gflag 1.6s ease-in-out infinite alternate; }
+@keyframes gflag { from { transform: skewY(-4deg); } to { transform: skewY(5deg); } }
+@media (max-width: 820px) { .d-golf svg { width: 120%; right: -45%; opacity: .55; } }
+@media (prefers-reduced-motion: reduce) { .d-golf .gflag { animation: none; } }

@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ru" data-theme="golf">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Безумная лунка — мини-гольф онлайн · МАЯК</title>
+<meta name="description" content="«Безумная лунка» — мини-гольф: 20 уровней с песком, водой, мостиками и отбойниками и игра вдвоём. Играй бесплатно в браузере, на ПК и телефоне.">
+<meta property="og:title" content="Безумная лунка — мини-гольф">
+<meta property="og:description" content="20 уровней кампании и дуэль на двоих: выбей мяч соперника! Играй бесплатно прямо в браузере.">
+<meta property="og:image" content="../img/golf_cover.webp">
+<meta name="theme-color" content="#1f4d31">
+<link rel="icon" href="../img/golf-icon.png">
+<link rel="stylesheet" href="../style.css?v=5ea13f7d">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" id="logo">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><circle class="l-glow" cx="15" cy="7" r="6" opacity=".25"/><rect class="l-lamp" x="12" y="5" width="6" height="4" rx="1"/><path class="l-body" d="M11 10h8l2 17H9z"/><path class="l-stripe" d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z"/></svg>
+      <span class="brand-name">МАЯК</span> <small>игры в браузере</small>
+    </a>
+    <nav class="nav">
+      <a href="../#games" class="on">Игры</a>
+      <a href="../#about">О сайте</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="game-head">
+    <div class="crumbs"><a href="../#games">Игры</a> / Безумная лунка</div>
+    <h1>Безумная лунка</h1>
+    <p class="sub">Мини-гольф с мостиками, отбойниками и дуэлью</p>
+  </div>
+
+  <div class="player" id="player" style="background-image:url(../img/golf_cover.webp)">
+    <div class="start" id="start">
+      <button class="btn btn-main" id="play">▶&nbsp; Играть</button>
+      <small>Загрузка займёт несколько секунд · прогресс сохраняется в браузере</small>
+    </div>
+    <div class="rotate">Переверни телефон горизонтально ↻</div>
+    <button class="unmax" id="unmax" title="Свернуть">✕&nbsp; Свернуть</button>
+  </div>
+  <div class="player-bar">
+    <span class="hint" id="hint">«Развернуть» + клавиша F11 — весь экран. Свернуть — кнопка ✕ сверху.</span>
+    <span class="bar-buttons">
+      <button class="btn btn-small" id="max">⛶&nbsp; Развернуть</button>
+      <button class="btn btn-small" id="fs">Полный экран</button>
+    </span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap cols">
+    <div>
+      <h2>Об игре</h2>
+      <p>Зажми мяч, потяни назад, как рогатку, и отпусти. Чем дальше тянешь, тем сильнее удар. Мяч отскакивает от деревянных бортиков, вязнет в песке, тонет в пруду и с разгона перескакивает лунку, так что силу удара придётся рассчитывать.</p>
+      <p>Кампания учит постепенно: каждые пять уровней появляется что-то новое — стенки, песок, вода с мостиками, отбойники, — а старое продолжает встречаться вместе с новым. За каждую лунку до трёх звёзд: пройти, уложиться в пар и успеть по времени.</p>
+      <p>А вдвоём за одним компьютером — дуэль: бьёте по очереди, мячи сталкиваются, и чужой мяч можно выбить. Только осторожно: утопишь его — штраф достанется тебе.</p>
+      <ul class="features">
+        <li>20 уровней кампании: лёгкие для разгона и средние, где уже нужен расчёт</li>
+        <li>Каждые 5 уровней — новая механика: стенки, песок, вода и мостики, отбойники</li>
+        <li>Три звезды за лунку: пройти, уложиться в пар, успеть по времени</li>
+        <li>Игра вдвоём на 3, 6 или 9 лунок — мячи сталкиваются, соперника можно выбить</li>
+        <li>Летний и осенний парк вокруг поля: деревья, цветы, пруды с кувшинками</li>
+        <li>Лёгкая музыка и звуки, нарисованные и синтезированные кодом</li>
+      </ul>
+
+      <h2 style="margin-top:40px">Скриншоты</h2>
+      <div class="shots">
+        <button data-full="../img/golf_cover.webp"><img src="../img/golf_cover_s.webp" alt="Остров с мостиком" loading="lazy"></button>
+        <button data-full="../img/golf_river.webp"><img src="../img/golf_river_s.webp" alt="Река с двумя мостиками" loading="lazy"></button>
+        <button data-full="../img/golf_road.webp"><img src="../img/golf_road_s.webp" alt="Длинная дорога-подкова" loading="lazy"></button>
+        <button data-full="../img/golf_bumpers.webp"><img src="../img/golf_bumpers_s.webp" alt="Отбойники" loading="lazy"></button>
+        <button data-full="../img/golf_desert.webp"><img src="../img/golf_desert_s.webp" alt="Пустыня" loading="lazy"></button>
+        <button data-full="../img/golf_duel.webp"><img src="../img/golf_duel_s.webp" alt="Дуэль на двоих" loading="lazy"></button>
+      </div>
+    </div>
+
+    <aside>
+      <div class="box">
+        <h3>Управление</h3>
+        <table class="keys">
+          <tr><td>Зажми и тяни назад</td><td>прицел и сила удара</td></tr>
+          <tr><td>Отпусти</td><td>удар</td></tr>
+          <tr><td>Правая кнопка</td><td>отменить прицел</td></tr>
+          <tr><td>R</td><td>начать уровень заново</td></tr>
+          <tr><td>M</td><td>музыка вкл/выкл</td></tr>
+          <tr><td>Esc</td><td>пауза</td></tr>
+        </table>
+      </div>
+
+      <div class="box">
+        <h3>Об игре</h3>
+        <dl class="meta">
+          <dt>Версия</dt><dd>0.1.1 «Первый удар»</dd>
+          <dt>Жанр</dt><dd>мини-гольф, головоломка</dd>
+          <dt>Игроки</dt><dd>1 или 2 за одним экраном</dd>
+          <dt>Платформы</dt><dd>браузер, Windows, Android</dd>
+          <dt>Управление</dt><dd>мышка или палец</dd>
+          <dt>Язык</dt><dd>русский</dd>
+          <dt>Движок</dt><dd>Godot 4</dd>
+        </dl>
+      </div>
+
+      <div class="box">
+        <h3>Скачать</h3>
+        <p style="margin:0 0 14px;color:var(--muted);font-size:15px">Прогресс в браузере и в скачанной версии — свой у каждой.</p>
+        <div class="downloads">
+          <a class="btn btn-small" href="../downloads/BezumnayaLunka_v0.1.1_windows.zip" download>Windows · 37 МБ</a>
+          <a class="btn btn-small" href="../downloads/BezumnayaLunka_v0.1.1_android.apk" download>Android · 51 МБ</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Что нового</h3>
+        <ul class="changelog">
+          <li><b>0.1.1:</b> игра на сайте и на Android; кнопка паузы на экране, «Назад» на телефоне; новые уровни 11 и 17</li>
+          <li><b>0.1 «Первый удар»:</b> 20 уровней кампании, звёзды, дуэль на двоих, мостики и отбойники, музыка</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 МАЯК</span>
+    <span>Игры на <a href="https://godotengine.org" target="_blank" rel="noopener">Godot Engine</a></span>
+  </div>
+</footer>
+
+<script src="../theme.js?v=bac19bf6"></script>
+<script src="../preload.js?v=d357fec2"></script>
+<script>
+(function () {
+  MayakTheme.remember("golf");
+  document.getElementById("logo").addEventListener("click", function () { MayakTheme.remember(""); });
+
+  var COVER = "../img/golf_cover.webp";
+  var player = document.getElementById("player");
+  var start = document.getElementById("start");
+  var isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1100);
+
+  function goFull() {
+    var req = player.requestFullscreen || player.webkitRequestFullscreen;
+    if (!req) return Promise.resolve();
+    return Promise.resolve(req.call(player)).then(function () {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(function () {});
+      }
+    }).catch(function () {});
+  }
+
+  function focusGame() {
+    var f = player.querySelector("iframe");
+    if (f) { try { f.focus(); f.contentWindow.focus(); } catch (e) {} }
+  }
+
+  // движок начинает качаться в фоне сразу, пока читаешь страницу
+  MayakPreload.startIdle("../", ["../games/minigolf/index.pck"], 200);
+
+  document.getElementById("play").addEventListener("click", function () {
+    var btn = this;
+    if (isPhone) goFull();   // полный экран можно включить только сразу по нажатию
+    if (!MayakPreload.busy()) { launch(); return; }
+    // фоновая загрузка ещё идёт — показываем её прогресс и запускаем, когда закончится
+    btn.disabled = true;
+    var tick = setInterval(function () {
+      btn.textContent = "Загрузка " + Math.round(MayakPreload.progress() * 100) + "%";
+    }, 150);
+    MayakPreload.wait(function () { clearInterval(tick); launch(); });
+  });
+
+  function launch() {
+    var frame = document.createElement("iframe");
+    frame.src = "../games/minigolf/index.html?v=011";
+    frame.allow = "autoplay; fullscreen; gamepad";
+    frame.setAttribute("allowfullscreen", "");
+    frame.title = "Безумная лунка";
+    frame.addEventListener("load", focusGame);
+    player.appendChild(frame);
+    player.classList.add("running");
+    start.remove();
+    setTimeout(focusGame, 300);
+  }
+
+  document.getElementById("fs").addEventListener("click", function () {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else {
+      goFull().then(focusGame);
+    }
+  });
+  player.addEventListener("click", focusGame);
+
+  var MAX_CSS = "position:fixed;left:0;top:0;right:0;bottom:0;z-index:100;width:100vw;height:100vh;max-width:none;aspect-ratio:auto;border-radius:0;border:0;margin:0;";
+  function setMax(on) {
+    player.classList.toggle("max", on);
+    player.style.cssText = "background-image:url(" + COVER + ");" + (on ? MAX_CSS : "");
+    document.getElementById("unmax").style.display = on ? "block" : "none";
+    document.body.classList.toggle("noscroll", on);
+    setTimeout(focusGame, 50);
+  }
+  document.getElementById("max").addEventListener("click", function () { setMax(true); });
+  document.getElementById("unmax").addEventListener("click", function (e) { e.stopPropagation(); setMax(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && player.classList.contains("max")) setMax(false); });
+
+  if (isPhone) {
+    document.getElementById("hint").textContent = "Поверни телефон горизонтально. Для телефона есть и приложение — Android, справа внизу.";
+  }
+
+  var lb = document.getElementById("lightbox");
+  document.querySelectorAll(".shots button").forEach(function (b) {
+    b.addEventListener("click", function () { lb.querySelector("img").src = b.dataset.full; lb.classList.add("on"); });
+  });
+  lb.addEventListener("click", function () { lb.classList.remove("on"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("on"); });
+})();
+</script>
+</body>
+</html>

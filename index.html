@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0e0e10">
 <link rel="icon" href="img/mayak.svg" type="image/svg+xml">
 <script>try { var t = sessionStorage.getItem("mayak-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
-<link rel="stylesheet" href="style.css?v=6ceff981">
+<link rel="stylesheet" href="style.css?v=5ea13f7d">
 </head>
 <body>
 
@@ -30,6 +30,36 @@
 
 <div class="hero">
   <!-- нейтральный вид сайта: мозаика из кадров всех игр (берутся из data-shots у карточек) -->
+  <!-- «Безумная лунка»: поле с бортиками, пруд, мостик, мяч катится в лунку -->
+  <div class="deco d-golf" aria-hidden="true">
+    <svg viewBox="0 0 900 560" preserveAspectRatio="xMaxYMid slice">
+      <defs><pattern id="gStr" width="70" height="70" patternUnits="userSpaceOnUse"><rect width="35" height="70" fill="#6cc46a"/><rect x="35" width="35" height="70" fill="#63bb61"/></pattern></defs>
+      <g fill="#173d27"><circle cx="90" cy="80" r="46"/><circle cx="60" cy="470" r="52"/><circle cx="880" cy="520" r="50"/><circle cx="850" cy="40" r="40"/></g>
+      <g fill="#2f8a3e"><circle cx="82" cy="70" r="40"/><circle cx="52" cy="460" r="46"/><circle cx="872" cy="510" r="44"/><circle cx="842" cy="32" r="34"/></g>
+      <rect x="164" y="104" width="680" height="380" rx="58" fill="rgba(0,0,0,.25)"/>
+      <rect x="150" y="90" width="680" height="380" rx="58" fill="url(#gStr)" stroke="#6e4524" stroke-width="24"/>
+      <rect x="150" y="90" width="680" height="380" rx="58" fill="none" stroke="#b07a43" stroke-width="15"/>
+      <path d="M380 300 C 360 250, 430 225, 500 238 C 575 250, 600 300, 575 345 C 548 392, 450 398, 405 368 C 385 352, 392 330, 380 300 Z" fill="#cfc5a6"/>
+      <path d="M392 302 C 375 258, 436 238, 500 250 C 566 262, 586 302, 563 340 C 540 380, 452 384, 413 358 C 397 346, 402 328, 392 302 Z" fill="#3f8fe0"/>
+      <path d="M430 305 C 425 280, 470 268, 505 276 C 540 284, 548 310, 532 330 C 515 350, 460 350, 442 336 Z" fill="#2f74c4"/>
+      <circle cx="530" cy="300" r="9" fill="#4caf50"/><circle cx="455" cy="330" r="7" fill="#4caf50"/>
+      <rect x="350" y="290" width="270" height="40" fill="#d1a36b"/>
+      <g stroke="#a8763f" stroke-width="2"><path d="M368 292v36M386 292v36M404 292v36M422 292v36M440 292v36M458 292v36M476 292v36M494 292v36M512 292v36M530 292v36M548 292v36M566 292v36M584 292v36M602 292v36"/></g>
+      <path d="M350 290h270M350 330h270" stroke="#6e4524" stroke-width="7"/>
+      <path d="M640 380 C 610 360, 640 335, 690 345 C 735 352, 745 385, 712 400 C 685 410, 655 398, 640 380 Z" fill="#ecd393" stroke="#d4b56a" stroke-width="3"/>
+      <circle cx="712" cy="236" r="20" fill="#f4efe1"/><circle cx="712" cy="236" r="16" fill="#163a22"/><circle cx="712" cy="239" r="12" fill="#07130b"/>
+      <path d="M712 236 V150" stroke="#f4efe1" stroke-width="4"/>
+      <path class="gflag" d="M713 150 L765 156 L763 182 L713 180 Z" fill="#ff4d4d"/>
+      <circle cx="712" cy="150" r="4" fill="#ffd23f"/>
+      <rect x="216" y="356" width="56" height="56" rx="12" fill="#3c9a46" stroke="#2e7d37" stroke-width="3"/>
+      <path id="gPath" d="M244 384 C 300 330, 330 310, 420 310 C 520 310, 600 300, 712 236" fill="none"/>
+      <g>
+        <circle r="11" fill="#fff" stroke="#d8d8d8" stroke-width="2"/>
+        <animateMotion dur="5s" repeatCount="indefinite" calcMode="spline" keyPoints="0;1;1" keyTimes="0;0.7;1" keySplines="0.15 0.7 0.3 1;0 0 1 1"><mpath href="#gPath"/></animateMotion>
+        <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.7;0.74;0.98;1" dur="5s" repeatCount="indefinite"/>
+      </g>
+    </svg>
+  </div>
   <!-- «Метро»: схема линий, по которой ездят поезда -->
   <div class="deco d-metro" aria-hidden="true">
     <svg viewBox="0 0 900 560" preserveAspectRatio="xMaxYMid slice">
@@ -118,9 +148,19 @@
       </div>
     </div>
     <div class="games">
+      <article class="card" data-game="golf" data-href="minigolf/"
+               data-shots="golf_cover golf_river golf_road golf_bumpers golf_desert golf_duel">
+        <div class="cover" style="background-image:url(img/golf_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.1.1 · «Первый удар»</span></div>
+        <div class="body">
+          <h3>Безумная лунка</h3>
+          <p>Мини-гольф: тяни мяч назад, как рогатку, и отпускай. Бортики, песок, пруды с мостиками и отбойники — а вдвоём можно выбить мяч соперника.</p>
+          <div class="tags"><span class="tag">мини-гольф</span><span class="tag">на двоих</span><span class="tag">ПК и телефон</span><span class="tag">20 уровней</span></div>
+          <div class="go"><a class="btn btn-main btn-small" href="minigolf/" data-open="golf">▶&nbsp; Играть</a></div>
+        </div>
+      </article>
       <article class="card" data-game="metro" data-href="metro/"
                data-shots="metro_city1 metro_city2 metro_city3 metro_city4 metro_city5 metro_push">
-        <div class="cover" style="background-image:url(img/metro_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.8.1 · «Депо»</span></div>
+        <div class="cover" style="background-image:url(img/metro_cover_s.webp)"><span class="badge">v0.8.1 · «Депо»</span></div>
         <div class="body">
           <h3>Метро</h3>
           <p>Строй метро в пяти городах — от речного городка до столицы с кольцевой. Покупай станции, запускай составы, а в час пик жми на станцию — пушеры утрамбуют толпу в вагоны.</p>
@@ -165,7 +205,7 @@
   </div>
 </footer>
 
-<script src="theme.js?v=88a6e444"></script>
+<script src="theme.js?v=bac19bf6"></script>
 <script src="preload.js?v=d357fec2"></script>
 <script>
 (function () {
