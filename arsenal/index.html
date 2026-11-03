@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ru" data-theme="arsenal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Арсенал Удачи — открывай сундуки с оружием · МАЯК</title>
+<meta name="description" content="«Арсенал Удачи» — открывай сундуки со 120 видами средневекового оружия семи редкостей, куй в ритм метронома, сливай и точи находки, выполняй заказы и играй в мини-игры. Бесплатно в браузере, на ПК и телефоне.">
+<meta property="og:title" content="Арсенал Удачи — сундуки с оружием">
+<meta property="og:description" content="120 оружий, 8 сундуков, кузница-метроном и 6 мини-игр. Играй бесплатно прямо в браузере.">
+<meta property="og:image" content="../img/arsenal_cover.webp">
+<meta name="theme-color" content="#15121a">
+<link rel="icon" href="../img/arsenal-icon.png">
+<link rel="stylesheet" href="../style.css?v=80ef68cf">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" id="logo">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><circle class="l-glow" cx="15" cy="7" r="6" opacity=".25"/><rect class="l-lamp" x="12" y="5" width="6" height="4" rx="1"/><path class="l-body" d="M11 10h8l2 17H9z"/><path class="l-stripe" d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z"/></svg>
+      <span class="brand-name">МАЯК</span> <small>игры в браузере</small>
+    </a>
+    <nav class="nav">
+      <a href="../#games" class="on">Игры</a>
+      <a href="../#about">О сайте</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="game-head">
+    <div class="crumbs"><a href="../#games">Игры</a> / Арсенал Удачи</div>
+    <h1>Арсенал Удачи</h1>
+    <p class="sub">Сундуки со 120 видами оружия, кузница-метроном и мини-игры</p>
+  </div>
+
+  <div class="player" id="player" style="background-image:url(../img/arsenal_cover.webp)">
+    <div class="start" id="start">
+      <button class="btn btn-main" id="play">▶&nbsp; Играть</button>
+      <small>Загрузка займёт несколько секунд · прогресс сохраняется в браузере</small>
+    </div>
+    <div class="rotate">Переверни телефон горизонтально ↻</div>
+    <button class="unmax" id="unmax" title="Свернуть">✕&nbsp; Свернуть</button>
+  </div>
+  <div class="player-bar">
+    <span class="hint" id="hint">«Развернуть» + клавиша F11 — весь экран. Свернуть — кнопка ✕ сверху.</span>
+    <span class="bar-buttons">
+      <button class="btn btn-small" id="max">⛶&nbsp; Развернуть</button>
+      <button class="btn btn-small" id="fs">Полный экран</button>
+    </span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap cols">
+    <div>
+      <h2>Об игре</h2>
+      <p>Восемь сундуков — от «Сундука новобранца» за 25 монет до «Сундука Бездны» за тысячу. В каждом 15 видов оружия семи редкостей: Common, Uncommon, Rare, Epic, Legendary, Mythic и почти невозможный Secret. Оружие выпадает в разном состоянии, от Ржавого до Шедевра, а иногда — с рунами, и от этого зависит его цена.</p>
+      <p>Монеты на новые сундуки даёт кузница. Стрелка метронома качается по шкале: попади в жёлтую или красную зону — и награда вырастет в 3 или 10 раз, а серия точных ударов поднимает комбо. Изредка появляется золотая зона ×50, которая может подарить ключ от сундука.</p>
+      <p>Ненужное оружие не пропадает. Три одинаковых сливаются в одно получше, хлам переплавляется в слитки, на слитки точат оружие и наносят руны, а жители на доске заказов платят за нужное оружие втрое дороже рынка. А если хочется рискнуть — апгрейд, контракт и шесть мини-игр.</p>
+      <ul class="features">
+        <li>120 видов оружия в 8 сундуках: мечи, топоры, луки, посохи, сковородка и даже бомба — всё нарисовано кодом</li>
+        <li>7 редкостей, 5 состояний и руны — у каждой находки своя цена</li>
+        <li>Кузница-метроном: попадай в такт, держи комбо, качай молот, наковальню, горн, маятник и подмастерье</li>
+        <li>Заточка, слияние дубликатов и переплавка в железо, сталь и мифрил</li>
+        <li>Доска заказов: жители просят оружие и щедро платят</li>
+        <li>Апгрейд с риском и контракт с гарантией следующей редкости</li>
+        <li>Мини-игры: Полёт дракона, Меч или щит, Колесо фортуны, Башня, Сокровищница и 21 клинок</li>
+        <li>Коллекция всех 120 оружий и больше 40 достижений</li>
+      </ul>
+
+      <h2 style="margin-top:40px">Скриншоты</h2>
+      <div class="shots">
+        <button data-full="../img/arsenal_cover.webp"><img src="../img/arsenal_cover_s.webp" alt="Сундук Бездны и его 15 оружий" loading="lazy"></button>
+        <button data-full="../img/arsenal_chests.webp"><img src="../img/arsenal_chests_s.webp" alt="Восемь сундуков — от новобранца до Бездны" loading="lazy"></button>
+        <button data-full="../img/arsenal_inventory.webp"><img src="../img/arsenal_inventory_s.webp" alt="Инвентарь: живые рамки у дорогого оружия" loading="lazy"></button>
+        <button data-full="../img/arsenal_forge.webp"><img src="../img/arsenal_forge_s.webp" alt="Кузница-метроном: удар в красную зону" loading="lazy"></button>
+        <button data-full="../img/arsenal_sharpen.webp"><img src="../img/arsenal_sharpen_s.webp" alt="Заточка оружия в ритм" loading="lazy"></button>
+        <button data-full="../img/arsenal_merge.webp"><img src="../img/arsenal_merge_s.webp" alt="Слияние: три одинаковых — в одно лучше" loading="lazy"></button>
+        <button data-full="../img/arsenal_orders.webp"><img src="../img/arsenal_orders_s.webp" alt="Доска заказов" loading="lazy"></button>
+        <button data-full="../img/arsenal_deal.webp"><img src="../img/arsenal_deal_s.webp" alt="Контракт: несколько предметов — в следующую редкость" loading="lazy"></button>
+        <button data-full="../img/arsenal_tower.webp"><img src="../img/arsenal_tower_s.webp" alt="Башня: 10 этажей до ×50" loading="lazy"></button>
+        <button data-full="../img/arsenal_mines.webp"><img src="../img/arsenal_mines_s.webp" alt="Сокровищница: сапёр с камнями" loading="lazy"></button>
+        <button data-full="../img/arsenal_blades.webp"><img src="../img/arsenal_blades_s.webp" alt="21 клинок: блэкджек с оружием" loading="lazy"></button>
+        <button data-full="../img/arsenal_crash.webp"><img src="../img/arsenal_crash_s.webp" alt="Полёт дракона" loading="lazy"></button>
+      </div>
+    </div>
+
+    <aside>
+      <div class="box">
+        <h3>Управление</h3>
+        <table class="keys">
+          <tr><td>Мышка / палец</td><td>всё в игре</td></tr>
+          <tr><td>Пробел</td><td>удар в кузнице</td></tr>
+          <tr><td>Колёсико</td><td>листать инвентарь</td></tr>
+          <tr><td>F11</td><td>полный экран (Windows)</td></tr>
+        </table>
+      </div>
+
+      <div class="box">
+        <h3>Об игре</h3>
+        <dl class="meta">
+          <dt>Версия</dt><dd>0.3.0 «Слитки и заказы»</dd>
+          <dt>Жанр</dt><dd>открытие кейсов, коллекция</dd>
+          <dt>Игроки</dt><dd>1</dd>
+          <dt>Платформы</dt><dd>браузер, Windows, Android</dd>
+          <dt>Управление</dt><dd>мышка или палец</dd>
+          <dt>Язык</dt><dd>русский</dd>
+          <dt>Движок</dt><dd>Godot 4</dd>
+        </dl>
+        <p style="margin:14px 0 0;color:var(--muted);font-size:14px">Монеты в игре ненастоящие и не покупаются — только зарабатываются в игре.</p>
+      </div>
+
+      <div class="box">
+        <h3>Скачать</h3>
+        <p style="margin:0 0 14px;color:var(--muted);font-size:15px">Прогресс в браузере и в скачанной версии — свой у каждой.</p>
+        <div class="downloads">
+          <a class="btn btn-small" href="../downloads/ArsenalUdachi_v0.3.0_windows.zip" download>Windows · 39 МБ</a>
+          <a class="btn btn-small" href="../downloads/ArsenalUdachi_v0.3.0_android.apk" download>Android · 53 МБ</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Что нового</h3>
+        <ul class="changelog">
+          <li><b>0.3.0 «Слитки и заказы»:</b> слитки из переплавки — на заточку и руны; слияние трёх одинаковых в одно получше; доска заказов; апгрейд и контракт объединены в «Сделку», контракт стал выгоднее; монеты летят в счётчик, живые рамки у дорогого оружия, поиск и фильтры в инвентаре, своя музыка в кузнице и мини-играх</li>
+          <li><b>0.2.0 «Ритм наковальни»:</b> кузница стала метрономом с зонами и комбо, 5 новых улучшений, заточка и переплавка; контракт обмена; мини-игры Башня, Сокровищница и 21 клинок</li>
+          <li><b>0.1 «Остывший горн»:</b> 8 сундуков, 120 оружий, апгрейд, кузница-кликер, три мини-игры, коллекция и достижения</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 МАЯК</span>
+    <span>Игры на <a href="https://godotengine.org" target="_blank" rel="noopener">Godot Engine</a></span>
+  </div>
+</footer>
+
+<script src="../theme.js?v=fa456e22"></script>
+<script src="../preload.js?v=d357fec2"></script>
+<script>
+(function () {
+  MayakTheme.remember("arsenal");
+  document.getElementById("logo").addEventListener("click", function () { MayakTheme.remember(""); });
+
+  var COVER = "../img/arsenal_cover.webp";
+  var player = document.getElementById("player");
+  var start = document.getElementById("start");
+  var isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1100);
+
+  function goFull() {
+    var req = player.requestFullscreen || player.webkitRequestFullscreen;
+    if (!req) return Promise.resolve();
+    return Promise.resolve(req.call(player)).then(function () {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(function () {});
+      }
+    }).catch(function () {});
+  }
+
+  function focusGame() {
+    var f = player.querySelector("iframe");
+    if (f) { try { f.focus(); f.contentWindow.focus(); } catch (e) {} }
+  }
+
+  // движок начинает качаться в фоне сразу, пока читаешь страницу
+  MayakPreload.startIdle("../", ["../games/arsenal/index.pck"], 200);
+
+  document.getElementById("play").addEventListener("click", function () {
+    var btn = this;
+    if (isPhone) goFull();   // полный экран можно включить только сразу по нажатию
+    if (!MayakPreload.busy()) { launch(); return; }
+    // фоновая загрузка ещё идёт — показываем её прогресс и запускаем, когда закончится
+    btn.disabled = true;
+    var tick = setInterval(function () {
+      btn.textContent = "Загрузка " + Math.round(MayakPreload.progress() * 100) + "%";
+    }, 150);
+    MayakPreload.wait(function () { clearInterval(tick); launch(); });
+  });
+
+  function launch() {
+    var frame = document.createElement("iframe");
+    frame.src = "../games/arsenal/index.html?v=030";
+    frame.allow = "autoplay; fullscreen; gamepad";
+    frame.setAttribute("allowfullscreen", "");
+    frame.title = "Арсенал Удачи";
+    frame.addEventListener("load", focusGame);
+    player.appendChild(frame);
+    player.classList.add("running");
+    start.remove();
+    setTimeout(focusGame, 300);
+  }
+
+  document.getElementById("fs").addEventListener("click", function () {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else {
+      goFull().then(focusGame);
+    }
+  });
+  player.addEventListener("click", focusGame);
+
+  var MAX_CSS = "position:fixed;left:0;top:0;right:0;bottom:0;z-index:100;width:100vw;height:100vh;max-width:none;aspect-ratio:auto;border-radius:0;border:0;margin:0;";
+  function setMax(on) {
+    player.classList.toggle("max", on);
+    player.style.cssText = "background-image:url(" + COVER + ");" + (on ? MAX_CSS : "");
+    document.getElementById("unmax").style.display = on ? "block" : "none";
+    document.body.classList.toggle("noscroll", on);
+    setTimeout(focusGame, 50);
+  }
+  document.getElementById("max").addEventListener("click", function () { setMax(true); });
+  document.getElementById("unmax").addEventListener("click", function (e) { e.stopPropagation(); setMax(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && player.classList.contains("max")) setMax(false); });
+
+  if (isPhone) {
+    document.getElementById("hint").textContent = "Поверни телефон горизонтально. Для телефона есть и приложение — Android, справа внизу.";
+  }
+
+  var lb = document.getElementById("lightbox");
+  document.querySelectorAll(".shots button").forEach(function (b) {
+    b.addEventListener("click", function () { lb.querySelector("img").src = b.dataset.full; lb.classList.add("on"); });
+  });
+  lb.addEventListener("click", function () { lb.classList.remove("on"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("on"); });
+})();
+</script>
+</body>
+</html>
