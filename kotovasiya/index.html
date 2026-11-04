@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ru" data-theme="kot">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Котовасия — один день из жизни кота · МАЯК</title>
+<meta name="description" content="«Котовасия» — пиксельная игра, где ты рыжий кот Барсик и целый день делаешь что хочешь: роняешь вещи, ловишь мышь, ласкаешься к хозяйке и ищешь тайны старого дома. 7 концовок. Бесплатно в браузере, на ПК и телефоне.">
+<meta property="og:title" content="Котовасия — один день из жизни кота">
+<meta property="og:description" content="Ты — кот. Целый дом, хозяйка и 7 концовок. Играй бесплатно прямо в браузере.">
+<meta property="og:image" content="../img/kot_cover.webp">
+<meta name="theme-color" content="#2b2033">
+<link rel="icon" href="../img/kot-icon.png">
+<link rel="stylesheet" href="../style.css?v=36a28752">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" id="logo">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><circle class="l-glow" cx="15" cy="7" r="6" opacity=".25"/><rect class="l-lamp" x="12" y="5" width="6" height="4" rx="1"/><path class="l-body" d="M11 10h8l2 17H9z"/><path class="l-stripe" d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z"/></svg>
+      <span class="brand-name">МАЯК</span> <small>игры в браузере</small>
+    </a>
+    <nav class="nav">
+      <a href="../#games" class="on">Игры</a>
+      <a href="../#about">О сайте</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="game-head">
+    <div class="crumbs"><a href="../#games">Игры</a> / Котовасия</div>
+    <h1>Котовасия</h1>
+    <p class="sub">Один день из жизни кота Барсика — делай что хочешь</p>
+  </div>
+
+  <div class="player" id="player" style="background-image:url(../img/kot_cover.webp)">
+    <div class="start" id="start">
+      <button class="btn btn-main" id="play">▶&nbsp; Играть</button>
+      <small>Загрузка займёт несколько секунд · открытые концовки сохраняются в браузере</small>
+    </div>
+    <div class="rotate">Переверни телефон горизонтально ↻</div>
+    <button class="unmax" id="unmax" title="Свернуть">✕&nbsp; Свернуть</button>
+  </div>
+  <div class="player-bar">
+    <span class="hint" id="hint">«Развернуть» + клавиша F11 — весь экран. Свернуть — кнопка ✕ сверху.</span>
+    <span class="bar-buttons">
+      <button class="btn btn-small" id="max">⛶&nbsp; Развернуть</button>
+      <button class="btn btn-small" id="fs">Полный экран</button>
+    </span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap cols">
+    <div>
+      <h2>Об игре</h2>
+      <p>Ты — рыжий кот Барсик. Впереди целый день с семи утра до полуночи в уютном двухэтажном доме: кухня, гостиная, спальня, ванная и пыльный чердак. Как прожить этот день — решать тебе.</p>
+      <p>Можно быть идеальным котом: ласкаться, сидеть у хозяйки на коленях и честно ждать ужина. А можно смахивать со столов кружки, точить когти о новый диван и красть колбасу. Хозяйка живёт своей жизнью — готовит, смотрит сериал, уходит в магазин, проветривает спальню — и всё замечает. Или не всё.</p>
+      <p>У дня семь концовок: от тёплой ночи в хозяйской кровати до побега через открытое окно. А в старом доме спрятаны вещи, о которых лучше не знать слишком много.</p>
+      <ul class="features">
+        <li>Пиксельный дом в разрезе: 7 комнат, лестница и чердак, день сменяется ночью</li>
+        <li>Хозяйка со своим расписанием: слышит грохот, приходит проверить и гонит со стола</li>
+        <li>12 вещей, которые можно уронить и разбить</li>
+        <li>Колени, ласки, миска и колбаса — шкалы любви, хаоса и злости</li>
+        <li>Охота на мышь: подкрадывайся шагом, бегом она услышит</li>
+        <li>Сон ускоряет время в 10 раз</li>
+        <li>7 концовок и галерея с подсказками к закрытым</li>
+        <li>Кнопки на экране для телефона и планшета</li>
+      </ul>
+
+      <h2 style="margin-top:40px">Скриншоты</h2>
+      <div class="shots">
+        <button data-full="../img/kot_cover.webp"><img src="../img/kot_cover_s.webp" alt="Вечер на диване: Барсик на коленях у хозяйки" loading="lazy"></button>
+        <button data-full="../img/kot_kitchen.webp"><img src="../img/kot_kitchen_s.webp" alt="Утро: «Барсик! Брысь со стола!»" loading="lazy"></button>
+        <button data-full="../img/kot_mouse.webp"><img src="../img/kot_mouse_s.webp" alt="Охота на мышь на кухне" loading="lazy"></button>
+        <button data-full="../img/kot_window.webp"><img src="../img/kot_window_s.webp" alt="Окно в спальне открыто — зов улицы" loading="lazy"></button>
+        <button data-full="../img/kot_dinner.webp"><img src="../img/kot_dinner_s.webp" alt="Ужин и колбаса без присмотра" loading="lazy"></button>
+        <button data-full="../img/kot_chaos.webp"><img src="../img/kot_chaos_s.webp" alt="Погром: всё, что бьётся, падает" loading="lazy"></button>
+        <button data-full="../img/kot_attic.webp"><img src="../img/kot_attic_s.webp" alt="Чердак и старый сундук" loading="lazy"></button>
+        <button data-full="../img/kot_night.webp"><img src="../img/kot_night_s.webp" alt="Ночь: хозяйка спит" loading="lazy"></button>
+        <button data-full="../img/kot_menu.webp"><img src="../img/kot_menu_s.webp" alt="Главное меню" loading="lazy"></button>
+      </div>
+    </div>
+
+    <aside>
+      <div class="box">
+        <h3>Управление</h3>
+        <table class="keys">
+          <tr><td>A / D, стрелки</td><td>ходить</td></tr>
+          <tr><td>Shift</td><td>бежать</td></tr>
+          <tr><td>Пробел / W</td><td>прыжок</td></tr>
+          <tr><td>S</td><td>спрыгнуть вниз</td></tr>
+          <tr><td>E</td><td>действие</td></tr>
+          <tr><td>Q</td><td>мяукнуть</td></tr>
+          <tr><td>Esc</td><td>пауза</td></tr>
+          <tr><td>Телефон</td><td>кнопки на экране</td></tr>
+        </table>
+      </div>
+
+      <div class="box">
+        <h3>Об игре</h3>
+        <dl class="meta">
+          <dt>Версия</dt><dd>0.0.2 «Лапки на экране»</dd>
+          <dt>Жанр</dt><dd>песочница, симулятор кота</dd>
+          <dt>Игроки</dt><dd>1</dd>
+          <dt>Длина дня</dt><dd>около 9 минут</dd>
+          <dt>Концовки</dt><dd>7</dd>
+          <dt>Платформы</dt><dd>браузер, Windows, Android</dd>
+          <dt>Язык</dt><dd>русский</dd>
+          <dt>Движок</dt><dd>Godot 4</dd>
+        </dl>
+      </div>
+
+      <div class="box">
+        <h3>Скачать</h3>
+        <p style="margin:0 0 14px;color:var(--muted);font-size:15px">Открытые концовки в браузере и в скачанной версии — свои у каждой.</p>
+        <div class="downloads">
+          <a class="btn btn-small" href="../downloads/Kotovasiya_v0.0.2_windows.zip" download>Windows · 37 МБ</a>
+          <a class="btn btn-small" href="../downloads/Kotovasiya_v0.0.2_android.apk" download>Android · 51 МБ</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Что нового</h3>
+        <ul class="changelog">
+          <li><b>0.0.2 «Лапки на экране»:</b> кнопки управления на экране для телефона и планшета, версии для браузера и Android</li>
+          <li><b>0.0.1 «Первые лапки»:</b> дом из 7 комнат и чердака, хозяйка с расписанием, 12 бьющихся вещей, мышь, тайны старого дома и 7 концовок</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 МАЯК</span>
+    <span>Игры на <a href="https://godotengine.org" target="_blank" rel="noopener">Godot Engine</a></span>
+  </div>
+</footer>
+
+<script src="../theme.js?v=746ffa7a"></script>
+<script src="../preload.js?v=d357fec2"></script>
+<script>
+(function () {
+  MayakTheme.remember("kot");
+  document.getElementById("logo").addEventListener("click", function () { MayakTheme.remember(""); });
+
+  var COVER = "../img/kot_cover.webp";
+  var player = document.getElementById("player");
+  var start = document.getElementById("start");
+  var isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1100);
+
+  function goFull() {
+    var req = player.requestFullscreen || player.webkitRequestFullscreen;
+    if (!req) return Promise.resolve();
+    return Promise.resolve(req.call(player)).then(function () {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(function () {});
+      }
+    }).catch(function () {});
+  }
+
+  function focusGame() {
+    var f = player.querySelector("iframe");
+    if (f) { try { f.focus(); f.contentWindow.focus(); } catch (e) {} }
+  }
+
+  // движок начинает качаться в фоне сразу, пока читаешь страницу
+  MayakPreload.startIdle("../", ["../games/kotovasiya/index.pck"], 200);
+
+  document.getElementById("play").addEventListener("click", function () {
+    var btn = this;
+    if (isPhone) goFull();   // полный экран можно включить только сразу по нажатию
+    if (!MayakPreload.busy()) { launch(); return; }
+    // фоновая загрузка ещё идёт — показываем её прогресс и запускаем, когда закончится
+    btn.disabled = true;
+    var tick = setInterval(function () {
+      btn.textContent = "Загрузка " + Math.round(MayakPreload.progress() * 100) + "%";
+    }, 150);
+    MayakPreload.wait(function () { clearInterval(tick); launch(); });
+  });
+
+  function launch() {
+    var frame = document.createElement("iframe");
+    frame.src = "../games/kotovasiya/index.html?v=002";
+    frame.allow = "autoplay; fullscreen; gamepad";
+    frame.setAttribute("allowfullscreen", "");
+    frame.title = "Котовасия";
+    frame.addEventListener("load", focusGame);
+    player.appendChild(frame);
+    player.classList.add("running");
+    start.remove();
+    setTimeout(focusGame, 300);
+  }
+
+  document.getElementById("fs").addEventListener("click", function () {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else {
+      goFull().then(focusGame);
+    }
+  });
+  player.addEventListener("click", focusGame);
+
+  var MAX_CSS = "position:fixed;left:0;top:0;right:0;bottom:0;z-index:100;width:100vw;height:100vh;max-width:none;aspect-ratio:auto;border-radius:0;border:0;margin:0;";
+  function setMax(on) {
+    player.classList.toggle("max", on);
+    player.style.cssText = "background-image:url(" + COVER + ");" + (on ? MAX_CSS : "");
+    document.getElementById("unmax").style.display = on ? "block" : "none";
+    document.body.classList.toggle("noscroll", on);
+    setTimeout(focusGame, 50);
+  }
+  document.getElementById("max").addEventListener("click", function () { setMax(true); });
+  document.getElementById("unmax").addEventListener("click", function (e) { e.stopPropagation(); setMax(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && player.classList.contains("max")) setMax(false); });
+
+  if (isPhone) {
+    document.getElementById("hint").textContent = "Поверни телефон горизонтально — кнопки управления появятся на экране. Есть и приложение для Android, справа внизу.";
+  }
+
+  var lb = document.getElementById("lightbox");
+  document.querySelectorAll(".shots button").forEach(function (b) {
+    b.addEventListener("click", function () { lb.querySelector("img").src = b.dataset.full; lb.classList.add("on"); });
+  });
+  lb.addEventListener("click", function () { lb.classList.remove("on"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("on"); });
+})();
+</script>
+</body>
+</html>
