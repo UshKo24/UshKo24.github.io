@@ -172,7 +172,7 @@
   }
 
   // движок начинает качаться в фоне сразу, пока читаешь страницу
-  MayakPreload.startIdle("../", ["../games/mazomus/index.pck"], 200);
+  MayakPreload.startIdle("../", ["../games/mazomus/mazomus-acf96d81.pck"], 200);
 
   document.getElementById("play").addEventListener("click", function () {
     var btn = this;
@@ -188,7 +188,7 @@
 
   function launch() {
     var frame = document.createElement("iframe");
-    frame.src = "../games/mazomus/index.html?v=020";
+    frame.src = "../games/mazomus/index.html?v=020b";
     frame.allow = "autoplay; fullscreen; gamepad";
     frame.setAttribute("allowfullscreen", "");
     frame.title = "Мазомус Ран";

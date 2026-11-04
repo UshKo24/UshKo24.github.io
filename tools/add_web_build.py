@@ -7,7 +7,7 @@
 Из экспорта берутся только index.pck и иконки — движок (wasm/js) общий: engine/godot-<версия>/.
 Если версии движка ещё нет на сайте, она копируется из экспорта один раз.
 """
-import json, os, re, shutil, sys
+import hashlib, json, os, re, shutil, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -32,14 +32,21 @@ def main():
         print("Новая версия движка:", eng)
     out = os.path.join(ROOT, "games", name)
     os.makedirs(out, exist_ok=True)
-    for f in ["index.pck", "index.icon.png", "index.apple-touch-icon.png", "index.png"]:
+    # пакет игры получает имя с хешем содержимого — иначе браузер берёт старую версию из кэша
+    for old in os.listdir(out):
+        if old.endswith(".pck"):
+            os.remove(os.path.join(out, old))
+    pck_data = open(os.path.join(src, "index.pck"), "rb").read()
+    pck_name = "%s-%s.pck" % (name, hashlib.md5(pck_data).hexdigest()[:8])
+    open(os.path.join(out, pck_name), "wb").write(pck_data)
+    for f in ["index.icon.png", "index.apple-touch-icon.png", "index.png"]:
         if os.path.exists(os.path.join(src, f)):
             shutil.copy(os.path.join(src, f), os.path.join(out, f))
     rel = "../../engine/godot-" + ver + "/godot"
     cfg = json.loads(re.search(r"const GODOT_CONFIG = (\{.*?\});", html).group(1))
     cfg["executable"] = rel
-    cfg["mainPack"] = "index.pck"
-    cfg["fileSizes"] = {"index.pck": os.path.getsize(os.path.join(out, "index.pck")),
+    cfg["mainPack"] = pck_name
+    cfg["fileSizes"] = {pck_name: len(pck_data),
                         rel + ".wasm": os.path.getsize(os.path.join(eng, "godot.wasm"))}
     cfg["gdextensionLibs"] = []
     html = re.sub(r"const GODOT_CONFIG = \{.*?\};", lambda _: "const GODOT_CONFIG = " + json.dumps(cfg, ensure_ascii=False) + ";", html)
@@ -50,6 +57,7 @@ def main():
         p = os.path.join(out, f)
         if os.path.exists(p):
             os.remove(p)
-    print("Готово: games/%s → движок Godot %s" % (name, ver))
+    print("Готово: games/%s → движок Godot %s, пакет %s" % (name, ver, pck_name))
+    print("Не забудь: в <имя-игры>/index.html поменять путь пакета в MayakPreload.startIdle и ?v= у frame.src")
 
 main()
