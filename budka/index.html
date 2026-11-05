@@ -93,7 +93,7 @@
       <div class="box">
         <h3>Об игре</h3>
         <dl class="meta">
-          <dt>Версия</dt><dd>0.1 «Первая смена»</dd>
+          <dt>Версия</dt><dd>0.1.1 «Ханич и Озра»</dd>
           <dt>Жанр</dt><dd>не скажем</dd>
           <dt>Смены</dt><dd>7</dd>
           <dt>Концовки</dt><dd>5</dd>
@@ -107,13 +107,14 @@
       <div class="box">
         <h3>Скачать</h3>
         <div class="downloads">
-          <a class="btn btn-small" href="../downloads/Budka_v0.1_windows.zip" download>Windows · 37 МБ</a>
+          <a class="btn btn-small" href="../downloads/Budka_v0.1.1_windows.zip" download>Windows · 37 МБ</a>
         </div>
       </div>
 
       <div class="box">
         <h3>Что нового</h3>
         <ul class="changelog">
+          <li><b>0.1.1 «Ханич и Озра»:</b> правильные ники — Ханич и Озра</li>
           <li><b>0.1 «Первая смена»:</b> 7 смен, 13 знакомых лиц, рация princeOMG, газета, 5 концовок</li>
         </ul>
       </div>
@@ -158,7 +159,7 @@
   }
 
   // движок начинает качаться в фоне сразу, пока читаешь страницу
-  MayakPreload.startIdle("../", ["../games/budka/budka-f185aa59.pck"], 200);
+  MayakPreload.startIdle("../", ["../games/budka/budka-b911d945.pck"], 200);
 
   document.getElementById("play").addEventListener("click", function () {
     var btn = this;
@@ -174,7 +175,7 @@
 
   function launch() {
     var frame = document.createElement("iframe");
-    frame.src = "../games/budka/index.html?v=010";
+    frame.src = "../games/budka/index.html?v=011";
     frame.allow = "autoplay; fullscreen; gamepad";
     frame.setAttribute("allowfullscreen", "");
     frame.title = "Будка";
