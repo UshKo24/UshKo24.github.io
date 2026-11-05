@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ru" data-theme="budka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Будка · МАЯК</title>
+<meta name="description" content="Кроссбов устроился на новую работу: сидеть в будке, смотреть в окошко и иногда кое-что решать. Семь смен, тринадцать знакомых лиц.">
+<meta property="og:title" content="Будка">
+<meta property="og:description" content="Кроссбов устроился на новую работу. Что может пойти не так? Секретная игра МАЯКа.">
+<meta property="og:image" content="../img/bk_cover.webp">
+<meta name="theme-color" content="#2b2620">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/budka-icon.png">
+<link rel="stylesheet" href="../style.css?v=ba860625">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" id="logo">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><circle class="l-glow" cx="15" cy="7" r="6" opacity=".25"/><rect class="l-lamp" x="12" y="5" width="6" height="4" rx="1"/><path class="l-body" d="M11 10h8l2 17H9z"/><path class="l-stripe" d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z"/></svg>
+      <span class="brand-name">МАЯК</span> <small>игры в браузере</small>
+    </a>
+    <nav class="nav">
+      <a href="../#games" class="on">Игры</a>
+      <a href="../#about">О сайте</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="game-head">
+    <div class="crumbs"><a href="../#games">Игры</a> / Будка <span class="tag" style="margin-left:6px">секретная игра</span></div>
+    <h1>Будка</h1>
+    <p class="sub">Кроссбов устроился на новую работу. Что может пойти не так?</p>
+  </div>
+
+  <div class="player" id="player" style="background-image:url(../img/bk_cover.webp)">
+    <div class="start" id="start">
+      <button class="btn btn-main" id="play">▶&nbsp; Открыть окошко</button>
+      <small>Нужна мышка · прогресс по сменам сохраняется в браузере</small>
+    </div>
+    <div class="rotate">Переверни телефон горизонтально ↻</div>
+    <button class="unmax" id="unmax" title="Свернуть">✕&nbsp; Свернуть</button>
+  </div>
+  <div class="player-bar">
+    <span class="hint" id="hint">«Развернуть» + клавиша F11 — весь экран. Свернуть — кнопка ✕ сверху.</span>
+    <span class="bar-buttons">
+      <button class="btn btn-small" id="max">⛶&nbsp; Развернуть</button>
+      <button class="btn btn-small" id="fs">Полный экран</button>
+    </span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap cols">
+    <div>
+      <h2>Об игре</h2>
+      <p>Кроссбов устроился на новую работу: сидеть в будке, смотреть в окошко и иногда кое-что решать. Звучит просто.</p>
+      <p>Семь смен. Тринадцать знакомых лиц. Одна рация, по которой princeOMG раздаёт странные приказы, и один босс, который орёт громче рации. Кто-то честный, кто-то вечно что-то забывает, у кого-то два имени и бургер, а кто-то очень хочет внутрь — и у него, кажется, накладные усы.</p>
+      <p>Хрю.</p>
+      <ul class="features">
+        <li>Семь смен — и каждая немного сложнее предыдущей</li>
+        <li>Знакомые лица: Мазомус, Арима, Доки, Сенсел, Позитив, Андр (он же Друна) и другие</li>
+        <li>Кубический вестник каждое утро</li>
+        <li>Пять концовок</li>
+      </ul>
+
+      <h2 style="margin-top:40px">Скриншоты</h2>
+      <div class="shots">
+        <button data-full="../img/bk_cover.webp"><img src="../img/bk_cover_s.webp" alt="«Это точно вы на фото?»" loading="lazy"></button>
+        <button data-full="../img/bk_inspect.webp"><img src="../img/bk_inspect_s.webp" alt="Проверка: ник против чёрного списка" loading="lazy"></button>
+        <button data-full="../img/bk_andr.webp"><img src="../img/bk_andr_s.webp" alt="Андр, он же Друна" loading="lazy"></button>
+        <button data-full="../img/bk_blast.webp"><img src="../img/bk_blast_s.webp" alt="Что-то пошло не так" loading="lazy"></button>
+        <button data-full="../img/bk_scan.webp"><img src="../img/bk_scan_s.webp" alt="Сканер пятачков" loading="lazy"></button>
+        <button data-full="../img/bk_news.webp"><img src="../img/bk_news_s.webp" alt="Кубический вестник" loading="lazy"></button>
+        <button data-full="../img/bk_ending.webp"><img src="../img/bk_ending_s.webp" alt="Одна из концовок" loading="lazy"></button>
+        <button data-full="../img/bk_menu.webp"><img src="../img/bk_menu_s.webp" alt="Главное меню" loading="lazy"></button>
+      </div>
+    </div>
+
+    <aside>
+      <div class="box">
+        <h3>Управление</h3>
+        <table class="keys">
+          <tr><td>Мышка</td><td>всё в игре</td></tr>
+          <tr><td>N</td><td>позвать следующего</td></tr>
+          <tr><td>Пробел</td><td>проверка</td></tr>
+          <tr><td>Esc</td><td>пауза</td></tr>
+        </table>
+      </div>
+
+      <div class="box">
+        <h3>Об игре</h3>
+        <dl class="meta">
+          <dt>Версия</dt><dd>0.1 «Первая смена»</dd>
+          <dt>Жанр</dt><dd>не скажем</dd>
+          <dt>Смены</dt><dd>7</dd>
+          <dt>Концовки</dt><dd>5</dd>
+          <dt>Платформы</dt><dd>браузер на ПК, Windows</dd>
+          <dt>Язык</dt><dd>русский</dd>
+          <dt>Движок</dt><dd>Godot 4</dd>
+        </dl>
+        <p style="margin:14px 0 0;color:var(--muted);font-size:14px">Секретная игра. Если ты здесь — ты знаешь, что набрать.</p>
+      </div>
+
+      <div class="box">
+        <h3>Скачать</h3>
+        <div class="downloads">
+          <a class="btn btn-small" href="../downloads/Budka_v0.1_windows.zip" download>Windows · 37 МБ</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Что нового</h3>
+        <ul class="changelog">
+          <li><b>0.1 «Первая смена»:</b> 7 смен, 13 знакомых лиц, рация princeOMG, газета, 5 концовок</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 МАЯК</span>
+    <span>Игры на <a href="https://godotengine.org" target="_blank" rel="noopener">Godot Engine</a></span>
+  </div>
+</footer>
+
+<script src="../theme.js?v=01dc09dc"></script>
+<script src="../preload.js?v=d357fec2"></script>
+<script>
+(function () {
+  MayakTheme.remember("budka");
+  document.getElementById("logo").addEventListener("click", function () { MayakTheme.remember(""); });
+
+  var COVER = "../img/bk_cover.webp";
+  var player = document.getElementById("player");
+  var start = document.getElementById("start");
+  var isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1100);
+
+  function goFull() {
+    var req = player.requestFullscreen || player.webkitRequestFullscreen;
+    if (!req) return Promise.resolve();
+    return Promise.resolve(req.call(player)).then(function () {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(function () {});
+      }
+    }).catch(function () {});
+  }
+
+  function focusGame() {
+    var f = player.querySelector("iframe");
+    if (f) { try { f.focus(); f.contentWindow.focus(); } catch (e) {} }
+  }
+
+  // движок начинает качаться в фоне сразу, пока читаешь страницу
+  MayakPreload.startIdle("../", ["../games/budka/budka-f185aa59.pck"], 200);
+
+  document.getElementById("play").addEventListener("click", function () {
+    var btn = this;
+    if (isPhone) goFull();   // полный экран можно включить только сразу по нажатию
+    if (!MayakPreload.busy()) { launch(); return; }
+    // фоновая загрузка ещё идёт — показываем её прогресс и запускаем, когда закончится
+    btn.disabled = true;
+    var tick = setInterval(function () {
+      btn.textContent = "Загрузка " + Math.round(MayakPreload.progress() * 100) + "%";
+    }, 150);
+    MayakPreload.wait(function () { clearInterval(tick); launch(); });
+  });
+
+  function launch() {
+    var frame = document.createElement("iframe");
+    frame.src = "../games/budka/index.html?v=010";
+    frame.allow = "autoplay; fullscreen; gamepad";
+    frame.setAttribute("allowfullscreen", "");
+    frame.title = "Будка";
+    frame.addEventListener("load", focusGame);
+    player.appendChild(frame);
+    player.classList.add("running");
+    start.remove();
+    setTimeout(focusGame, 300);
+  }
+
+  document.getElementById("fs").addEventListener("click", function () {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else {
+      goFull().then(focusGame);
+    }
+  });
+  player.addEventListener("click", focusGame);
+
+  var MAX_CSS = "position:fixed;left:0;top:0;right:0;bottom:0;z-index:100;width:100vw;height:100vh;max-width:none;aspect-ratio:auto;border-radius:0;border:0;margin:0;";
+  function setMax(on) {
+    player.classList.toggle("max", on);
+    player.style.cssText = "background-image:url(" + COVER + ");" + (on ? MAX_CSS : "");
+    document.getElementById("unmax").style.display = on ? "block" : "none";
+    document.body.classList.toggle("noscroll", on);
+    setTimeout(focusGame, 50);
+  }
+  document.getElementById("max").addEventListener("click", function () { setMax(true); });
+  document.getElementById("unmax").addEventListener("click", function (e) { e.stopPropagation(); setMax(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && player.classList.contains("max")) setMax(false); });
+
+  if (isPhone) {
+    document.getElementById("hint").textContent = "Эта игра пока только для компьютера — нужна мышка.";
+  }
+
+  var lb = document.getElementById("lightbox");
+  document.querySelectorAll(".shots button").forEach(function (b) {
+    b.addEventListener("click", function () { lb.querySelector("img").src = b.dataset.full; lb.classList.add("on"); });
+  });
+  lb.addEventListener("click", function () { lb.classList.remove("on"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("on"); });
+})();
+</script>
+</body>
+</html>
