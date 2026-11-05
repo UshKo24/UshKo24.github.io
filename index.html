@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0e0e10">
 <link rel="icon" href="img/mayak.svg" type="image/svg+xml">
 <script>try { var t = sessionStorage.getItem("mayak-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
-<link rel="stylesheet" href="style.css?v=ba860625">
+<link rel="stylesheet" href="style.css?v=f7349bf5">
 </head>
 <body>
 
@@ -375,7 +375,7 @@
       </article>
       <article class="card" data-game="budka" data-href="budka/" hidden
                data-shots="bk_cover bk_inspect bk_blast bk_andr bk_scan bk_news">
-        <div class="cover" style="background-image:url(img/bk_cover_s.webp)"><span class="new">секрет</span><span class="badge">v0.1.1 · «Ханич и Озра»</span></div>
+        <div class="cover" style="background-image:url(img/bk_cover_s.webp)"><span class="new">секрет</span><span class="badge">v0.1.2 · «Особый гость»</span></div>
         <div class="body">
           <h3>Будка</h3>
           <p>Кроссбов устроился на новую работу: сидеть в будке, смотреть в окошко и иногда кое-что решать. Семь смен, тринадцать знакомых лиц и одна рация. Что может пойти не так?</p>
@@ -437,19 +437,31 @@
         o.connect(g); g.connect(ac.destination); o.start(); o.stop(ac.currentTime + 0.3);
       } catch (e) {}
     }
+    function reveal() {
+      card.hidden = false;
+      card.classList.add("stamped");
+      thump();
+      try { localStorage.setItem(KEY, "1"); } catch (e2) {}
+      card.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    // на телефоне клавиатуры нет — три быстрых тапа по «?» в карточке «Скоро»
+    var q = document.querySelector(".card.soon .q"), taps = [];
+    if (q) q.addEventListener("click", function () {
+      if (!card.hidden) return;
+      var now = Date.now();
+      taps.push(now);
+      taps = taps.filter(function (x) { return now - x < 1200; });
+      q.style.transform = "rotate(" + (taps.length * 12) + "deg)";
+      setTimeout(function () { q.style.transform = ""; }, 200);
+      if (taps.length >= 3) reveal();
+    });
     document.addEventListener("keydown", function (e) {
       if (!card.hidden) return;
       var t = e.target; if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA")) return;
       seq.push((e.key || "").toLowerCase()); codes.push(e.code);
       seq = seq.slice(-3); codes = codes.slice(-3);
       // «хрю» — и в русской раскладке, и по клавишам [ H . в английской
-      if (seq.join("") === "хрю" || codes.join(",") === "BracketLeft,KeyH,Period") {
-        card.hidden = false;
-        card.classList.add("stamped");
-        thump();
-        try { localStorage.setItem(KEY, "1"); } catch (e2) {}
-        card.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
+      if (seq.join("") === "хрю" || codes.join(",") === "BracketLeft,KeyH,Period") reveal();
     });
   })();
 

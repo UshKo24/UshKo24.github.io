@@ -853,3 +853,5 @@ html[data-theme="turniket"] .player .start small { background: #fff; border: 2px
 @media (prefers-reduced-motion: reduce) { .d-budka .bstamp, .d-budka .blamp { animation: none; } }
 .card.stamped { animation: cardstamp .7s cubic-bezier(.2, 1.4, .4, 1); }
 @keyframes cardstamp { from { transform: scale(1.6) rotate(-8deg); opacity: 0; } to { transform: none; opacity: 1; } }
+
+.card.soon .q { transition: transform .15s; user-select: none; -webkit-tap-highlight-color: transparent; }
