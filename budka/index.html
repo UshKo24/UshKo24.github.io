@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Будка · МАЯК</title>
-<meta name="description" content="Кроссбов устроился на новую работу: сидеть в будке, смотреть в окошко и иногда кое-что решать. Семь смен, тринадцать знакомых лиц.">
+<meta name="description" content="Кроссбов устроился на новую работу: сидеть в будке, смотреть в окошко и иногда кое-что решать. Неделя до Нового года, семь смен, снег и очередь.">
 <meta property="og:title" content="Будка">
 <meta property="og:description" content="Кроссбов устроился на новую работу. Что может пойти не так? Секретная игра МАЯКа.">
-<meta property="og:image" content="../img/bk_cover.webp">
-<meta name="theme-color" content="#2b2620">
+<meta property="og:image" content="../img/bk_title.webp">
+<meta name="theme-color" content="#10142e">
 <meta name="robots" content="noindex">
 <link rel="icon" href="../img/budka-icon.png">
-<link rel="stylesheet" href="../style.css?v=f7349bf5">
+<link rel="stylesheet" href="../style.css?v=b13a1a17">
 </head>
 <body>
 
@@ -35,7 +35,7 @@
     <p class="sub">Кроссбов устроился на новую работу. Что может пойти не так?</p>
   </div>
 
-  <div class="player" id="player" style="background-image:url(../img/bk_cover.webp)">
+  <div class="player" id="player" style="background-image:url(../img/bk_title.webp)">
     <div class="start" id="start">
       <button class="btn btn-main" id="play">▶&nbsp; Открыть окошко</button>
       <small>Нужна мышка · прогресс по сменам сохраняется в браузере</small>
@@ -57,22 +57,24 @@
     <div>
       <h2>Об игре</h2>
       <p>Кроссбов устроился на новую работу: сидеть в будке, смотреть в окошко и иногда кое-что решать. Звучит просто.</p>
-      <p>Семь смен. Тринадцать знакомых лиц. Одна рация, по которой princeOMG раздаёт странные приказы, и один босс, который орёт громче рации. Кто-то честный, кто-то вечно что-то забывает, у кого-то два имени и бургер, а кто-то очень хочет внутрь — и у него, кажется, накладные усы.</p>
-      <p>Хрю.</p>
+      <p>Неделя до Нового года. Идёт снег, мигают гирлянды, очередь тянется до самого забора. Одна рация, по которой princeOMG раздаёт странные приказы, и один босс, который орёт громче рации. Кто-то честный, кто-то вечно что-то забывает, кто-то несёт тебе мемы и мандарины, а кто-то очень хочет внутрь — и у него, кажется, накладные усы.</p>
+      <p>31 декабря в полночь будет салют. Если доживёшь. Хрю.</p>
       <ul class="features">
-        <li>Семь смен — и каждая немного сложнее предыдущей</li>
-        <li>Знакомые лица: Мазомус, Арима, Доки, Сенсел, Позитив, Андр (он же Друна) и другие</li>
-        <li>Кубический вестник каждое утро</li>
-        <li>Пять концовок</li>
+        <li>Семь смен с 25 по 31 декабря — и каждая немного сложнее предыдущей</li>
+        <li>Пиксельная зимняя улица: очередь, охрана в колпаках, сцена с ёлкой</li>
+        <li>Знакомые лица и куча незнакомых ников из чата</li>
+        <li>Мемы, открытки, распечатки чата и прочие очень важные бумажки</li>
+        <li>Кубический вестник каждое утро и пять концовок</li>
       </ul>
 
       <h2 style="margin-top:40px">Скриншоты</h2>
       <div class="shots">
         <button data-full="../img/bk_cover.webp"><img src="../img/bk_cover_s.webp" alt="«Это точно вы на фото?»" loading="lazy"></button>
+        <button data-full="../img/bk_memes.webp"><img src="../img/bk_memes_s.webp" alt="Очень важные бумажки" loading="lazy"></button>
         <button data-full="../img/bk_inspect.webp"><img src="../img/bk_inspect_s.webp" alt="Проверка: ник против чёрного списка" loading="lazy"></button>
         <button data-full="../img/bk_andr.webp"><img src="../img/bk_andr_s.webp" alt="Андр, он же Друна" loading="lazy"></button>
         <button data-full="../img/bk_blast.webp"><img src="../img/bk_blast_s.webp" alt="Что-то пошло не так" loading="lazy"></button>
-        <button data-full="../img/bk_scan.webp"><img src="../img/bk_scan_s.webp" alt="Сканер пятачков" loading="lazy"></button>
+        <button data-full="../img/bk_cake.webp"><img src="../img/bk_cake_s.webp" alt="31 декабря. Кто-то пришёл с тортом" loading="lazy"></button>
         <button data-full="../img/bk_news.webp"><img src="../img/bk_news_s.webp" alt="Кубический вестник" loading="lazy"></button>
         <button data-full="../img/bk_ending.webp"><img src="../img/bk_ending_s.webp" alt="Одна из концовок" loading="lazy"></button>
         <button data-full="../img/bk_menu.webp"><img src="../img/bk_menu_s.webp" alt="Главное меню" loading="lazy"></button>
@@ -86,6 +88,8 @@
           <tr><td>Мышка</td><td>всё в игре</td></tr>
           <tr><td>N</td><td>позвать следующего</td></tr>
           <tr><td>Пробел</td><td>проверка</td></tr>
+          <tr><td>Tab</td><td>штампы</td></tr>
+          <tr><td>F11</td><td>полный экран</td></tr>
           <tr><td>Esc</td><td>пауза</td></tr>
         </table>
       </div>
@@ -93,7 +97,7 @@
       <div class="box">
         <h3>Об игре</h3>
         <dl class="meta">
-          <dt>Версия</dt><dd>0.1.2 «Особый гость»</dd>
+          <dt>Версия</dt><dd>0.2 «Зимняя смена»</dd>
           <dt>Жанр</dt><dd>не скажем</dd>
           <dt>Смены</dt><dd>7</dd>
           <dt>Концовки</dt><dd>5</dd>
@@ -107,13 +111,14 @@
       <div class="box">
         <h3>Скачать</h3>
         <div class="downloads">
-          <a class="btn btn-small" href="../downloads/Budka_v0.1.2_windows.zip" download>Windows · 37 МБ</a>
+          <a class="btn btn-small" href="../downloads/Budka_v0.2_windows.zip" download>Windows · 37 МБ</a>
         </div>
       </div>
 
       <div class="box">
         <h3>Что нового</h3>
         <ul class="changelog">
+          <li><b>0.2 «Зимняя смена»:</b> игра переделана целиком. Пиксельная графика и зимняя улица со снегом. Новый стол: бумажки надо перетаскивать со стойки, проверять, штамповать (Tab) и возвращать. Незнакомцы из чата в очереди, забытый пропуск можно попросить. Мемы про ребят, новые диалоги, музыка, салют 31 декабря. Люди больше не приходят по два раза</li>
           <li><b>0.1.2 «Особый гость»:</b> в последнюю смену сразу видно, что с особым гостем решаешь сам</li>
           <li><b>0.1.1 «Ханич и Озра»:</b> правильные ники — Ханич и Озра</li>
           <li><b>0.1 «Первая смена»:</b> 7 смен, 13 знакомых лиц, рация princeOMG, газета, 5 концовок</li>
@@ -132,14 +137,14 @@
   </div>
 </footer>
 
-<script src="../theme.js?v=01dc09dc"></script>
+<script src="../theme.js?v=67a7cfc3"></script>
 <script src="../preload.js?v=d357fec2"></script>
 <script>
 (function () {
   MayakTheme.remember("budka");
   document.getElementById("logo").addEventListener("click", function () { MayakTheme.remember(""); });
 
-  var COVER = "../img/bk_cover.webp";
+  var COVER = "../img/bk_title.webp";
   var player = document.getElementById("player");
   var start = document.getElementById("start");
   var isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1100);
@@ -160,7 +165,7 @@
   }
 
   // движок начинает качаться в фоне сразу, пока читаешь страницу
-  MayakPreload.startIdle("../", ["../games/budka/budka-de892db8.pck"], 200);
+  MayakPreload.startIdle("../", ["../games/budka/budka-28000239.pck"], 200);
 
   document.getElementById("play").addEventListener("click", function () {
     var btn = this;
@@ -176,7 +181,7 @@
 
   function launch() {
     var frame = document.createElement("iframe");
-    frame.src = "../games/budka/index.html?v=012";
+    frame.src = "../games/budka/index.html?v=020";
     frame.allow = "autoplay; fullscreen; gamepad";
     frame.setAttribute("allowfullscreen", "");
     frame.title = "Будка";
