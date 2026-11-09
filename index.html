@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0e0e10">
 <link rel="icon" href="img/mayak.svg" type="image/svg+xml">
 <script>try { var t = sessionStorage.getItem("mayak-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
-<link rel="stylesheet" href="style.css?v=b13a1a17">
+<link rel="stylesheet" href="style.css?v=17cdebac">
 </head>
 <body>
 
@@ -32,6 +32,8 @@
   <!-- нейтральный вид сайта: мозаика из кадров всех игр (берутся из data-shots у карточек) -->
   <!-- «Будка» (секретная): окошко будки, пропуск и падающий штамп -->
   <div class="deco d-budka" aria-hidden="true"></div>
+  <!-- «Дота 3»: титул игры, Кроссбов, Мазомус и Мега Боров -->
+  <div class="deco d-dota" aria-hidden="true"></div>
   <!-- «Мазомус Ран» (секретная): яйцо с пятачком бежит по кубам за шляпой Кроссбова -->
   <div class="deco d-mazo" aria-hidden="true">
     <svg viewBox="0 0 900 560" preserveAspectRatio="xMaxYMid slice">
@@ -277,6 +279,16 @@
       </div>
     </div>
     <div class="games">
+      <article class="card" data-game="dota" data-href="dota3/"
+               data-shots="d3_cover d3_fight d3_borov d3_push d3_shop d3_post d3_pick">
+        <div class="cover" style="background-image:url(img/d3_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.1 · «Первая кровь»</span></div>
+        <div class="body">
+          <h3>Дота 3</h3>
+          <p>Как Дота, только герои — наши: Мазомус, CrossBow, Сенсел, Давг и ещё шесть. Три линии, башни, поросята, лес с овощами, Мега Боров и курьер «Свиндекс». Матч на 15 минут против ботов.</p>
+          <div class="tags"><span class="tag">MOBA</span><span class="tag">5 на 5</span><span class="tag">только ПК</span><span class="tag">10 героев</span></div>
+          <div class="go"><a class="btn btn-main btn-small" href="dota3/" data-open="dota">▶&nbsp; Играть</a></div>
+        </div>
+      </article>
       <article class="card" data-game="kot" data-href="kotovasiya/"
                data-shots="kot_cover kot_kitchen kot_mouse kot_window kot_dinner kot_attic kot_night kot_chaos">
         <div class="cover" style="background-image:url(img/kot_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.0.2 · «Лапки на экране»</span></div>
@@ -377,7 +389,7 @@
   </div>
 </footer>
 
-<script src="theme.js?v=67a7cfc3"></script>
+<script src="theme.js?v=ce4f81d3"></script>
 <script src="preload.js?v=d357fec2"></script>
 <script>
 (function () {
