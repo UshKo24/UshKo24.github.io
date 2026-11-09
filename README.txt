@@ -18,6 +18,8 @@ tools/add_web_build.py     — подключает веб-экспорт Godot 
 img/                       — обложки и скриншоты (полный размер и уменьшенные *_s.webp)
 downloads/                 — версии для Windows и Android
 style.css, theme.js        — оформление и темы игр
+updates.js                 — лента обновлений на главной (новые записи — сверху)
+catalog.js                 — фильтр игр по жанрам и меткам + вывод ленты обновлений
 fonts/                     — шрифты (Oswald, Rubik — SIL OFL)
 
 Темы:
@@ -42,3 +44,14 @@ fonts/                     — шрифты (Oswald, Rubik — SIL OFL)
 «Девятый вал» временно убран с сайта (коммит «Убрать Девятый вал…»). Его тема devyatyi в style.css,
 декор в .hero главной и цвет в theme.js оставлены — чтобы вернуть игру, достаточно восстановить файлы из git
 (git checkout <коммит до удаления> -- devyatyi-val games/devyatyi-val img downloads) и вернуть карточку.
+
+Жанры и метки:
+- У карточки на главной: data-genre="<жанр>" и data-tags="<метки через пробел>". Списки жанров и меток — в начале catalog.js.
+- Жанры: idle roguelike strategy td horror puzzle chess tanks shooter arcade sim manage story casual sport sandbox
+- Метки: duo bots friends short long endings browser pc phone 3d pixel wip fav (fresh ставится сама по дате в updates.js)
+- Жанр или метка без открытых игр не показывается. Секретные игры учитываются только после того, как их открыли.
+
+Лента обновлений:
+- При каждом обновлении игры добавить запись СВЕРХУ в updates.js:
+  { d: "ГГГГ-ММ-ДД", g: "<тема игры или site>", v: "версия", n: "название обновления", i: ["что добавили", "что исправили"] }
+- Записи секретных игр видны только тем, кто открыл их карточку. После правки updates.js поменять ?v= у него в index.html.

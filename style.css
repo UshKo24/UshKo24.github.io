@@ -770,7 +770,7 @@ html[data-theme="turniket"] .player .start small { background: #fff; border: 2px
 @media (max-width: 820px) { .mosaic { width: 120%; right: -40%; opacity: .7; } }
 @media (prefers-reduced-motion: reduce) { .mosaic { animation: none; } }
 /* «Играть» в шапке ведёт к списку игр — не прятать заголовок под липкой шапкой */
-#games, #about { scroll-margin-top: 64px; }
+#games, #updates, #about { scroll-margin-top: 64px; }
 
 /* «Метро»: городская сетка и схема линий с поездами */
 .d-metro { opacity: var(--d-metro); background:
@@ -898,3 +898,49 @@ html[data-theme="turniket"] .player .start small { background: #fff; border: 2px
 .card.lit-reveal { animation: cardlit 1.2s ease-out; }
 @keyframes cardlit { from { transform: scale(.85); opacity: 0; box-shadow: 0 0 0 0 rgba(255, 217, 138, .9); } 60% { box-shadow: 0 0 40px 10px rgba(255, 217, 138, .6); } to { transform: none; opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .brand.lit svg, .lh-beam, .card.lit-reveal { animation: none; } }
+
+/* ---------- фильтр игр: жанры и метки ---------- */
+.filters { display: flex; flex-direction: column; gap: 10px; margin: -6px 0 24px; }
+.f-row { display: flex; align-items: flex-start; gap: 12px; }
+.f-row[hidden] { display: none; }
+.f-label { flex: 0 0 64px; padding-top: 7px; color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; }
+.f-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.f-chips .chip .n { opacity: .6; font-size: 12.5px; margin-left: 2px; }
+.f-chips .chip.on .n { opacity: .8; }
+.f-chips .chip.dim { opacity: .4; }
+.f-chips .chip.reset { border-style: dashed; }
+.card.filtered { display: none; }
+.f-empty { margin-top: 4px; padding: 26px; text-align: center; color: var(--muted); border: var(--bw) dashed var(--border); border-radius: var(--radius); }
+.f-empty[hidden] { display: none; }
+.f-empty .chip { margin-left: 8px; }
+@media (max-width: 640px) {
+  .f-row { flex-direction: column; gap: 6px; }
+  .f-label { flex: none; padding-top: 0; }
+  .f-chips { flex-wrap: nowrap; overflow-x: auto; width: 100%; padding-bottom: 4px; scrollbar-width: none; }
+  .f-chips::-webkit-scrollbar { display: none; }
+  .f-chips .chip { flex: none; white-space: nowrap; }
+}
+
+/* ---------- лента обновлений ---------- */
+.feed { display: flex; flex-direction: column; gap: 12px; }
+.upd { display: flex; gap: 18px; background: var(--panel); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: 16px 20px; }
+.u-date { flex: 0 0 52px; text-align: center; color: var(--muted); font-size: 13px; line-height: 1.1; padding-top: 2px; }
+.u-date b { display: block; font-family: var(--head-font); font-size: 26px; color: var(--text); font-weight: var(--head-weight); }
+.u-body { flex: 1; min-width: 0; }
+.u-head { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; font-size: 18px; font-weight: 600; }
+.u-head a { color: var(--text); }
+.u-head a:hover { color: var(--accent); }
+.u-head .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.u-head .v { font-size: 14px; font-weight: 500; color: var(--accent); }
+.u-head .nm { font-size: 15px; font-weight: 500; color: var(--muted); }
+.u-head .nm.fix { font-size: 13px; }
+.u-head .fresh { font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 6px; background: var(--btn); color: var(--btn-text); }
+.upd ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: 15px; }
+.upd li { margin: 2px 0; }
+.feed-more { margin-top: 16px; }
+.feed-more[hidden] { display: none; }
+@media (max-width: 640px) {
+  .upd { gap: 12px; padding: 14px; }
+  .u-date { flex-basis: 40px; }
+  .u-date b { font-size: 22px; }
+}
