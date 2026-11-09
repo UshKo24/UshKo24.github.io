@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0e0e10">
 <link rel="icon" href="img/mayak.svg" type="image/svg+xml">
 <script>try { var t = sessionStorage.getItem("mayak-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
-<link rel="stylesheet" href="style.css?v=75136770">
+<link rel="stylesheet" href="style.css?v=8ac21a42">
 </head>
 <body>
 
@@ -32,6 +32,8 @@
   <!-- нейтральный вид сайта: мозаика из кадров всех игр (берутся из data-shots у карточек) -->
   <!-- «Будка» (секретная): окошко будки, пропуск и падающий штамп -->
   <div class="deco d-budka" aria-hidden="true"></div>
+  <!-- «Дота 3» (секретная): 12 героев с двух сторон карты -->
+  <div class="deco d-dota" aria-hidden="true"></div>
   <!-- «Мазомус Ран» (секретная): яйцо с пятачком бежит по кубам за шляпой Кроссбова -->
   <div class="deco d-mazo" aria-hidden="true">
     <svg viewBox="0 0 900 560" preserveAspectRatio="xMaxYMid slice">
@@ -327,6 +329,16 @@
           <div class="go"><a class="btn btn-main btn-small" href="turniket/" data-open="turniket">▶&nbsp; Играть</a></div>
         </div>
       </article>
+      <article class="card" data-game="dota" data-href="dota3/" hidden
+               data-shots="d3_cover d3_heroes d3_ults d3_fight d3_borov d3_push d3_post">
+        <div class="cover" style="background-image:url(img/d3_cover_s.webp)"><span class="new">секрет</span><span class="badge">v0.3 · «Новый состав»</span></div>
+        <div class="body">
+          <h3>Дота 3</h3>
+          <p>Маяк тебе подмигнул! Как Дота, только герои — наши: Mazomus, Doki8new, Dawwwg, Pozitiv, Crossbow и ещё семь. Три линии, башни, поросята, Мега Боров и матч на 15 минут против ботов.</p>
+          <div class="tags"><span class="tag">MOBA</span><span class="tag">секретная</span><span class="tag">только скачать</span><span class="tag">Windows</span><span class="tag">12 героев</span></div>
+          <div class="go"><a class="btn btn-main btn-small" href="dota3/" data-open="dota">⬇&nbsp; Скачать</a></div>
+        </div>
+      </article>
       <article class="card" data-game="mazomus" data-href="mazomus/" hidden
                data-shots="mazo_cover mazo_cb_shield mazo_pig mazo_cb_cube mazo_shield mazo_rage mazo_night">
         <div class="cover" style="background-image:url(img/mazo_cover_s.webp)"><span class="new">секрет</span><span class="badge">v0.2 · «Ответка Кроссбова»</span></div>
@@ -377,7 +389,7 @@
   </div>
 </footer>
 
-<script src="theme.js?v=67a7cfc3"></script>
+<script src="theme.js?v=ce4f81d3"></script>
 <script src="preload.js?v=d357fec2"></script>
 <script>
 (function () {
@@ -426,6 +438,50 @@
       seq = seq.slice(-3); codes = codes.slice(-3);
       // «хрю» — и в русской раскладке, и по клавишам [ H . в английской
       if (seq.join("") === "хрю" || codes.join(",") === "BracketLeft,KeyH,Period") reveal();
+    });
+  })();
+
+  // секрет: 5 быстрых кликов по свету маяка в логотипе — маяк мигает и открывает «Доту 3»
+  (function () {
+    var KEY = "mayak-secret-dota";
+    var card = document.querySelector('.card[data-game="dota"]');
+    var logo = document.getElementById("logo");
+    if (!card || !logo) return;
+    var found = false;
+    try { found = localStorage.getItem(KEY) === "1"; } catch (e) {}
+    if (found || document.documentElement.dataset.theme === "dota") { card.hidden = false; return; }
+    var clicks = [];
+    function ping(n) {
+      try {
+        var A = window.AudioContext || window.webkitAudioContext; if (!A) return;
+        var ac = new A(), o = ac.createOscillator(), g = ac.createGain();
+        o.type = "sine"; o.frequency.value = 520 + n * 90;
+        g.gain.setValueAtTime(0.25, ac.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + (n >= 5 ? 1.2 : 0.18));
+        o.connect(g); g.connect(ac.destination); o.start(); o.stop(ac.currentTime + 1.3);
+      } catch (e) {}
+    }
+    logo.addEventListener("click", function () {
+      if (!card.hidden) return;
+      var now = Date.now();
+      clicks.push(now);
+      clicks = clicks.filter(function (x) { return now - x < 2500; });
+      ping(clicks.length);
+      logo.classList.add("tap");
+      setTimeout(function () { logo.classList.remove("tap"); }, 160);
+      if (clicks.length < 5) return;
+      clicks = [];
+      logo.classList.add("lit");
+      var beam = document.createElement("div");
+      beam.className = "lh-beam";
+      document.body.appendChild(beam);
+      setTimeout(function () {
+        beam.remove();
+        logo.classList.remove("lit");
+        card.hidden = false;
+        card.classList.add("lit-reveal");
+        try { localStorage.setItem(KEY, "1"); } catch (e) {}
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 1500);
     });
   })();
 
