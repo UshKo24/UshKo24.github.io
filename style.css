@@ -56,7 +56,6 @@
   --d-kot: 0;
   --d-mazo: 0;
   --d-budka: 0;
-  --d-dota: 0;
   color-scheme: dark;
 }
 /* ---------- «Будка» (секретная): казённый коричневый, бумага, красный штамп ---------- */
@@ -93,42 +92,6 @@ html[data-theme="budka"] {
   --logo-stripe: #e2475e;
   --d-neutral: 0;
   --d-budka: 1;
-}
-/* ---------- «Дота 3»: тёмная карта, золото интерфейса, бирюза Трапписта и розовый Забавных ---------- */
-html[data-theme="dota"] {
-  --bg: #0b0e16;
-  --bg-2: #121722;
-  --section: #121722;
-  --panel: rgba(223, 230, 240, 0.05);
-  --panel-solid: #1a2130;
-  --border: rgba(223, 230, 240, 0.14);
-  --border-hover: #c8a050;
-  --text: #dfe6f0;
-  --muted: #8a94a8;
-  --accent: #ffd98a;
-  --on-accent: #1a1408;
-  --btn: #c8a050;
-  --btn-text: #1a1408;
-  --btn-border: #3a2a10;
-  --btn-hover: #e0b860;
-  --btn2: rgba(223, 230, 240, 0.07);
-  --btn2-hover: rgba(223, 230, 240, 0.14);
-  --btn2-text: #dfe6f0;
-  --tag-bg: rgba(95, 184, 255, 0.16);
-  --tag-text: #cfe8ff;
-  --header-bg: rgba(11, 14, 22, 0.92);
-  --badge-bg: rgba(11, 14, 22, 0.92);
-  --shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
-  --player-bg: #0b0e16;
-  --start-veil: radial-gradient(ellipse at center, rgba(11, 14, 22, 0.05), rgba(11, 14, 22, 0.65));
-  --start-text: #ffd98a;
-  --start-shadow: 0 1px 4px #000;
-  --logo-lamp: #ffd98a;
-  --logo-body: #dfe6f0;
-  --logo-stripe: #ff6aa8;
-  --d-neutral: 0;
-  --d-dota: 1;
-  color-scheme: dark;
 }
 /* ---------- «Мазомус Ран» (секретная): яркое небо, кубы, розовый пятачок ---------- */
 html[data-theme="mazomus"] {
@@ -879,8 +842,3 @@ html[data-theme="turniket"] .player .start small { background: #fff; border: 2px
 @keyframes cardstamp { from { transform: scale(1.6) rotate(-8deg); opacity: 0; } to { transform: none; opacity: 1; } }
 
 .card.soon .q { transition: transform .15s; user-select: none; -webkit-tap-highlight-color: transparent; }
-
-/* «Дота 3»: титул игры справа, две стороны карты */
-.d-dota { opacity: var(--d-dota); background: #0b0e16 url(img/d3_hero.webp) right center / auto 100% no-repeat;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 45%); mask-image: linear-gradient(90deg, transparent 0, #000 45%); }
-@media (max-width: 820px) { .d-dota { background-position: 70% center; opacity: calc(var(--d-dota) * .6); } }
