@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0e0e10">
 <link rel="icon" href="img/mayak.svg" type="image/svg+xml">
 <script>try { var t = sessionStorage.getItem("mayak-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
-<link rel="stylesheet" href="style.css?v=cc4fdb71">
+<link rel="stylesheet" href="style.css?v=de4fbaea">
 </head>
 <body>
 
@@ -32,6 +32,8 @@
 
 <div class="hero">
   <!-- нейтральный вид сайта: мозаика из кадров всех игр (берутся из data-shots у карточек) -->
+  <!-- «Диспетчер»: ночная схема города и метки вызовов -->
+  <div class="deco d-ds" aria-hidden="true"><i style="left:74%;top:30%"></i><i style="left:88%;top:62%"></i><i style="left:61%;top:72%"></i></div>
   <!-- «Будка» (секретная): окошко будки, пропуск и падающий штамп -->
   <div class="deco d-budka" aria-hidden="true"></div>
   <!-- «Дота 3» (секретная): 12 героев с двух сторон карты -->
@@ -281,6 +283,16 @@
       </div>
     </div>
     <div class="games">
+      <article class="card" data-game="dispatcher" data-genre="sim" data-tags="browser pc long" data-href="dispatcher/"
+               data-shots="ds_silence ds_trunk ds_fire ds_hostage ds_garage ds_report">
+        <div class="cover" style="background-image:url(img/ds_silence_s.webp)"><span class="new">новое</span><span class="badge">v0.3 · «Третья ночь»</span></div>
+        <div class="body">
+          <h3>Диспетчер</h3>
+          <p>Ночная смена в службе 112. Выясни, что случилось, найди адрес на карте сам и отправь нужные машины. А иногда в трубке только тишина и дыхание.</p>
+          <div class="tags"><span class="tag">симулятор</span><span class="tag">полу-хоррор</span><span class="tag">браузер и ПК</span><span class="tag">3 ночи из 12</span></div>
+          <div class="go"><a class="btn btn-main btn-small" href="dispatcher/" data-open="dispatcher">▶&nbsp; Играть</a></div>
+        </div>
+      </article>
       <article class="card" data-game="kot" data-genre="sandbox" data-tags="browser pc phone pixel endings" data-href="kotovasiya/"
                data-shots="kot_cover kot_kitchen kot_mouse kot_window kot_dinner kot_attic kot_night kot_chaos">
         <div class="cover" style="background-image:url(img/kot_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.0.2 · «Лапки на экране»</span></div>
@@ -391,7 +403,7 @@
   </div>
 </footer>
 
-<script src="theme.js?v=efb74134"></script>
+<script src="theme.js?v=caefaeb5"></script>
 <script src="preload.js?v=d357fec2"></script>
 <script>
 (function () {
@@ -595,7 +607,7 @@
   }
 })();
 </script>
-<script src="updates.js?v=11c95ebb"></script>
+<script src="updates.js?v=a64cb29d"></script>
 <script src="catalog.js?v=527d1efc"></script>
 </body>
 </html>

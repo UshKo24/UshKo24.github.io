@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ru" data-theme="dispatcher">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Диспетчер · МАЯК</title>
+<meta name="description" content="Ты — диспетчер 112. Звонки по одному, под таймером: выясни, что случилось, найди адрес на карте сам и отправь нужные службы. Иногда в трубке — только тишина.">
+<meta property="og:title" content="Диспетчер">
+<meta property="og:description" content="Ты не герой с пистолетом. Ты голос в трубке, от которого зависит, доедет ли помощь.">
+<meta property="og:image" content="../img/ds_silence.webp">
+<meta name="theme-color" content="#0a0d0c">
+<link rel="icon" href="../img/dispatcher-icon.png">
+<link rel="stylesheet" href="../style.css?v=de4fbaea">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" id="logo">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><circle class="l-glow" cx="15" cy="7" r="6" opacity=".25"/><rect class="l-lamp" x="12" y="5" width="6" height="4" rx="1"/><path class="l-body" d="M11 10h8l2 17H9z"/><path class="l-stripe" d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z"/></svg>
+      <span class="brand-name">МАЯК</span> <small>игры в браузере</small>
+    </a>
+    <nav class="nav">
+      <a href="../#games" class="on">Игры</a>
+      <a href="../updates/">Обновления</a>
+      <a href="../music/">Музыка</a>
+      <a href="../#about">О сайте</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="game-head">
+    <div class="crumbs"><a href="../#games">Игры</a> / Диспетчер</div>
+    <h1>Диспетчер</h1>
+    <p class="sub">Ты не герой с пистолетом. Ты голос в трубке, от которого зависит, доедет ли помощь.</p>
+  </div>
+
+  <div class="player" id="player" style="background-image:url(../img/ds_menu.webp)">
+    <div class="start" id="start">
+      <button class="btn btn-main" id="play">▶&nbsp; Принять смену</button>
+      <small>Нужны мышка и звук · прогресс кампании сохраняется в браузере</small>
+    </div>
+    <div class="rotate">Переверни телефон горизонтально ↻</div>
+    <button class="unmax" id="unmax" title="Свернуть">✕&nbsp; Свернуть</button>
+  </div>
+  <div class="player-bar">
+    <span class="hint" id="hint">«Развернуть» + клавиша F11 — весь экран. Свернуть — кнопка ✕ сверху.</span>
+    <span class="bar-buttons">
+      <button class="btn btn-small" id="max">⛶&nbsp; Развернуть</button>
+      <button class="btn btn-small" id="fs">Полный экран</button>
+    </span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap cols">
+    <div>
+      <h2>Об игре</h2>
+      <p>Ночная смена в службе 112 города Краснореченска. Звонки идут по одному, и у каждого — таймер. Звонящий паникует, путается, врёт или шепчет, а ты выбираешь, что спросить и что сказать.</p>
+      <p>Адрес никто не подскажет: его надо найти на схеме города самому. Кто-то назовёт улицу и дом, кто-то скажет «у заправки возле моста», а кто-то не может говорить вовсе — и место приходится угадывать по звукам в трубке: гул моста, грунтовка, гудок поезда, скрип железных ворот.</p>
+      <p>Поставь метку и отправь нужные машины. На похищение не шлют пожарных, на захват заложника нужен переговорщик, а сирена иногда спугнёт того, кого ловят. Итог каждого вызова узнаёшь только утром, в отчёте смены.</p>
+      <p>И бывает, что на линии просто тишина. Только дыхание. Ты знаешь, что там человек, — и не знаешь, почему он молчит.</p>
+      <ul class="features">
+        <li>Три ночи кампании из двенадцати, по 4–5 вызовов за смену</li>
+        <li>Поиск адреса на карте: номера домов, ориентиры, поиск улицы</li>
+        <li>Полиция, скорая, пожарные, переговорщик, спецназ и кинолог</li>
+        <li>Сквозной сюжет: решения первой ночи меняют звонки следующих</li>
+        <li>Ложные вызовы, звонки-ловушки и тишина на линии</li>
+      </ul>
+
+      <h2 style="margin-top:40px">Скриншоты</h2>
+      <div class="shots">
+        <button data-full="../img/ds_silence.webp"><img src="../img/ds_silence_s.webp" alt="Тишина на линии" loading="lazy"></button>
+        <button data-full="../img/ds_fire.webp"><img src="../img/ds_fire_s.webp" alt="«Кухня горит»" loading="lazy"></button>
+        <button data-full="../img/ds_trunk.webp"><img src="../img/ds_trunk_s.webp" alt="Девушка в багажнике" loading="lazy"></button>
+        <button data-full="../img/ds_hostage.webp"><img src="../img/ds_hostage_s.webp" alt="«У него ружьё»" loading="lazy"></button>
+        <button data-full="../img/ds_granny.webp"><img src="../img/ds_granny_s.webp" alt="«Кто-то ходит на кухне»" loading="lazy"></button>
+        <button data-full="../img/ds_garage.webp"><img src="../img/ds_garage_s.webp" alt="ГСК «Мотор»" loading="lazy"></button>
+        <button data-full="../img/ds_report.webp"><img src="../img/ds_report_s.webp" alt="Отчёт смены" loading="lazy"></button>
+        <button data-full="../img/ds_intro.webp"><img src="../img/ds_intro_s.webp" alt="Третья ночь" loading="lazy"></button>
+        <button data-full="../img/ds_menu.webp"><img src="../img/ds_menu_s.webp" alt="Главное меню" loading="lazy"></button>
+      </div>
+    </div>
+
+    <aside>
+      <div class="box">
+        <h3>Управление</h3>
+        <table class="keys">
+          <tr><td>1–4</td><td>выбрать ответ</td></tr>
+          <tr><td>Пробел</td><td>принять вызов</td></tr>
+          <tr><td>ЛКМ по карте</td><td>поставить метку</td></tr>
+          <tr><td>Колесо</td><td>масштаб карты</td></tr>
+          <tr><td>ПКМ</td><td>двигать карту</td></tr>
+          <tr><td>Esc</td><td>пауза</td></tr>
+        </table>
+      </div>
+
+      <div class="box">
+        <h3>Об игре</h3>
+        <dl class="meta">
+          <dt>Версия</dt><dd>0.3 «Третья ночь»</dd>
+          <dt>Жанр</dt><dd>симулятор диспетчера, полу-хоррор</dd>
+          <dt>Кампания</dt><dd>3 ночи из 12</dd>
+          <dt>Вызовов</dt><dd>14</dd>
+          <dt>Платформы</dt><dd>браузер на ПК, Windows</dd>
+          <dt>Язык</dt><dd>русский</dd>
+          <dt>Движок</dt><dd>Godot 4</dd>
+        </dl>
+        <p style="margin:14px 0 0;color:var(--muted);font-size:14px">Лучше в наушниках: половина подсказок — в звуках на фоне.</p>
+      </div>
+
+      <div class="box">
+        <h3>Скачать</h3>
+        <div class="downloads">
+          <a class="btn btn-small" href="../downloads/Dispatcher_v0.3_windows.zip" download>Windows · 37 МБ</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Что нового</h3>
+        <ul class="changelog">
+          <li><b>0.3 «Третья ночь»:</b> новые службы — спецназ и кинолог с собакой, база ОМОН на карте. Пять вызовов: пропавший мальчик в парке, газ в подъезде, «таксист везёт не туда», ограбление магазина и развязка истории с ГСК «Мотор»</li>
+          <li><b>0.2 «Вторая ночь»:</b> сохранение кампании, заставка перед каждой ночью, переговорщик. Пять вызовов: ДТП на мосту, вор у бабушки, пьяный сосед, заложник с ружьём — и звонок, который зависит от первой ночи</li>
+          <li><b>0.1 «Первая смена»:</b> карта Краснореченска с номерами домов, полиция, скорая и пожарные, четыре вызова, тишина на линии, отчёт смены</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 МАЯК</span>
+    <span>Игры на <a href="https://godotengine.org" target="_blank" rel="noopener">Godot Engine</a></span>
+  </div>
+</footer>
+
+<script src="../theme.js?v=caefaeb5"></script>
+<script src="../preload.js?v=d357fec2"></script>
+<script>
+(function () {
+  MayakTheme.remember("dispatcher");
+  document.getElementById("logo").addEventListener("click", function () { MayakTheme.remember(""); });
+
+  var COVER = "../img/ds_menu.webp";
+  var player = document.getElementById("player");
+  var start = document.getElementById("start");
+  var isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1100);
+
+  function goFull() {
+    var req = player.requestFullscreen || player.webkitRequestFullscreen;
+    if (!req) return Promise.resolve();
+    return Promise.resolve(req.call(player)).then(function () {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(function () {});
+      }
+    }).catch(function () {});
+  }
+
+  function focusGame() {
+    var f = player.querySelector("iframe");
+    if (f) { try { f.focus(); f.contentWindow.focus(); } catch (e) {} }
+  }
+
+  // движок начинает качаться в фоне сразу, пока читаешь страницу
+  MayakPreload.startIdle("../", ["../games/dispatcher/dispatcher-b5705122.pck"], 200);
+
+  document.getElementById("play").addEventListener("click", function () {
+    var btn = this;
+    if (isPhone) goFull();   // полный экран можно включить только сразу по нажатию
+    if (!MayakPreload.busy()) { launch(); return; }
+    // фоновая загрузка ещё идёт — показываем её прогресс и запускаем, когда закончится
+    btn.disabled = true;
+    var tick = setInterval(function () {
+      btn.textContent = "Загрузка " + Math.round(MayakPreload.progress() * 100) + "%";
+    }, 150);
+    MayakPreload.wait(function () { clearInterval(tick); launch(); });
+  });
+
+  function launch() {
+    var frame = document.createElement("iframe");
+    frame.src = "../games/dispatcher/index.html?v=030";
+    frame.allow = "autoplay; fullscreen; gamepad";
+    frame.setAttribute("allowfullscreen", "");
+    frame.title = "Диспетчер";
+    frame.addEventListener("load", focusGame);
+    player.appendChild(frame);
+    player.classList.add("running");
+    start.remove();
+    setTimeout(focusGame, 300);
+  }
+
+  document.getElementById("fs").addEventListener("click", function () {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else {
+      goFull().then(focusGame);
+    }
+  });
+  player.addEventListener("click", focusGame);
+
+  var MAX_CSS = "position:fixed;left:0;top:0;right:0;bottom:0;z-index:100;width:100vw;height:100vh;max-width:none;aspect-ratio:auto;border-radius:0;border:0;margin:0;";
+  function setMax(on) {
+    player.classList.toggle("max", on);
+    player.style.cssText = "background-image:url(" + COVER + ");" + (on ? MAX_CSS : "");
+    document.getElementById("unmax").style.display = on ? "block" : "none";
+    document.body.classList.toggle("noscroll", on);
+    setTimeout(focusGame, 50);
+  }
+  document.getElementById("max").addEventListener("click", function () { setMax(true); });
+  document.getElementById("unmax").addEventListener("click", function (e) { e.stopPropagation(); setMax(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && player.classList.contains("max")) setMax(false); });
+
+  if (isPhone) {
+    document.getElementById("hint").textContent = "Эта игра пока только для компьютера — нужна мышка.";
+  }
+
+  var lb = document.getElementById("lightbox");
+  document.querySelectorAll(".shots button").forEach(function (b) {
+    b.addEventListener("click", function () { lb.querySelector("img").src = b.dataset.full; lb.classList.add("on"); });
+  });
+  lb.addEventListener("click", function () { lb.classList.remove("on"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("on"); });
+})();
+</script>
+</body>
+</html>
