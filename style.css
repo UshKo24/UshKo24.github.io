@@ -770,7 +770,7 @@ html[data-theme="turniket"] .player .start small { background: #fff; border: 2px
 @media (max-width: 820px) { .mosaic { width: 120%; right: -40%; opacity: .7; } }
 @media (prefers-reduced-motion: reduce) { .mosaic { animation: none; } }
 /* «Играть» в шапке ведёт к списку игр — не прятать заголовок под липкой шапкой */
-#games, #updates, #about { scroll-margin-top: 64px; }
+#games, #about { scroll-margin-top: 64px; }
 
 /* «Метро»: городская сетка и схема линий с поездами */
 .d-metro { opacity: var(--d-metro); background:
@@ -943,4 +943,24 @@ html[data-theme="turniket"] .player .start small { background: #fff; border: 2px
   .upd { gap: 12px; padding: 14px; }
   .u-date { flex-basis: 40px; }
   .u-date b { font-size: 22px; }
+}
+
+/* страница обновлений */
+.upd-chips { margin: 4px 0 18px; }
+
+/* ---------- плавные переходы между страницами ---------- */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: vt-out .28s ease both; }
+::view-transition-new(root) { animation: vt-in .38s ease both; }
+@keyframes vt-out { to { opacity: 0; transform: translateY(-6px); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(10px); } }
+header.top { view-transition-name: topbar; }
+::view-transition-group(topbar) { animation-duration: .38s; }
+/* там, где браузер не умеет view transitions, — мягкое появление и уход (класс ставит theme.js) */
+html.fade-in body { animation: page-in .38s ease both; }
+html.fade-out body { opacity: 0; transform: translateY(-6px); transition: opacity .22s ease, transform .22s ease; }
+@keyframes page-in { from { opacity: 0; transform: translateY(10px); } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+  html.fade-in body { animation: none; }
 }
