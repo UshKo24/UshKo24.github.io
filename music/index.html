@@ -7,7 +7,7 @@
 <meta name="description" content="Музыка из игр МАЯКа — слушай прямо на сайте или скачивай бесплатно.">
 <meta name="theme-color" content="#14161b">
 <link rel="icon" href="../img/dota3-icon.png">
-<link rel="stylesheet" href="../style.css?v=de4fbaea">
+<link rel="stylesheet" href="../style.css?v=c56121df">
 <style>
 .tracks { display: grid; gap: 12px; margin: 8px 0 30px; }
 .track { display: grid; grid-template-columns: 64px 1fr auto; gap: 16px; align-items: center;
@@ -111,11 +111,15 @@ input[type=range] { accent-color: var(--accent); cursor: pointer; }
 </footer>
 
 <audio id="audio" preload="metadata"></audio>
-<script src="../theme.js?v=caefaeb5"></script>
+<script src="../theme.js?v=0dfba6ca"></script>
 <script>
 (function () {
   // чтобы добавить трек — просто допиши строку сюда и положи mp3 в папку music/
   var TRACKS = [
+    { file: "pulse-razogrev.mp3", title: "Разогрев", game: "Пульс", note: "уровень 1 · 128 BPM", art: "../img/pl_art_razogrev.webp", len: "0:43" },
+    { file: "pulse-neon-storm.mp3", title: "Неоновый шторм", game: "Пульс", note: "уровень 2 · 140 BPM", art: "../img/pl_art_neon.webp", len: "1:07" },
+    { file: "pulse-oskolki.mp3", title: "Осколки", game: "Пульс", note: "уровень 3 · 150 BPM", art: "../img/pl_art_oskolki.webp", len: "1:35" },
+    { file: "pulse-yadro.mp3", title: "Ядро", game: "Пульс", note: "финальный босс · 160 BPM", art: "../img/pl_art_yadro.webp", len: "2:06" },
     { file: "dota3-menu.mp3", title: "Главная тема", game: "Дота 3", note: "из главного меню", art: "../img/d3_hero.webp", len: "0:42" },
     { file: "dota3-epic.mp3", title: "Главная тема — эпичная версия", game: "Дота 3", note: "хор, оркестр и барабаны", art: "../img/d3_hero.webp", len: "2:45" }
   ];

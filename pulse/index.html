@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ru" data-theme="pulse">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пульс · МАЯК</title>
+<meta name="description" content="Ритм-игра в духе Just Shapes & Beats: всё розовое бьёт, а каждая атака падает точно в такт музыке. Четыре уровня и финальный босс.">
+<meta property="og:title" content="Пульс">
+<meta property="og:description" content="Уворачивайся от ритма. Всё розовое бьёт, а каждая атака падает точно в такт.">
+<meta property="og:image" content="../img/pl_phase3.webp">
+<meta name="theme-color" content="#090718">
+<link rel="icon" href="../img/pl_menu_s.webp">
+<link rel="stylesheet" href="../style.css?v=c56121df">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" id="logo">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><circle class="l-glow" cx="15" cy="7" r="6" opacity=".25"/><rect class="l-lamp" x="12" y="5" width="6" height="4" rx="1"/><path class="l-body" d="M11 10h8l2 17H9z"/><path class="l-stripe" d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z"/></svg>
+      <span class="brand-name">МАЯК</span> <small>игры в браузере</small>
+    </a>
+    <nav class="nav">
+      <a href="../#games" class="on">Игры</a>
+      <a href="../updates/">Обновления</a>
+      <a href="../music/">Музыка</a>
+      <a href="../#about">О сайте</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="game-head">
+    <div class="crumbs"><a href="../#games">Игры</a> / Пульс</div>
+    <h1>Пульс</h1>
+    <p class="sub">Уворачивайся от ритма. Всё розовое бьёт, а каждая атака падает точно в такт.</p>
+  </div>
+
+  <div class="player" id="player" style="background-image:url(../img/pl_walls.webp)">
+    <div class="start" id="start">
+      <button class="btn btn-main" id="play">▶&nbsp; Играть</button>
+      <small>Со звуком обязательно · лучшие ранги сохраняются в браузере</small>
+    </div>
+    <div class="rotate">Переверни телефон горизонтально ↻</div>
+    <button class="unmax" id="unmax" title="Свернуть">✕&nbsp; Свернуть</button>
+  </div>
+  <div class="player-bar">
+    <span class="hint" id="hint">«Развернуть» + клавиша F11 — весь экран. Свернуть — кнопка ✕ сверху.</span>
+    <span class="bar-buttons">
+      <button class="btn btn-small" id="max">⛶&nbsp; Развернуть</button>
+      <button class="btn btn-small" id="fs">Полный экран</button>
+    </span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap cols">
+    <div>
+      <h2>Об игре</h2>
+      <p>Ты — маленький голубой квадрат. Всё, что розовое, бьёт: лучи, взрывы, стены с узким проходом, вращающиеся лопасти, кольца и залпы пуль. Перед каждой атакой место вспыхивает предупреждением, а сама атака срабатывает точно на бит.</p>
+      <p>Главный приём — рывок. Пока ты летишь рывком, ты неуязвим и проходишь сквозь опасность. Три попадания — и игра перематывает время к последнему чекпоинту.</p>
+      <p>Первые уровни короткие, дальше длиннее и злее. В конце ждёт Ядро — босс в трёх фазах, который две минуты стреляет в ритм собственной музыки.</p>
+      <p>Музыка для каждого уровня написана нота за нотой и играет прямо в браузере. Все треки можно послушать и скачать в разделе <a href="../music/">«Музыка»</a>.</p>
+      <ul class="features">
+        <li>4 уровня: 0:41, 1:04, 1:32 и финальный босс на 2:00</li>
+        <li>Свой трек у каждого уровня: 128, 140, 150 и 160 BPM</li>
+        <li>Атаки строго в такт и с предупреждением — всё можно прочитать</li>
+        <li>Рывок с неуязвимостью, чекпоинты и перемотка вместо проигрыша</li>
+        <li>Ранги S / A / B / C за каждый уровень</li>
+        <li>На телефоне — джойстик пальцем и рывок тапом</li>
+      </ul>
+
+      <h2 style="margin-top:40px">Скриншоты</h2>
+      <div class="shots">
+        <button data-full="../img/pl_phase3.webp"><img src="../img/pl_phase3_s.webp" alt="Ядро, третья фаза" loading="lazy"></button>
+        <button data-full="../img/pl_core.webp"><img src="../img/pl_core_s.webp" alt="Ядро просыпается в «Неоновом шторме»" loading="lazy"></button>
+        <button data-full="../img/pl_shards.webp"><img src="../img/pl_shards_s.webp" alt="Треугольники лопаются на осколки" loading="lazy"></button>
+        <button data-full="../img/pl_halves.webp"><img src="../img/pl_halves_s.webp" alt="Половина экрана вспыхивает" loading="lazy"></button>
+        <button data-full="../img/pl_walls.webp"><img src="../img/pl_walls_s.webp" alt="Стены с проходом" loading="lazy"></button>
+        <button data-full="../img/pl_boss.webp"><img src="../img/pl_boss_s.webp" alt="Вторая фаза босса" loading="lazy"></button>
+        <button data-full="../img/pl_map.webp"><img src="../img/pl_map_s.webp" alt="Выбор уровня" loading="lazy"></button>
+        <button data-full="../img/pl_result.webp"><img src="../img/pl_result_s.webp" alt="Ранг S" loading="lazy"></button>
+        <button data-full="../img/pl_menu.webp"><img src="../img/pl_menu_s.webp" alt="Главное меню" loading="lazy"></button>
+      </div>
+    </div>
+
+    <aside>
+      <div class="box">
+        <h3>Управление</h3>
+        <table class="keys">
+          <tr><td>WASD / стрелки</td><td>двигаться</td></tr>
+          <tr><td>Пробел / Shift</td><td>рывок (неуязвимость)</td></tr>
+          <tr><td>Esc</td><td>пауза</td></tr>
+          <tr><td>F</td><td>полный экран</td></tr>
+          <tr><td>Телефон</td><td>палец слева — джойстик, тап справа — рывок</td></tr>
+        </table>
+      </div>
+
+      <div class="box">
+        <h3>Об игре</h3>
+        <dl class="meta">
+          <dt>Версия</dt><dd>0.2 «Осколки и Ядро»</dd>
+          <dt>Жанр</dt><dd>ритм-аркада, буллет-хелл</dd>
+          <dt>Уровней</dt><dd>4, последний — босс</dd>
+          <dt>Партия</dt><dd>от 41 секунды до 2 минут</dd>
+          <dt>Платформы</dt><dd>браузер на ПК и телефоне</dd>
+          <dt>Язык</dt><dd>русский</dd>
+          <dt>Движок</dt><dd>HTML5 Canvas + Web Audio</dd>
+        </dl>
+        <p style="margin:14px 0 0;color:var(--muted);font-size:14px">Играй со звуком: атаки привязаны к битам, и по музыке их легко предугадать.</p>
+      </div>
+
+      <div class="box">
+        <h3>Скачать</h3>
+        <div class="downloads">
+          <a class="btn btn-small" href="../downloads/Pulse_v0.2.zip" download>Для ПК · 164 КБ</a>
+        </div>
+        <p style="margin:10px 0 0;color:var(--muted);font-size:14px">Распакуй и открой «Пульс.html» в браузере — работает без интернета.</p>
+      </div>
+
+      <div class="box">
+        <h3>Что нового</h3>
+        <ul class="changelog">
+          <li><b>0.2 «Осколки и Ядро»:</b> уровень «Осколки» (1:32) — треугольники, которые лопаются на осколки, мигающие половины экрана и орбиты. Финальный босс «Ядро» (2:00) в трёх фазах со шкалой здоровья. Саундтрек в разделе «Музыка»</li>
+          <li><b>0.1 «Первый пульс»:</b> меню, карта уровней, «Разогрев» и «Неоновый шторм», рывок, чекпоинты, перемотка и ранги</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 МАЯК</span>
+    <span>Игры на <a href="https://godotengine.org" target="_blank" rel="noopener">Godot Engine</a></span>
+  </div>
+</footer>
+
+<script src="../theme.js?v=0dfba6ca"></script>
+<script>
+(function () {
+  MayakTheme.remember("pulse");
+  document.getElementById("logo").addEventListener("click", function () { MayakTheme.remember(""); });
+
+  var COVER = "../img/pl_walls.webp";
+  var player = document.getElementById("player");
+  var start = document.getElementById("start");
+  var isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1100);
+
+  function goFull() {
+    var req = player.requestFullscreen || player.webkitRequestFullscreen;
+    if (!req) return Promise.resolve();
+    return Promise.resolve(req.call(player)).then(function () {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(function () {});
+      }
+    }).catch(function () {});
+  }
+
+  function focusGame() {
+    var f = player.querySelector("iframe");
+    if (f) { try { f.focus(); f.contentWindow.focus(); } catch (e) {} }
+  }
+
+  document.getElementById("play").addEventListener("click", function () {
+    if (isPhone) goFull();   // полный экран можно включить только сразу по нажатию
+    var frame = document.createElement("iframe");
+    frame.src = "../games/pulse/index.html?v=020";
+    frame.allow = "autoplay; fullscreen; gamepad";
+    frame.setAttribute("allowfullscreen", "");
+    frame.title = "Пульс";
+    frame.addEventListener("load", focusGame);
+    player.appendChild(frame);
+    player.classList.add("running");
+    start.remove();
+    setTimeout(focusGame, 300);
+  });
+
+  document.getElementById("fs").addEventListener("click", function () {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else {
+      goFull().then(focusGame);
+    }
+  });
+  player.addEventListener("click", focusGame);
+
+  var MAX_CSS = "position:fixed;left:0;top:0;right:0;bottom:0;z-index:100;width:100vw;height:100vh;max-width:none;aspect-ratio:auto;border-radius:0;border:0;margin:0;";
+  function setMax(on) {
+    player.classList.toggle("max", on);
+    player.style.cssText = "background-image:url(" + COVER + ");" + (on ? MAX_CSS : "");
+    document.getElementById("unmax").style.display = on ? "block" : "none";
+    document.body.classList.toggle("noscroll", on);
+    setTimeout(focusGame, 50);
+  }
+  document.getElementById("max").addEventListener("click", function () { setMax(true); });
+  document.getElementById("unmax").addEventListener("click", function (e) { e.stopPropagation(); setMax(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && player.classList.contains("max")) setMax(false); });
+
+  if (isPhone) {
+    document.getElementById("hint").textContent = "На телефоне: палец слева — джойстик, тап справа — рывок. Держи телефон горизонтально.";
+  }
+
+  var lb = document.getElementById("lightbox");
+  document.querySelectorAll(".shots button").forEach(function (b) {
+    b.addEventListener("click", function () { lb.querySelector("img").src = b.dataset.full; lb.classList.add("on"); });
+  });
+  lb.addEventListener("click", function () { lb.classList.remove("on"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("on"); });
+})();
+</script>
+</body>
+</html>
