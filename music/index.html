@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Музыка · МАЯК</title>
+<meta name="description" content="Музыка из игр МАЯКа — слушай прямо на сайте или скачивай бесплатно.">
+<meta name="theme-color" content="#14161b">
+<link rel="icon" href="../img/dota3-icon.png">
+<link rel="stylesheet" href="../style.css?v=ba78ca45">
+<style>
+.tracks { display: grid; gap: 12px; margin: 8px 0 30px; }
+.track { display: grid; grid-template-columns: 64px 1fr auto; gap: 16px; align-items: center;
+  background: var(--panel); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: 12px 16px 12px 12px; cursor: pointer;
+  transition: border-color .15s, background .15s; }
+.track:hover { border-color: var(--border-hover); }
+.track.on { border-color: var(--accent); background: var(--panel-solid); }
+.track .art { position: relative; width: 64px; height: 64px; border-radius: 10px; background: #0b0e16 78% center / cover no-repeat; overflow: hidden; }
+.track .art::after { content: "▶"; position: absolute; inset: 0; display: grid; place-items: center; font-size: 22px; color: #fff;
+  background: rgba(0, 0, 0, .35); opacity: 0; transition: opacity .15s; }
+.track:hover .art::after, .track.on .art::after { opacity: 1; }
+.track.on.playing .art::after { content: "❚❚"; font-size: 18px; }
+.track h3 { margin: 0; font-size: 20px; }
+.track .from { color: var(--muted); font-size: 15px; margin-top: 2px; }
+.track .from b { color: var(--accent); font-weight: 500; }
+.track .right { display: flex; align-items: center; gap: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.track .dl { color: var(--muted); font-size: 20px; text-decoration: none; padding: 4px 6px; border-radius: 6px; }
+.track .dl:hover { color: var(--accent); background: var(--btn2); }
+.eq { display: none; gap: 2px; align-items: flex-end; height: 16px; }
+.track.on.playing .eq { display: flex; }
+.eq i { width: 3px; background: var(--accent); animation: eq .9s ease-in-out infinite; }
+.eq i:nth-child(2) { animation-delay: .2s; } .eq i:nth-child(3) { animation-delay: .4s; }
+@keyframes eq { 0%, 100% { height: 4px; } 50% { height: 16px; } }
+
+.nowbar { position: sticky; bottom: 0; z-index: 30; background: var(--header-bg); backdrop-filter: blur(10px);
+  border-top: var(--bw) solid var(--border); padding: 12px 0; }
+.nowbar .wrap { display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; }
+.nowbar .ctl { display: flex; gap: 8px; align-items: center; }
+.nowbar button { width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer; font-size: 16px;
+  background: var(--btn2); color: var(--btn2-text); }
+.nowbar button:hover { background: var(--btn2-hover); }
+.nowbar button.play { width: 52px; height: 52px; background: var(--btn); color: var(--btn-text); font-size: 19px; }
+.nowbar button.play:hover { background: var(--btn-hover); }
+.nowbar button.toggle.on { color: var(--accent); box-shadow: inset 0 0 0 2px var(--accent); }
+.nowbar .mid { min-width: 0; }
+.nowbar .title { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nowbar .title small { color: var(--muted); font-weight: 400; margin-left: 6px; }
+.seek { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; margin-top: 4px; }
+.seek input { flex: 1; }
+input[type=range] { accent-color: var(--accent); cursor: pointer; }
+.vol { display: flex; align-items: center; gap: 8px; color: var(--muted); }
+.vol input { width: 100px; }
+@media (max-width: 700px) {
+  .nowbar .wrap { grid-template-columns: 1fr; gap: 8px; }
+  .nowbar .ctl { justify-content: center; order: 2; }
+  .vol { display: none; }
+  .track { grid-template-columns: 52px 1fr auto; gap: 12px; }
+  .track .art { width: 52px; height: 52px; }
+  .track h3 { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" id="logo">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><circle class="l-glow" cx="15" cy="7" r="6" opacity=".25"/><rect class="l-lamp" x="12" y="5" width="6" height="4" rx="1"/><path class="l-body" d="M11 10h8l2 17H9z"/><path class="l-stripe" d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z"/></svg>
+      <span class="brand-name">МАЯК</span> <small>игры в браузере</small>
+    </a>
+    <nav class="nav">
+      <a href="../#games">Игры</a>
+      <a href="./" class="on">Музыка</a>
+      <a href="../#about">О сайте</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="game-head">
+    <div class="crumbs"><a href="../">Главная</a> / Музыка</div>
+    <h1>Музыка</h1>
+    <p class="sub">Саундтреки из наших игр. Слушай прямо здесь или скачивай — бесплатно.</p>
+  </div>
+
+  <div class="tracks" id="tracks"></div>
+</div>
+
+<div class="nowbar">
+  <div class="wrap">
+    <div class="ctl">
+      <button id="prev" title="Предыдущий">⏮</button>
+      <button id="play" class="play" title="Играть / пауза">▶</button>
+      <button id="next" title="Следующий">⏭</button>
+      <button id="loop" class="toggle" title="Повтор трека">🔁</button>
+    </div>
+    <div class="mid">
+      <div class="title" id="nowtitle">Выбери трек</div>
+      <div class="seek"><span id="cur">0:00</span><input type="range" id="seek" min="0" max="1000" value="0"><span id="dur">0:00</span></div>
+    </div>
+    <div class="vol">🔊 <input type="range" id="vol" min="0" max="100" value="80"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 МАЯК</span>
+    <span>Вся музыка написана для игр МАЯКа</span>
+  </div>
+</footer>
+
+<audio id="audio" preload="metadata"></audio>
+<script src="../theme.js?v=ce4f81d3"></script>
+<script>
+(function () {
+  // чтобы добавить трек — просто допиши строку сюда и положи mp3 в папку music/
+  var TRACKS = [
+    { file: "dota3-menu.mp3", title: "Главная тема", game: "Дота 3", note: "из главного меню", art: "../img/d3_hero.webp", len: "0:42" },
+    { file: "dota3-epic.mp3", title: "Главная тема — эпичная версия", game: "Дота 3", note: "хор, оркестр и барабаны", art: "../img/d3_hero.webp", len: "2:45" }
+  ];
+
+  document.getElementById("logo").addEventListener("click", function () { MayakTheme.remember(""); });
+  var audio = document.getElementById("audio");
+  var list = document.getElementById("tracks");
+  var playBtn = document.getElementById("play");
+  var seek = document.getElementById("seek");
+  var cur = -1, seeking = false;
+
+  function fmt(s) { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ":" + ("0" + s % 60).slice(-2); }
+
+  TRACKS.forEach(function (t, i) {
+    var el = document.createElement("div");
+    el.className = "track";
+    el.innerHTML =
+      '<div class="art" style="background-image:url(' + t.art + ')"></div>' +
+      '<div><h3></h3><div class="from"><b></b> · <span></span></div></div>' +
+      '<div class="right"><span class="eq"><i></i><i></i><i></i></span><span class="len"></span>' +
+      '<a class="dl" title="Скачать mp3" download>⬇</a></div>';
+    el.querySelector("h3").textContent = t.title;
+    el.querySelector(".from b").textContent = t.game;
+    el.querySelector(".from span").textContent = t.note;
+    el.querySelector(".len").textContent = t.len;
+    var dl = el.querySelector(".dl");
+    dl.href = t.file;
+    dl.setAttribute("download", t.game + " — " + t.title + ".mp3");
+    dl.addEventListener("click", function (e) { e.stopPropagation(); });
+    el.addEventListener("click", function () { if (i === cur) toggle(); else load(i, true); });
+    list.appendChild(el);
+  });
+
+  function rows() { return list.querySelectorAll(".track"); }
+  function load(i, play) {
+    cur = (i + TRACKS.length) % TRACKS.length;
+    var t = TRACKS[cur];
+    audio.src = t.file;
+    rows().forEach(function (r, k) { r.classList.toggle("on", k === cur); });
+    var nt = document.getElementById("nowtitle");
+    nt.textContent = t.title;
+    var sm = document.createElement("small"); sm.textContent = t.game; nt.appendChild(sm);
+    if (play) audio.play();
+  }
+  function toggle() {
+    if (cur < 0) { load(0, true); return; }
+    if (audio.paused) audio.play(); else audio.pause();
+  }
+  function sync() {
+    var p = !audio.paused;
+    playBtn.textContent = p ? "❚❚" : "▶";
+    rows().forEach(function (r, k) { r.classList.toggle("playing", p && k === cur); });
+  }
+  playBtn.addEventListener("click", toggle);
+  document.getElementById("prev").addEventListener("click", function () {
+    if (audio.currentTime > 3) audio.currentTime = 0; else load(cur - 1, true);
+  });
+  document.getElementById("next").addEventListener("click", function () { load(cur + 1, true); });
+  var loopBtn = document.getElementById("loop");
+  loopBtn.addEventListener("click", function () { audio.loop = !audio.loop; loopBtn.classList.toggle("on", audio.loop); });
+
+  audio.addEventListener("play", sync);
+  audio.addEventListener("pause", sync);
+  audio.addEventListener("ended", function () { if (cur < TRACKS.length - 1) load(cur + 1, true); else sync(); });
+  audio.addEventListener("loadedmetadata", function () { document.getElementById("dur").textContent = fmt(audio.duration); });
+  audio.addEventListener("timeupdate", function () {
+    document.getElementById("cur").textContent = fmt(audio.currentTime);
+    if (!seeking && audio.duration) seek.value = Math.round(audio.currentTime / audio.duration * 1000);
+  });
+  seek.addEventListener("input", function () { seeking = true; document.getElementById("cur").textContent = fmt(seek.value / 1000 * (audio.duration || 0)); });
+  seek.addEventListener("change", function () { if (audio.duration) audio.currentTime = seek.value / 1000 * audio.duration; seeking = false; });
+
+  var vol = document.getElementById("vol");
+  var saved = 80;
+  try { saved = parseInt(localStorage.getItem("mayak-music-vol") || "80", 10); } catch (e) {}
+  vol.value = saved; audio.volume = saved / 100;
+  vol.addEventListener("input", function () {
+    audio.volume = vol.value / 100;
+    try { localStorage.setItem("mayak-music-vol", vol.value); } catch (e) {}
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.code === "Space" && e.target === document.body) { e.preventDefault(); toggle(); }
+  });
+})();
+</script>
+</body>
+</html>
