@@ -1102,8 +1102,13 @@ html.fade-out body { opacity: 0; transform: translateY(-6px); transition: opacit
 @media (prefers-reduced-motion: reduce) { .d-pulse i, .d-pulse b { animation: none; } .d-pulse i { opacity: .5; } }
 
 /* «Разлом»: кадр боя справа, мерцающие звёзды и вспышки взрывов */
-.d-razlom { opacity: var(--d-razlom); background: #070912 url(img/rz_hero.webp) right center / auto 100% no-repeat; image-rendering: pixelated;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 45%); mask-image: linear-gradient(90deg, transparent 0, #000 45%); }
+.d-razlom { opacity: var(--d-razlom); background: #070912 url(img/rz_hero.webp) right center / auto 100% no-repeat; image-rendering: pixelated; }
+.d-razlom::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .7;
+  background-image: radial-gradient(1px 1px at 23px 41px, #c8d0e8 50%, transparent 51%), radial-gradient(1px 1px at 141px 97px, #fff 50%, transparent 51%),
+    radial-gradient(2px 2px at 87px 173px, #e8ecf8 50%, transparent 51%), radial-gradient(1px 1px at 203px 21px, #9aa6c8 50%, transparent 51%),
+    radial-gradient(1px 1px at 61px 229px, #fff 50%, transparent 51%), radial-gradient(1px 1px at 233px 151px, #ffd2a3 50%, transparent 51%);
+  background-size: 260px 260px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0,0,0,.35) 30%, #000 75%); mask-image: linear-gradient(90deg, transparent 0, rgba(0,0,0,.35) 30%, #000 75%); }
 .d-razlom i { position: absolute; width: 90px; height: 90px; margin: -45px 0 0 -45px; border-radius: 50%; pointer-events: none;
   background: radial-gradient(circle, rgba(255, 236, 170, .95) 0, rgba(255, 154, 60, .7) 30%, rgba(255, 80, 30, .25) 55%, transparent 70%);
   transform: scale(0); animation: rzboom 3.6s ease-out infinite; mix-blend-mode: screen; }
