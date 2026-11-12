@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0e0e10">
 <link rel="icon" href="img/mayak.svg" type="image/svg+xml">
 <script>try { var t = sessionStorage.getItem("mayak-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
-<link rel="stylesheet" href="style.css?v=c56121df">
+<link rel="stylesheet" href="style.css?v=04c3e477">
 </head>
 <body>
 
@@ -32,6 +32,8 @@
 
 <div class="hero">
   <!-- нейтральный вид сайта: мозаика из кадров всех игр (берутся из data-shots у карточек) -->
+  <!-- «Разлом»: кадр боя и вспышки взрывов -->
+  <div class="deco d-razlom" aria-hidden="true"><i style="left:86%;top:30%"></i><i style="left:74%;top:62%"></i><i style="left:95%;top:55%"></i></div>
   <!-- «Пульс»: кадр с боссом, кольца в такт и голубой квадрат -->
   <div class="deco d-pulse" aria-hidden="true"><i style="left:72%;top:40%"></i><i style="left:72%;top:40%"></i><i style="left:72%;top:40%"></i><b></b></div>
   <!-- «Диспетчер»: ночная схема города и метки вызовов -->
@@ -285,6 +287,16 @@
       </div>
     </div>
     <div class="games">
+      <article class="card" data-game="razlom" data-genre="shooter" data-tags="pc bots pixel long" data-href="razlom/"
+               data-shots="rz_cover rz_titan rz_blast rz_drones rz_fight rz_carrier rz_hangar">
+        <div class="cover" style="background-image:url(img/rz_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.7.1 · «Звук и взрывы»</span></div>
+        <div class="body">
+          <h3>Разлом</h3>
+          <p>Пиксельные космические бои пять на пять против ботов. Корпус разваливается по пикселю, турели отстреливаются, а погибший корабль раскалывается на горящие обломки. 33 корабля, 36 орудий, ветки до 10 уровня.</p>
+          <div class="tags"><span class="tag">шутер</span><span class="tag">пиксель-арт</span><span class="tag">только скачать</span><span class="tag">Windows</span><span class="tag">33 корабля</span></div>
+          <div class="go"><a class="btn btn-main btn-small" href="razlom/" data-open="razlom">⬇&nbsp; Скачать</a></div>
+        </div>
+      </article>
       <article class="card" data-game="pulse" data-genre="arcade" data-tags="browser pc phone short" data-href="pulse/"
                data-shots="pl_phase3 pl_core pl_shards pl_halves pl_walls pl_boss">
         <div class="cover" style="background-image:url(img/pl_phase3_s.webp)"><span class="new">новое</span><span class="badge">v0.2 · «Осколки и Ядро»</span></div>
@@ -415,7 +427,7 @@
   </div>
 </footer>
 
-<script src="theme.js?v=0dfba6ca"></script>
+<script src="theme.js?v=9ae4fc1c"></script>
 <script src="preload.js?v=d357fec2"></script>
 <script>
 (function () {
@@ -619,7 +631,7 @@
   }
 })();
 </script>
-<script src="updates.js?v=da5590e5"></script>
-<script src="catalog.js?v=8ee94a8b"></script>
+<script src="updates.js?v=b0555e1a"></script>
+<script src="catalog.js?v=b7275111"></script>
 </body>
 </html>

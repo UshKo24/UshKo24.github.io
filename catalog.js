@@ -20,7 +20,7 @@
   var KEY = "mayak-filter";
   var UPD = window.MAYAK_UPDATES || [];
   var COLORS = { site: "var(--accent)", turniket: "#e8e3d6", metro: "#e2412f", golf: "#ffd23f", arsenal: "#e9b44c",
-    kot: "#f5b061", mazomus: "#ff8fb0", budka: "#ffd98a", dota: "#9fb3ff", pulse: "#3ef0ff" };
+    kot: "#f5b061", mazomus: "#ff8fb0", budka: "#ffd98a", dota: "#9fb3ff", pulse: "#3ef0ff", razlom: "#ff9a3c" };
 
   var grid = document.querySelector(".games");
   if (!grid) return;

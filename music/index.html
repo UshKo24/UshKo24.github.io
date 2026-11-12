@@ -7,7 +7,7 @@
 <meta name="description" content="Музыка из игр МАЯКа — слушай прямо на сайте или скачивай бесплатно.">
 <meta name="theme-color" content="#14161b">
 <link rel="icon" href="../img/dota3-icon.png">
-<link rel="stylesheet" href="../style.css?v=c56121df">
+<link rel="stylesheet" href="../style.css?v=04c3e477">
 <style>
 .tracks { display: grid; gap: 12px; margin: 8px 0 30px; }
 .track { display: grid; grid-template-columns: 64px 1fr auto; gap: 16px; align-items: center;
@@ -111,11 +111,15 @@ input[type=range] { accent-color: var(--accent); cursor: pointer; }
 </footer>
 
 <audio id="audio" preload="metadata"></audio>
-<script src="../theme.js?v=0dfba6ca"></script>
+<script src="../theme.js?v=9ae4fc1c"></script>
 <script>
 (function () {
   // чтобы добавить трек — просто допиши строку сюда и положи mp3 в папку music/
   var TRACKS = [
+    { file: "razlom-menu.mp3", title: "Ангар", game: "Разлом", note: "главное меню · 84 BPM", art: "../img/rz_hero_s.webp", len: "1:09" },
+    { file: "razlom-battle1.mp3", title: "Пояс астероидов", game: "Разлом", note: "боевая тема · 128 BPM", art: "../img/rz_cover_s.webp", len: "1:00" },
+    { file: "razlom-battle2.mp3", title: "Главный калибр", game: "Разлом", note: "боевая тема · 136 BPM", art: "../img/rz_titan_s.webp", len: "0:57" },
+    { file: "razlom-finale.mp3", title: "Последние двое", game: "Разлом", note: "финал боя · 148 BPM", art: "../img/rz_blast_s.webp", len: "0:26" },
     { file: "pulse-razogrev.mp3", title: "Разогрев", game: "Пульс", note: "уровень 1 · 128 BPM", art: "../img/pl_art_razogrev.webp", len: "0:43" },
     { file: "pulse-neon-storm.mp3", title: "Неоновый шторм", game: "Пульс", note: "уровень 2 · 140 BPM", art: "../img/pl_art_neon.webp", len: "1:07" },
     { file: "pulse-oskolki.mp3", title: "Осколки", game: "Пульс", note: "уровень 3 · 150 BPM", art: "../img/pl_art_oskolki.webp", len: "1:35" },
