@@ -1,7 +1,7 @@
 // МАЯК — темы игр. Тема хранится в sessionStorage, чтобы при возврате со страницы игры сайт оставался в её стиле.
 window.MayakTheme = (function () {
   var KEY = "mayak-theme";
-  var COLORS = { "": "#0e0e10", devyatyi: "#0b1029", turniket: "#f4f4f2", metro: "#f4f2ec", golf: "#1f4d31", arsenal: "#15121a", kot: "#2b2033", mazomus: "#24325c", budka: "#10142e", dota: "#0b0e16", dispatcher: "#0a0d0c", pulse: "#090718", razlom: "#070912" };
+  var COLORS = { "": "#0e0e10", devyatyi: "#0b1029", turniket: "#f4f4f2", metro: "#f4f2ec", golf: "#1f4d31", arsenal: "#15121a", kot: "#2b2033", mazomus: "#24325c", budka: "#10142e", dota: "#0b0e16", dispatcher: "#0a0d0c", pulse: "#090718", razlom: "#070912", ozrapad: "#1e5b96" };
   var root = document.documentElement;
   var timer = 0;
   var api = {

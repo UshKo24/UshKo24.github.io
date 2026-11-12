@@ -15,9 +15,14 @@ window.MAYAK_GAMES = {
   turniket: { name: "Турникет", href: "turniket/" },
   dota: { name: "Дота 3", href: "dota3/", secret: "mayak-secret-dota" },
   mazomus: { name: "Мазомус Ран", href: "mazomus/", secret: "mayak-secret-mazomus" },
-  budka: { name: "Будка", href: "budka/", secret: "mayak-secret-budka" }
+  budka: { name: "Будка", href: "budka/", secret: "mayak-secret-budka" },
+  ozrapad: { name: "Ozraпад", href: "ozrapad/", secret: "mayak-secret-ozrapad" }
 };
 window.MAYAK_UPDATES = [
+  { d: "2026-11-12", g: "ozrapad", v: "0.1", n: "Первое яйцо", i: [
+    "Первая версия секретной игры: как «Ну, погоди!», только ловит яйца Ozra",
+    "Четыре скина Ozra, бесконечный забег и рекорд",
+    "25 безумных улучшений: клон, джетпак, яйца-бомбы, перевёрнутый экран и другие"] },
   { d: "2026-11-12", g: "razlom", v: "0.7.1", n: "Звук и взрывы", i: [
     "Новая игра на сайте: пиксельные космические бои 5 на 5 против ботов, скачать для Windows",
     "33 корабля пяти типов, 36 орудий, ветки исследований до 10 уровня",
