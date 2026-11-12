@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0e0e10">
 <link rel="icon" href="img/mayak.svg" type="image/svg+xml">
 <script>try { var t = sessionStorage.getItem("mayak-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
-<link rel="stylesheet" href="style.css?v=48f20256">
+<link rel="stylesheet" href="style.css?v=35f6f0be">
 </head>
 <body>
 
@@ -42,6 +42,8 @@
   <div class="deco d-budka" aria-hidden="true"></div>
   <!-- «Дота 3» (секретная): 12 героев с двух сторон карты -->
   <div class="deco d-dota" aria-hidden="true"></div>
+  <!-- «Vlad-Blast» (секретная): экраны игры, падают цветные блоки -->
+  <div class="deco d-vb" aria-hidden="true"><i style="left:56%"></i><i style="left:72%"></i><i style="left:88%"></i></div>
   <!-- «Ozraпад» (секретная): ферма из игры, сверху сыплются яйца -->
   <div class="deco d-ozra" aria-hidden="true"><i style="left:58%"></i><i class="g" style="left:76%"></i><i style="left:90%"></i></div>
   <!-- «Мазомус Ран» (секретная): яйцо с пятачком бежит по кубам за шляпой Кроссбова -->
@@ -409,6 +411,16 @@
           <div class="go"><a class="btn btn-main btn-small" href="ozrapad/" data-open="ozrapad">▶&nbsp; Играть</a></div>
         </div>
       </article>
+      <article class="card" data-game="vladblast" data-genre="puzzle" data-tags="browser pc phone friends long" data-href="vladblast/" hidden
+               data-shots="vb_cover vb_clear vb_big vb_board vb_themes vb_start">
+        <div class="cover" style="background-image:url(img/vb_cover_s.webp)"><span class="new">секрет</span><span class="badge">v0.1 · «Первый блок»</span></div>
+        <div class="body">
+          <h3>Vlad-Blast</h3>
+          <p>Как Block Blast, только каждая фигура — Влад. 3×1 — Влад в полный рост, лёжа — Влад лежит, 3×3 — один огромный растянутый Влад. 34 скина, комбо, рекорд дня и шесть тем.</p>
+          <div class="tags"><span class="tag">головоломка</span><span class="tag">секретная</span><span class="tag">ПК и телефон</span><span class="tag">34 скина</span><span class="tag">бесконечная</span></div>
+          <div class="go"><a class="btn btn-main btn-small" href="vladblast/" data-open="vladblast">▶&nbsp; Играть</a></div>
+        </div>
+      </article>
       <div class="card soon">
         <div class="q">?</div>
         <h3>Скоро</h3>
@@ -434,12 +446,12 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 МАЯК</span>
+    <span><span class="vb-c" id="vbCopy">©</span> 2026 МАЯК</span>
     <span>Игры на <a href="https://godotengine.org" target="_blank" rel="noopener">Godot Engine</a></span>
   </div>
 </footer>
 
-<script src="theme.js?v=492de6e4"></script>
+<script src="theme.js?v=86daedd8"></script>
 <script src="preload.js?v=d357fec2"></script>
 <script>
 (function () {
@@ -600,6 +612,66 @@
       setTimeout(function () { location.href = a.getAttribute("href"); }, 480);
     });
   });
+  // секрет: набрать на главной «vlad» (или 8 быстрых тапов по «©» внизу) — падают блоки и собирают «Vlad-Blast»
+  (function () {
+    var KEY = "mayak-secret-vladblast";
+    var card = document.querySelector('.card[data-game="vladblast"]');
+    if (!card) return;
+    var found = false;
+    try { found = localStorage.getItem(KEY) === "1"; } catch (e) {}
+    if (found || document.documentElement.dataset.theme === "vladblast") { card.hidden = false; return; }
+    var codes = [], busy = false, COLS = ["#ffc21f", "#ff7ac8", "#3ec4a8", "#4a8cff", "#ff8a3c", "#b9a6ff", "#7dff8a"];
+    function blip(i) {
+      try {
+        var A = window.AudioContext || window.webkitAudioContext; if (!A) return;
+        var ac = new A(), o = ac.createOscillator(), g = ac.createGain();
+        o.type = "triangle"; o.frequency.value = 440 + i * 70;
+        g.gain.setValueAtTime(0.15, ac.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.12);
+        o.connect(g); g.connect(ac.destination); o.start(); o.stop(ac.currentTime + 0.13);
+      } catch (e) {}
+    }
+    function reveal() {
+      if (busy) return;
+      busy = true;
+      for (var i = 0; i < 16; i++) (function (i) {
+        setTimeout(function () {
+          var b = document.createElement("div");
+          b.className = "vb-drop";
+          b.style.left = (10 + Math.random() * 80) + "vw";
+          b.style.background = COLS[i % COLS.length];
+          b.style.setProperty("--r", (Math.random() * 120 - 60) + "deg");
+          document.body.appendChild(b);
+          if (i % 2 === 0) blip(i / 2);
+          setTimeout(function () { b.remove(); }, 1000);
+        }, i * 70);
+      })(i);
+      setTimeout(function () {
+        card.hidden = false;
+        card.classList.add("blasted");
+        try { localStorage.setItem(KEY, "1"); } catch (e) {}
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 1400);
+    }
+    document.addEventListener("keydown", function (e) {
+      if (!card.hidden) return;
+      var t = e.target; if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA")) return;
+      codes.push(e.code); codes = codes.slice(-4);
+      // «vlad» — по клавишам, поэтому и в русской раскладке («мдфв»)
+      if (codes.join(",") === "KeyV,KeyL,KeyA,KeyD") reveal();
+    });
+    // на телефоне: 8 быстрых тапов по «©» внизу страницы (поле в Block Blast — 8 на 8)
+    var cp = document.getElementById("vbCopy"), taps = [];
+    if (cp) cp.addEventListener("click", function () {
+      if (!card.hidden) return;
+      var now = Date.now();
+      taps.push(now);
+      taps = taps.filter(function (x) { return now - x < 3000; });
+      cp.style.transform = "scale(" + (1 + taps.length * 0.12) + ")";
+      setTimeout(function () { cp.style.transform = ""; }, 150);
+      if (taps.length >= 8) { taps = []; reveal(); }
+    });
+  })();
+
   // секрет: набрать на главной «ozra» — по экрану пробегает курица и сносит яйцо с «Ozraпадом»
   (function () {
     var KEY = "mayak-secret-ozrapad";
@@ -705,7 +777,7 @@
   }
 })();
 </script>
-<script src="updates.js?v=667822ae"></script>
-<script src="catalog.js?v=70f74001"></script>
+<script src="updates.js?v=7a6bdd29"></script>
+<script src="catalog.js?v=42fd0e42"></script>
 </body>
 </html>

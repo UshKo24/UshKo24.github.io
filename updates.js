@@ -16,9 +16,14 @@ window.MAYAK_GAMES = {
   dota: { name: "Дота 3", href: "dota3/", secret: "mayak-secret-dota" },
   mazomus: { name: "Мазомус Ран", href: "mazomus/", secret: "mayak-secret-mazomus" },
   budka: { name: "Будка", href: "budka/", secret: "mayak-secret-budka" },
-  ozrapad: { name: "Ozraпад", href: "ozrapad/", secret: "mayak-secret-ozrapad" }
+  ozrapad: { name: "Ozraпад", href: "ozrapad/", secret: "mayak-secret-ozrapad" },
+  vladblast: { name: "Vlad-Blast", href: "vladblast/", secret: "mayak-secret-vladblast" }
 };
 window.MAYAK_UPDATES = [
+  { d: "2026-11-12", g: "vladblast", v: "0.1", n: "Первый блок", i: [
+    "Первая версия секретной игры: Block Blast, где каждая фигура — Влад в одном из 34 скинов",
+    "Рекорд и рекорд дня, комбо, шесть тем оформления",
+    "Играть в браузере на ПК и телефоне, скачать для Windows и Android"] },
   { d: "2026-11-12", g: "ozrapad", v: "0.1", n: "Первое яйцо", i: [
     "Первая версия секретной игры: как «Ну, погоди!», только ловит яйца Ozra",
     "Четыре скина Ozra, бесконечный забег и рекорд",

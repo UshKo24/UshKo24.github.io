@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ru" data-theme="vladblast">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vlad-Blast — Block Blast со скинами Влада · МАЯК</title>
+<meta name="description" content="«Vlad-Blast» — Block Blast, где каждая фигура собирается во Влада: 34 скина, комбо, рекорд дня и шесть тем. Бесплатно в браузере на ПК и телефоне.">
+<meta property="og:title" content="Vlad-Blast — Block Blast со скинами Влада">
+<meta property="og:description" content="Ставь фигуры, собирай ряды — и всё это Влад. Секретная игра МАЯКа.">
+<meta property="og:image" content="../img/vb_cover.webp">
+<meta name="theme-color" content="#22286e">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/vb-icon.png">
+<link rel="stylesheet" href="../style.css?v=35f6f0be">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" id="logo">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><circle class="l-glow" cx="15" cy="7" r="6" opacity=".25"/><rect class="l-lamp" x="12" y="5" width="6" height="4" rx="1"/><path class="l-body" d="M11 10h8l2 17H9z"/><path class="l-stripe" d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z"/></svg>
+      <span class="brand-name">МАЯК</span> <small>игры в браузере</small>
+    </a>
+    <nav class="nav">
+      <a href="../#games" class="on">Игры</a>
+      <a href="../updates/">Обновления</a>
+      <a href="../music/">Музыка</a>
+      <a href="../#about">О сайте</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="game-head">
+    <div class="crumbs"><a href="../#games">Игры</a> / Vlad-Blast <span class="tag" style="margin-left:6px">секретная игра</span></div>
+    <h1>Vlad-Blast</h1>
+    <p class="sub">Ставь фигуры, собирай ряды. Каждая фигура — Влад.</p>
+  </div>
+
+  <div class="player portrait" id="player" style="background-image:url(../img/vb_cover.webp)">
+    <div class="start" id="start">
+      <button class="btn btn-main" id="play">▶&nbsp; Играть</button>
+      <small>Мышь или палец · рекорд и игра сохраняются в браузере</small>
+    </div>
+    <button class="unmax" id="unmax" title="Свернуть">✕&nbsp; Свернуть</button>
+  </div>
+  <div class="player-bar portrait">
+    <span class="hint" id="hint">«Развернуть» + клавиша F11 — весь экран. Свернуть — кнопка ✕ сверху.</span>
+    <span class="bar-buttons">
+      <button class="btn btn-small" id="max">⛶&nbsp; Развернуть</button>
+      <button class="btn btn-small" id="fs">Полный экран</button>
+    </span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap cols">
+    <div>
+      <h2>Об игре</h2>
+      <p>Это Block Blast: поле 8 на 8, внизу три фигуры, перетаскиваешь их на поле и собираешь полные ряды и столбцы — они взрываются. Не осталось места ни для одной фигуры — игра окончена.</p>
+      <p>Только вместо цветных плиток — Влад. Каждая фигура получает случайный скин из 34, и клетки складываются в человечка: одна клетка — голова, две — голова и тело, три в столбик — Влад в полный рост. Горизонтальная палка — Влад лежит. А квадрат 3 на 3 — один огромный растянутый Влад. Красота.</p>
+      <p>Собирай несколько линий за ход и подряд — за это комбо и множитель очков. Очистил всё поле — +300. Рекорд хранится навсегда, а рекорд дня каждый день начинается заново.</p>
+      <ul class="features">
+        <li>Классический Block Blast: поле 8×8, три фигуры, ряды и столбцы</li>
+        <li>34 скина Влада — каждая фигура со случайным</li>
+        <li>Фигуры собираются во Влада: голова, тело, ноги; лёжа — лежит</li>
+        <li>Растянутый Влад 3×3</li>
+        <li>Комбо, множитель и бонус за чистое поле</li>
+        <li>Рекорд и рекорд дня</li>
+        <li>Шесть тем: Классика, Ночь, Закат, Мята, Майн, Конфета</li>
+        <li>Игра сохраняется — можно закрыть и продолжить</li>
+      </ul>
+
+      <h2 style="margin-top:40px">Скриншоты</h2>
+      <div class="shots">
+        <button data-full="../img/vb_clear.webp"><img src="../img/vb_clear_s.webp" alt="Ряд и столбец собраны: комбо ×3" loading="lazy"></button>
+        <button data-full="../img/vb_big.webp"><img src="../img/vb_big_s.webp" alt="Растянутый Влад 3×3" loading="lazy"></button>
+        <button data-full="../img/vb_board.webp"><img src="../img/vb_board_s.webp" alt="Поле почти заполнено" loading="lazy"></button>
+        <button data-full="../img/vb_themes.webp"><img src="../img/vb_themes_s.webp" alt="Шесть тем" loading="lazy"></button>
+        <button data-full="../img/vb_start.webp"><img src="../img/vb_start_s.webp" alt="Стартовый экран" loading="lazy"></button>
+        <button data-full="../img/vb_over.webp"><img src="../img/vb_over_s.webp" alt="Влад не влез!" loading="lazy"></button>
+      </div>
+    </div>
+
+    <aside>
+      <div class="box">
+        <h3>Управление</h3>
+        <table class="keys">
+          <tr><td>Перетащить</td><td>фигуру снизу на поле</td></tr>
+          <tr><td>≡</td><td>меню: звук, музыка, новая игра</td></tr>
+          <tr><td>Палитра</td><td>темы оформления</td></tr>
+          <tr><td>F11</td><td>весь экран (на ПК)</td></tr>
+        </table>
+      </div>
+
+      <div class="box">
+        <h3>Об игре</h3>
+        <dl class="meta">
+          <dt>Версия</dt><dd>0.1 «Первый блок»</dd>
+          <dt>Жанр</dt><dd>головоломка, бесконечная</dd>
+          <dt>Скины</dt><dd>34</dd>
+          <dt>Темы</dt><dd>6</dd>
+          <dt>Игроки</dt><dd>1</dd>
+          <dt>Платформы</dt><dd>браузер на ПК и телефоне, Windows, Android</dd>
+          <dt>Управление</dt><dd>мышь или палец</dd>
+          <dt>Язык</dt><dd>русский</dd>
+          <dt>Движок</dt><dd>Godot 4</dd>
+        </dl>
+        <p style="margin:14px 0 0;color:var(--muted);font-size:14px">Секретная игра: на главной её открывает одно имя. На телефоне — восемь быстрых тапов по ©.</p>
+      </div>
+
+      <div class="box">
+        <h3>Скачать</h3>
+        <p style="margin:0 0 14px;color:var(--muted);font-size:15px">Рекорд в браузере и в скачанной версии — свой у каждой.</p>
+        <div class="downloads">
+          <a class="btn btn-small" href="../downloads/VladBlast_v0.1_windows.zip" download>Windows · 37 МБ</a>
+          <a class="btn btn-small" href="../downloads/VladBlast_v0.1_android.apk" download>Android · 51 МБ</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Что нового</h3>
+        <ul class="changelog">
+          <li><b>0.1 «Первый блок»:</b> поле 8×8, 34 скина Влада, фигуры собираются во Влада, растянутый Влад 3×3, комбо, рекорд и рекорд дня, шесть тем, сохранение игры</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 МАЯК</span>
+    <span>Игры на <a href="https://godotengine.org" target="_blank" rel="noopener">Godot Engine</a></span>
+  </div>
+</footer>
+
+<script src="../theme.js?v=86daedd8"></script>
+<script src="../preload.js?v=d357fec2"></script>
+<script>
+(function () {
+  MayakTheme.remember("vladblast");
+  document.getElementById("logo").addEventListener("click", function () { MayakTheme.remember(""); });
+
+  var COVER = "../img/vb_cover.webp";
+  var player = document.getElementById("player");
+  var start = document.getElementById("start");
+  var isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1100);
+
+  function goFull() {
+    var req = player.requestFullscreen || player.webkitRequestFullscreen;
+    if (!req) return Promise.resolve();
+    return Promise.resolve(req.call(player)).then(function () {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("portrait").catch(function () {});
+      }
+    }).catch(function () {});
+  }
+
+  function focusGame() {
+    var f = player.querySelector("iframe");
+    if (f) { try { f.focus(); f.contentWindow.focus(); } catch (e) {} }
+  }
+
+  // движок начинает качаться в фоне сразу, пока читаешь страницу
+  MayakPreload.startIdle("../", ["../games/vladblast/vladblast-af35e24f.pck"], 200);
+
+  document.getElementById("play").addEventListener("click", function () {
+    var btn = this;
+    if (isPhone) goFull();   // полный экран можно включить только сразу по нажатию
+    if (!MayakPreload.busy()) { launch(); return; }
+    // фоновая загрузка ещё идёт — показываем её прогресс и запускаем, когда закончится
+    btn.disabled = true;
+    var tick = setInterval(function () {
+      btn.textContent = "Загрузка " + Math.round(MayakPreload.progress() * 100) + "%";
+    }, 150);
+    MayakPreload.wait(function () { clearInterval(tick); launch(); });
+  });
+
+  function launch() {
+    var frame = document.createElement("iframe");
+    frame.src = "../games/vladblast/index.html?v=01b";
+    frame.allow = "autoplay; fullscreen; gamepad";
+    frame.setAttribute("allowfullscreen", "");
+    frame.title = "Vlad-Blast";
+    frame.addEventListener("load", focusGame);
+    player.appendChild(frame);
+    player.classList.add("running");
+    start.remove();
+    setTimeout(focusGame, 300);
+  }
+
+  document.getElementById("fs").addEventListener("click", function () {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else {
+      goFull().then(focusGame);
+    }
+  });
+  player.addEventListener("click", focusGame);
+
+  var MAX_CSS = "position:fixed;left:0;top:0;right:0;bottom:0;z-index:100;width:100vw;height:100vh;max-width:none;aspect-ratio:auto;border-radius:0;border:0;margin:0;";
+  function setMax(on) {
+    player.classList.toggle("max", on);
+    player.style.cssText = "background-image:url(" + COVER + ");" + (on ? MAX_CSS : "");
+    document.getElementById("unmax").style.display = on ? "block" : "none";
+    document.body.classList.toggle("noscroll", on);
+    setTimeout(focusGame, 50);
+  }
+  document.getElementById("max").addEventListener("click", function () { setMax(true); });
+  document.getElementById("unmax").addEventListener("click", function (e) { e.stopPropagation(); setMax(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && player.classList.contains("max")) setMax(false); });
+
+  if (isPhone) {
+    document.getElementById("hint").textContent = "На телефоне игра откроется на весь экран.";
+  }
+
+  var lb = document.getElementById("lightbox");
+  document.querySelectorAll(".shots button").forEach(function (b) {
+    b.addEventListener("click", function () { lb.querySelector("img").src = b.dataset.full; lb.classList.add("on"); });
+  });
+  lb.addEventListener("click", function () { lb.classList.remove("on"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("on"); });
+})();
+</script>
+</body>
+</html>
