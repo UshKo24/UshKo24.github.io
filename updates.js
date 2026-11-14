@@ -17,9 +17,15 @@ window.MAYAK_GAMES = {
   mazomus: { name: "Мазомус Ран", href: "mazomus/", secret: "mayak-secret-mazomus" },
   budka: { name: "Будка", href: "budka/", secret: "mayak-secret-budka" },
   ozrapad: { name: "Ozraпад", href: "ozrapad/", secret: "mayak-secret-ozrapad" },
-  vladblast: { name: "Vlad-Blast", href: "vladblast/", secret: "mayak-secret-vladblast" }
+  vladblast: { name: "Vlad-Blast", href: "vladblast/", secret: "mayak-secret-vladblast" },
+  vpital: { name: "ВПИТАЛ", href: "vpital/", secret: "mayak-secret-vpital" }
 };
 window.MAYAK_UPDATES = [
+  { d: "2026-11-14", g: "vpital", v: "0.6", n: "Свои подколы", i: [
+    "Новая секретная игра: перепалка в дискорде, выбирай ответ на подкол и не впитывай",
+    "Стресс, опечатки и КАПС-срыв, четыре сложности, на самой жёсткой печатаешь сам",
+    "Сюжет из пяти глав, испытания, войс, вызовы в ЛС, 24 ачивки и редактор своих подколов",
+    "Играть в браузере на ПК или скачать для Windows"] },
   { d: "2026-11-12", g: "vladblast", v: "0.1", n: "Первый блок", i: [
     "Первая версия секретной игры: Block Blast, где каждая фигура — Влад в одном из 34 скинов",
     "Рекорд и рекорд дня, комбо, шесть тем оформления",

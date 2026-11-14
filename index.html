@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0e0e10">
 <link rel="icon" href="img/mayak.svg" type="image/svg+xml">
 <script>try { var t = sessionStorage.getItem("mayak-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
-<link rel="stylesheet" href="style.css?v=35f6f0be">
+<link rel="stylesheet" href="style.css?v=faff1506">
 </head>
 <body>
 
@@ -46,6 +46,7 @@
   <div class="deco d-vb" aria-hidden="true"><i style="left:56%"></i><i style="left:72%"></i><i style="left:88%"></i></div>
   <!-- «Ozraпад» (секретная): ферма из игры, сверху сыплются яйца -->
   <div class="deco d-ozra" aria-hidden="true"><i style="left:58%"></i><i class="g" style="left:76%"></i><i style="left:90%"></i></div>
+  <!-- «ВПИТАЛ» (секретная): открывается словом «впитал» -->
   <!-- «Мазомус Ран» (секретная): яйцо с пятачком бежит по кубам за шляпой Кроссбова -->
   <div class="deco d-mazo" aria-hidden="true">
     <svg viewBox="0 0 900 560" preserveAspectRatio="xMaxYMid slice">
@@ -421,6 +422,16 @@
           <div class="go"><a class="btn btn-main btn-small" href="vladblast/" data-open="vladblast">▶&nbsp; Играть</a></div>
         </div>
       </article>
+      <article class="card" data-game="vpital" data-genre="story" data-tags="browser pc friends endings" data-href="vpital/" hidden
+               data-shots="vp_cover vp_voice vp_story vp_manual vp_boss vp_perk">
+        <div class="cover" style="background-image:url(img/vp_cover_s.webp)"><span class="new">секрет</span><span class="badge">v0.6 · «Свои подколы»</span></div>
+        <div class="body">
+          <h3>ВПИТАЛ</h3>
+          <p>Ну ты и впитал. Перепалка в дискорде: выбирай ответ на подкол, не впитывай и сливай соперников. Стресс, опечатки, КАПС-срыв, сюжет, войс, вызовы в ЛС и свои подколы.</p>
+          <div class="tags"><span class="tag">перепалка</span><span class="tag">секретная</span><span class="tag">только ПК</span><span class="tag">176 подколов</span><span class="tag">5 глав</span></div>
+          <div class="go"><a class="btn btn-main btn-small" href="vpital/" data-open="vpital">▶&nbsp; Играть</a></div>
+        </div>
+      </article>
       <div class="card soon">
         <div class="q">?</div>
         <h3>Скоро</h3>
@@ -451,7 +462,7 @@
   </div>
 </footer>
 
-<script src="theme.js?v=86daedd8"></script>
+<script src="theme.js?v=fd8c0304"></script>
 <script src="preload.js?v=d357fec2"></script>
 <script>
 (function () {
@@ -734,6 +745,61 @@
     });
   })();
 
+  // секрет: набрать на главной «впитал» — в углу всплывают уведомления из дискорда и открывают «ВПИТАЛ»
+  (function () {
+    var KEY = "mayak-secret-vpital";
+    var card = document.querySelector('.card[data-game="vpital"]');
+    if (!card) return;
+    var found = false;
+    try { found = localStorage.getItem(KEY) === "1"; } catch (e) {}
+    if (found || document.documentElement.dataset.theme === "vpital") { card.hidden = false; return; }
+    var codes = [], busy = false;
+    var MSGS = [["Г", "#f0883e", "грубиян", "ну ты и впитал"], ["Co", "#58a6ff", "Communicate", "ахиреть"], ["Су", "#ff6fb5", "суфле", "впитал другими словами"]];
+    function ping(i) {
+      try {
+        var A = window.AudioContext || window.webkitAudioContext; if (!A) return;
+        var ac = new A();
+        [[988, 0], [1319, 0.09]].forEach(function (n) {
+          var o = ac.createOscillator(), g = ac.createGain();
+          o.type = "sine"; o.frequency.value = n[0] * (1 + i * 0.06);
+          g.gain.setValueAtTime(0.0001, ac.currentTime + n[1]);
+          g.gain.exponentialRampToValueAtTime(0.16, ac.currentTime + n[1] + 0.01);
+          g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + n[1] + 0.3);
+          o.connect(g); g.connect(ac.destination); o.start(ac.currentTime + n[1]); o.stop(ac.currentTime + n[1] + 0.32);
+        });
+      } catch (e) {}
+    }
+    function reveal() {
+      if (busy) return;
+      busy = true;
+      MSGS.forEach(function (m, i) {
+        setTimeout(function () {
+          var t = document.createElement("div");
+          t.className = "vp-toast";
+          t.style.bottom = (18 + i * 74) + "px";
+          t.innerHTML = '<i style="background:' + m[1] + '">' + m[0] + '</i><b style="color:' + m[1] + '">' + m[2] + '</b><span>' + m[3] + '</span>';
+          document.body.appendChild(t);
+          ping(i);
+          setTimeout(function () { t.classList.add("out"); }, 2200 - i * 300);
+          setTimeout(function () { t.remove(); }, 2700 - i * 300);
+        }, i * 380);
+      });
+      setTimeout(function () {
+        card.hidden = false;
+        card.classList.add("pinged");
+        try { localStorage.setItem(KEY, "1"); } catch (e) {}
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 1500);
+    }
+    document.addEventListener("keydown", function (e) {
+      if (!card.hidden) return;
+      var t = e.target; if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA")) return;
+      codes.push(e.code); codes = codes.slice(-6);
+      // «впитал» — по клавишам, поэтому работает и в английской раскладке («dgbnfk»)
+      if (codes.join(",") === "KeyD,KeyG,KeyB,KeyN,KeyF,KeyK") reveal();
+    });
+  })();
+
   // «Все игры» и логотип — обычный вид
   document.querySelectorAll("[data-theme-set]").forEach(function (b) {
     b.addEventListener("click", function () { T.set(b.dataset.themeSet); });
@@ -777,7 +843,7 @@
   }
 })();
 </script>
-<script src="updates.js?v=7a6bdd29"></script>
-<script src="catalog.js?v=42fd0e42"></script>
+<script src="updates.js?v=0ef4d496"></script>
+<script src="catalog.js?v=463bc168"></script>
 </body>
 </html>

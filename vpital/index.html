@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ru" data-theme="vpital">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ВПИТАЛ — перепалка в дискорде · МАЯК</title>
+<meta name="description" content="«ВПИТАЛ» — перепалка в дискорде: выбирай ответ на подкол, не впитывай и сливай соперников. Секретная игра МАЯКа.">
+<meta property="og:title" content="ВПИТАЛ — перепалка в дискорде">
+<meta property="og:description" content="Отвечай метко или впитывай. Секретная игра МАЯКа.">
+<meta property="og:image" content="../img/vp_cover.webp">
+<meta name="theme-color" content="#313338">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../img/vp-icon.png">
+<link rel="stylesheet" href="../style.css?v=faff1506">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" id="logo">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><circle class="l-glow" cx="15" cy="7" r="6" opacity=".25"/><rect class="l-lamp" x="12" y="5" width="6" height="4" rx="1"/><path class="l-body" d="M11 10h8l2 17H9z"/><path class="l-stripe" d="M10.4 15h9.2l.5 4h-10.2zM9.7 22h10.6l.4 3H9.3z"/></svg>
+      <span class="brand-name">МАЯК</span> <small>игры в браузере</small>
+    </a>
+    <nav class="nav">
+      <a href="../#games" class="on">Игры</a>
+      <a href="../updates/">Обновления</a>
+      <a href="../music/">Музыка</a>
+      <a href="../#about">О сайте</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="game-head">
+    <div class="crumbs"><a href="../#games">Игры</a> / ВПИТАЛ <span class="tag" style="margin-left:6px">секретная игра</span></div>
+    <h1>ВПИТАЛ</h1>
+    <p class="sub">Перепалка в дискорде. Отвечай метко или впитывай.</p>
+  </div>
+
+  <div class="player" id="player" style="background-image:url(../img/vp_cover.webp)">
+    <div class="start" id="start">
+      <button class="btn btn-main" id="play">▶&nbsp; Играть</button>
+      <small>Мышь и клавиатура · прогресс сохраняется в браузере · есть звук</small>
+    </div>
+    <div class="rotate">Переверни телефон горизонтально ↻</div>
+    <button class="unmax" id="unmax" title="Свернуть">✕&nbsp; Свернуть</button>
+  </div>
+  <div class="player-bar">
+    <span class="hint" id="hint">«Развернуть» + клавиша F11 — весь экран. Свернуть — кнопка ✕ сверху.</span>
+    <span class="bar-buttons">
+      <button class="btn btn-small" id="max">⛶&nbsp; Развернуть</button>
+      <button class="btn btn-small" id="fs">Полный экран</button>
+    </span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap cols">
+    <div>
+      <h2>Об игре</h2>
+      <p>Ночь, сервер MCC × COM, канал #флуд. Тебе пишут подкол, и надо ответить так, чтобы соперник сгорел, а не ты. Выбираешь один из четырёх ответов: разнос, норм, слабый или кринж. Только подписей нет, угадывай по смыслу.</p>
+      <p>Твой персонаж реально печатает ответ по буквам. Чем больше ты впитываешь, тем выше стресс: пальцы промахиваются, буквы стираются, на пике случается КАПС-срыв, а соперник успевает вставить «долго пишешь». Разносы снимают стресс и копят рейдж соперника. Рейдж на максимуме, и он сливается.</p>
+      <p>Каналы слева кликабельные. В #майн сюжет из пяти глав по мотивам реальных перепалок, в #ивенты испытания, в #скрины ачивки, в Войсе ответы голосом за пару секунд, а в ЛС приходят вызовы один на один. А ещё есть редактор, где можно вписать свои подколы из вашего чата и скинуть их другу кодом.</p>
+      <ul class="features">
+        <li>Три персонажа, у каждого свой приём и слабость</li>
+        <li>176 подколов, из них фирменные у каждого персонажа</li>
+        <li>Четыре сложности, на самой жёсткой печатаешь ответ сам</li>
+        <li>Стресс, опечатки, КАПС-срыв и «долго пишешь»</li>
+        <li>19 перков, босс двое на одного каждый 5-й файт</li>
+        <li>Сюжет, испытания, войс, вызовы в ЛС и 24 ачивки</li>
+        <li>Лоу-фай музыка, которая разгоняется от стресса</li>
+        <li>Редактор своих подколов с обменом кодом</li>
+      </ul>
+
+      <h2 style="margin-top:40px">Скриншоты</h2>
+      <div class="shots">
+        <button data-full="../img/vp_cover.webp"><img src="../img/vp_cover_s.webp" alt="Перепалка в #флуд" loading="lazy"></button>
+        <button data-full="../img/vp_manual.webp"><img src="../img/vp_manual_s.webp" alt="Сложность Грубиян, печатаешь сам" loading="lazy"></button>
+        <button data-full="../img/vp_voice.webp"><img src="../img/vp_voice_s.webp" alt="Войс" loading="lazy"></button>
+        <button data-full="../img/vp_story.webp"><img src="../img/vp_story_s.webp" alt="Сюжет в #майн" loading="lazy"></button>
+        <button data-full="../img/vp_perk.webp"><img src="../img/vp_perk_s.webp" alt="Выбор перка" loading="lazy"></button>
+        <button data-full="../img/vp_boss.webp"><img src="../img/vp_boss_s.webp" alt="Босс двое на одного" loading="lazy"></button>
+        <button data-full="../img/vp_screens.webp"><img src="../img/vp_screens_s.webp" alt="Ачивки в #скрины" loading="lazy"></button>
+        <button data-full="../img/vp_editor.webp"><img src="../img/vp_editor_s.webp" alt="Редактор подколов" loading="lazy"></button>
+      </div>
+    </div>
+
+    <aside>
+      <div class="box">
+        <h3>Управление</h3>
+        <table class="keys">
+          <tr><td>1 2 3 4, мышь</td><td>выбрать ответ</td></tr>
+          <tr><td>Q</td><td>приём персонажа</td></tr>
+          <tr><td>буквы, Enter</td><td>печатать сам на Грубияне</td></tr>
+          <tr><td>клик по каналу</td><td>перейти в #майн, Войс, ЛС</td></tr>
+          <tr><td>1 2 3</td><td>выбрать перк</td></tr>
+          <tr><td>Esc</td><td>пауза</td></tr>
+        </table>
+      </div>
+
+      <div class="box">
+        <h3>Об игре</h3>
+        <dl class="meta">
+          <dt>Версия</dt><dd>0.6 «Свои подколы»</dd>
+          <dt>Жанр</dt><dd>перепалка с выбором ответа</dd>
+          <dt>Подколов</dt><dd>176 и свои</dd>
+          <dt>Персонажи</dt><dd>3</dd>
+          <dt>Игроки</dt><dd>1</dd>
+          <dt>Платформы</dt><dd>браузер на ПК, Windows</dd>
+          <dt>Управление</dt><dd>мышь и клавиатура</dd>
+          <dt>Язык</dt><dd>русский</dd>
+          <dt>Движок</dt><dd>Godot 4</dd>
+        </dl>
+        <p style="margin:14px 0 0;color:var(--muted);font-size:14px">Секретная игра: на главной её открывает одно слово. Кто знает, тот в курсе.</p>
+      </div>
+
+      <div class="box">
+        <h3>Скачать</h3>
+        <p style="margin:0 0 14px;color:var(--muted);font-size:15px">Прогресс в браузере и в скачанной версии свой у каждой.</p>
+        <div class="downloads">
+          <a class="btn btn-small" href="../downloads/VPITAL_v0.6_windows.zip" download>Windows · 32 МБ</a>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Что нового</h3>
+        <ul class="changelog">
+          <li><b>0.6 «Свои подколы»:</b> редактор своих подколов, обмен подколами кодом, режим только свои</li>
+          <li><b>0.5 «Звук»:</b> лоу-фай музыка со слоем стресса, тема босса, сердцебиение, голоса в войсе, 80 новых подколов</li>
+          <li><b>0.4 «Сервер»:</b> кликабельные каналы, сюжет в #майн, испытания, ачивки, войс, вызовы в ЛС</li>
+          <li><b>0.3 «Кастомная сборка»:</b> четыре сложности, ручной набор, 19 перков, босс двое на одного</li>
+          <li><b>0.2 «Дрожащие пальцы»:</b> набор по буквам, стресс и опечатки, стили ответов, слабости</li>
+          <li><b>0.1 «Первый файт»:</b> перепалка в дискорде, три персонажа, бесконечный режим</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox"><img alt=""></div>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 МАЯК</span>
+    <span>Игры на <a href="https://godotengine.org" target="_blank" rel="noopener">Godot Engine</a></span>
+  </div>
+</footer>
+
+<script src="../theme.js?v=fd8c0304"></script>
+<script src="../preload.js?v=d357fec2"></script>
+<script>
+(function () {
+  MayakTheme.remember("vpital");
+  document.getElementById("logo").addEventListener("click", function () { MayakTheme.remember(""); });
+
+  var COVER = "../img/vp_cover.webp";
+  var player = document.getElementById("player");
+  var start = document.getElementById("start");
+  var isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1100);
+
+  function goFull() {
+    var req = player.requestFullscreen || player.webkitRequestFullscreen;
+    if (!req) return Promise.resolve();
+    return Promise.resolve(req.call(player)).then(function () {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(function () {});
+      }
+    }).catch(function () {});
+  }
+
+  function focusGame() {
+    var f = player.querySelector("iframe");
+    if (f) { try { f.focus(); f.contentWindow.focus(); } catch (e) {} }
+  }
+
+  // движок начинает качаться в фоне сразу, пока читаешь страницу
+  MayakPreload.startIdle("../", ["../games/vpital/vpital-a16e67c6.pck"], 200);
+
+  document.getElementById("play").addEventListener("click", function () {
+    var btn = this;
+    if (isPhone) goFull();   // полный экран можно включить только сразу по нажатию
+    if (!MayakPreload.busy()) { launch(); return; }
+    // фоновая загрузка ещё идёт — показываем её прогресс и запускаем, когда закончится
+    btn.disabled = true;
+    var tick = setInterval(function () {
+      btn.textContent = "Загрузка " + Math.round(MayakPreload.progress() * 100) + "%";
+    }, 150);
+    MayakPreload.wait(function () { clearInterval(tick); launch(); });
+  });
+
+  function launch() {
+    var frame = document.createElement("iframe");
+    frame.src = "../games/vpital/index.html?v=06a";
+    frame.allow = "autoplay; fullscreen; gamepad";
+    frame.setAttribute("allowfullscreen", "");
+    frame.title = "ВПИТАЛ";
+    frame.addEventListener("load", focusGame);
+    player.appendChild(frame);
+    player.classList.add("running");
+    start.remove();
+    setTimeout(focusGame, 300);
+  }
+
+  document.getElementById("fs").addEventListener("click", function () {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else {
+      goFull().then(focusGame);
+    }
+  });
+  player.addEventListener("click", focusGame);
+
+  var MAX_CSS = "position:fixed;left:0;top:0;right:0;bottom:0;z-index:100;width:100vw;height:100vh;max-width:none;aspect-ratio:auto;border-radius:0;border:0;margin:0;";
+  function setMax(on) {
+    player.classList.toggle("max", on);
+    player.style.cssText = "background-image:url(" + COVER + ");" + (on ? MAX_CSS : "");
+    document.getElementById("unmax").style.display = on ? "block" : "none";
+    document.body.classList.toggle("noscroll", on);
+    setTimeout(focusGame, 50);
+  }
+  document.getElementById("max").addEventListener("click", function () { setMax(true); });
+  document.getElementById("unmax").addEventListener("click", function (e) { e.stopPropagation(); setMax(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && player.classList.contains("max")) setMax(false); });
+
+  if (isPhone) {
+    document.getElementById("hint").textContent = "Эта игра пока для компьютера, лучше с клавиатурой.";
+  }
+
+  var lb = document.getElementById("lightbox");
+  document.querySelectorAll(".shots button").forEach(function (b) {
+    b.addEventListener("click", function () { lb.querySelector("img").src = b.dataset.full; lb.classList.add("on"); });
+  });
+  lb.addEventListener("click", function () { lb.classList.remove("on"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("on"); });
+})();
+</script>
+</body>
+</html>

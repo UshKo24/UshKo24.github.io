@@ -281,6 +281,42 @@ html[data-theme="vladblast"] {
   --d-vb: 1;
   color-scheme: dark;
 }
+/* ---------- «ВПИТАЛ» (секретная): тёмный дискорд, фиолетовые кнопки ---------- */
+html[data-theme="vpital"] {
+  --bg: #313338;
+  --bg-2: #2b2d31;
+  --section: #2b2d31;
+  --panel: rgba(255, 255, 255, 0.04);
+  --panel-solid: #383a40;
+  --border: rgba(255, 255, 255, 0.10);
+  --border-hover: #5865f2;
+  --text: #f2f3f5;
+  --muted: #b5bac1;
+  --accent: #5865f2;
+  --on-accent: #ffffff;
+  --btn: #5865f2;
+  --btn-text: #ffffff;
+  --btn-border: #4752c4;
+  --btn-hover: #6d78f5;
+  --btn2: rgba(255, 255, 255, 0.07);
+  --btn2-hover: rgba(255, 255, 255, 0.13);
+  --btn2-text: #ffffff;
+  --tag-bg: rgba(88, 101, 242, 0.20);
+  --tag-text: #dfe2ff;
+  --header-bg: rgba(30, 31, 34, 0.94);
+  --badge-bg: rgba(30, 31, 34, 0.92);
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  --player-bg: #1e1f22;
+  --start-veil: radial-gradient(ellipse at center, rgba(30, 31, 34, 0.1), rgba(30, 31, 34, 0.65));
+  --start-text: #ffffff;
+  --start-shadow: 0 1px 4px #000;
+  --logo-lamp: #5865f2;
+  --logo-body: #ffffff;
+  --logo-stripe: #f23f43;
+  --radius: 16px;
+  --section-line: transparent;
+  color-scheme: dark;
+}
 /* ---------- «Ozraпад» (секретная): утреннее небо над фермой, золотое яйцо, красный гребешок ---------- */
 html[data-theme="ozrapad"] {
   --bg: #1e5b96;
@@ -1247,3 +1283,19 @@ html.fade-out body { opacity: 0; transform: translateY(-6px); transition: opacit
 @keyframes cardblast { 0% { transform: scale(.2) rotate(8deg); opacity: 0; } 60% { box-shadow: 0 0 40px 8px rgba(255, 216, 74, .6); } 100% { transform: none; opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .vb-drop { display: none; } .card.blasted { animation: none; } }
 footer .vb-c { cursor: default; user-select: none; -webkit-tap-highlight-color: transparent; display: inline-block; transition: transform .12s; }
+
+/* ---------- секрет «ВПИТАЛ»: уведомления дискорда ---------- */
+.vp-toast { position: fixed; right: 18px; z-index: 70; pointer-events: none; display: grid; grid-template-columns: 38px 1fr; column-gap: 12px;
+  align-items: center; min-width: 260px; max-width: 340px; padding: 12px 16px 12px 12px; border-radius: 10px; background: #111214;
+  border-left: 4px solid #5865f2; box-shadow: 0 10px 30px rgba(0, 0, 0, .5); color: #f2f3f5; font-size: 15px;
+  animation: vpin .35s cubic-bezier(.2, 1.4, .4, 1) both; }
+.vp-toast i { grid-row: span 2; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-style: normal;
+  font-weight: 700; font-size: 15px; color: #fff; }
+.vp-toast b { font-size: 14px; }
+.vp-toast span { color: #dbdee1; }
+.vp-toast.out { animation: vpout .45s ease-in both; }
+@keyframes vpin { from { transform: translateX(120%); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes vpout { to { transform: translateX(120%); opacity: 0; } }
+.card.pinged { animation: cardping .9s cubic-bezier(.2, 1.5, .4, 1); }
+@keyframes cardping { 0% { transform: scale(.85); box-shadow: 0 0 0 0 rgba(88, 101, 242, .8); } 60% { transform: scale(1.03); box-shadow: 0 0 0 18px rgba(88, 101, 242, 0); } 100% { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .vp-toast, .card.pinged { animation: none; } }
