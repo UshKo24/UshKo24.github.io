@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0e0e10">
 <link rel="icon" href="img/mayak.svg" type="image/svg+xml">
 <script>try { var t = sessionStorage.getItem("mayak-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
-<link rel="stylesheet" href="style.css?v=faff1506">
+<link rel="stylesheet" href="style.css?v=17d456d6">
 </head>
 <body>
 
@@ -32,6 +32,8 @@
 
 <div class="hero">
   <!-- нейтральный вид сайта: мозаика из кадров всех игр (берутся из data-shots у карточек) -->
+  <!-- «Следующая остановка»: город и мигающие остановки -->
+  <div class="deco d-ns" aria-hidden="true"><i style="left:70%;top:38%"></i><i style="left:84%;top:58%"></i><i style="left:92%;top:30%"></i></div>
   <!-- «Разлом»: кадр боя и вспышки взрывов -->
   <div class="deco d-razlom" aria-hidden="true"><i style="left:86%;top:30%"></i><i style="left:74%;top:62%"></i><i style="left:95%;top:55%"></i></div>
   <!-- «Пульс»: кадр с боссом, кольца в такт и голубой квадрат -->
@@ -292,6 +294,16 @@
       </div>
     </div>
     <div class="games">
+      <article class="card" data-game="nextstop" data-genre="manage" data-tags="pc long 3d wip" data-href="nextstop/"
+               data-shots="ns_cover ns_day ns_night ns_route ns_wave ns_snow">
+        <div class="cover" style="background-image:url(img/ns_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.5.1 · «Оптимизация»</span></div>
+        <div class="body">
+          <h3>Следующая остановка</h3>
+          <p>Строй автобусные маршруты в живом 3D-городе. У каждого жителя есть дом и работа, утром все едут в центр, а по вечерам у стадиона толпа. Начни со «Старичка» 1960-х и дойди до электробусов.</p>
+          <div class="tags"><span class="tag">менеджмент</span><span class="tag">3D</span><span class="tag">только скачать</span><span class="tag">Windows</span><span class="tag">с обучением</span></div>
+          <div class="go"><a class="btn btn-main btn-small" href="nextstop/" data-open="nextstop">⬇&nbsp; Скачать</a></div>
+        </div>
+      </article>
       <article class="card" data-game="razlom" data-genre="shooter" data-tags="pc bots pixel long" data-href="razlom/"
                data-shots="rz_cover rz_titan rz_blast rz_drones rz_fight rz_carrier rz_hangar">
         <div class="cover" style="background-image:url(img/rz_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.7.1 · «Звук и взрывы»</span></div>
@@ -462,7 +474,7 @@
   </div>
 </footer>
 
-<script src="theme.js?v=fd8c0304"></script>
+<script src="theme.js?v=894a710e"></script>
 <script src="preload.js?v=d357fec2"></script>
 <script>
 (function () {
@@ -843,7 +855,7 @@
   }
 })();
 </script>
-<script src="updates.js?v=0ef4d496"></script>
-<script src="catalog.js?v=463bc168"></script>
+<script src="updates.js?v=578fc424"></script>
+<script src="catalog.js?v=b88c4486"></script>
 </body>
 </html>
