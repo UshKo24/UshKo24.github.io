@@ -38,6 +38,32 @@
     return t;
   }
 
+  // ---------- метки на карточке: только настоящие (жанр и метки из фильтра), строятся сами из data-genre / data-tags ----------
+  var SHORT_G = { idle: "idle", roguelike: "рогалик", strategy: "стратегия", td: "башенная защита", horror: "хоррор",
+    puzzle: "головоломка", chess: "шахматы", tanks: "танки", shooter: "шутер", arcade: "аркада", sim: "симулятор",
+    manage: "менеджмент", story: "сюжетная", casual: "казуальная", sport: "спорт", sandbox: "песочница" };
+  var SHORT_T = [["3d", "3D"], ["pixel", "пиксель-арт"], ["duo", "на двоих"], ["bots", "против ботов"], ["friends", "с друзьями"],
+    ["endings", "несколько концовок"], ["wip", "в разработке"], ["short", "короткие партии"], ["long", "надолго"]];
+  var MAX_TAGS = 5;
+  cards.forEach(function (c) {
+    var box = c.querySelector(".tags");
+    if (!box) return;
+    var t = (c.dataset.tags || "").split(/\s+/);
+    var has = function (x) { return t.indexOf(x) >= 0; };
+    var out = [];
+    if (SHORT_G[c.dataset.genre]) out.push(SHORT_G[c.dataset.genre]);
+    if (c.hasAttribute("data-secret") || c.querySelector(".flag.secret")) out.push("секретная");
+    // платформа одной меткой
+    if (!has("browser")) out.push("только скачать");
+    else if (has("phone")) out.push("ПК и телефон");
+    else out.push("только ПК");
+    SHORT_T.forEach(function (x) { if (has(x[0])) out.push(x[1]); });
+    box.innerHTML = "";
+    out.slice(0, MAX_TAGS).forEach(function (label) {
+      var s = document.createElement("span"); s.className = "tag"; s.textContent = label; box.appendChild(s);
+    });
+  });
+
   var state = { genre: "", tags: [] };
   try { var s = JSON.parse(sessionStorage.getItem(KEY) || "null"); if (s) state = { genre: s.genre || "", tags: s.tags || [] }; } catch (e) {}
 

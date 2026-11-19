@@ -68,6 +68,8 @@ fonts/                     — шрифты (Oswald, Rubik — SIL OFL)
 - Жанры: idle roguelike strategy td horror puzzle chess tanks shooter arcade sim manage story casual sport sandbox
 - Метки: duo bots friends short long endings browser pc phone 3d pixel wip fav (fresh ставится сама по дате в updates.js)
 - Фильтры спрятаны в рамку «Жанры и метки» справа над играми, по стрелке выпадает панель.
+- Метки внизу карточки (шутер, пиксель-арт, только скачать…) строит catalog.js сам из data-genre и data-tags —
+  в HTML карточки оставлять пустой <div class="tags"></div>. Числа вроде «33 корабля» туда не писать, их место в описании.
 
 Метки на обложках («новое», «новое обновление») ставит catalog.js сам, руками в карточку их не писать:
 - «новое» — первая запись игры в updates.js не старше 7 дней и человек её ещё не видел;
