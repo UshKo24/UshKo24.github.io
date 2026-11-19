@@ -20,7 +20,7 @@
   var KEY = "mayak-filter";
   var UPD = window.MAYAK_UPDATES || [];
   var COLORS = { site: "var(--accent)", turniket: "#e8e3d6", metro: "#e2412f", golf: "#ffd23f", arsenal: "#e9b44c",
-    kot: "#f5b061", mazomus: "#ff8fb0", budka: "#ffd98a", dota: "#9fb3ff", pulse: "#3ef0ff", razlom: "#ff9a3c", nextstop: "#ff9f1c", ozrapad: "#ffc93a", vladblast: "#ff7ac8", vpital: "#5865f2" };
+    kot: "#f5b061", mazomus: "#ff8fb0", budka: "#ffd98a", dota: "#9fb3ff", pulse: "#3ef0ff", dispatcher: "#f2555a", razlom: "#ff9a3c", nextstop: "#ff9f1c", ozrapad: "#ffc93a", vladblast: "#ff7ac8", vpital: "#5865f2" };
 
   var grid = document.querySelector(".games");
   if (!grid) return;
@@ -41,13 +41,42 @@
   var state = { genre: "", tags: [] };
   try { var s = JSON.parse(sessionStorage.getItem(KEY) || "null"); if (s) state = { genre: s.genre || "", tags: s.tags || [] }; } catch (e) {}
 
-  // панель фильтров
-  var box = document.createElement("div");
-  box.className = "filters";
-  box.innerHTML =
+  // ---------- фильтры: одна рамка справа над играми, по стрелке выпадают жанры и метки ----------
+  var head = grid.parentNode.querySelector(".section-title") || grid.parentNode;
+  head.classList.add("has-filter");
+  var fbox = document.createElement("div");
+  fbox.className = "fbox";
+  fbox.innerHTML =
+    '<button class="ftoggle" type="button" aria-expanded="false" aria-controls="fPanel">' +
+      '<svg class="f-ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M6 10h8M8.5 15h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>' +
+      '<span class="f-sum">Жанры и метки</span><span class="f-count"></span>' +
+      '<svg class="f-arrow" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+    '</button>' +
+    '<button class="fclear" type="button" title="Сбросить фильтры" hidden>✕</button>';
+  var chipsRow = head.querySelector(".chips");
+  (chipsRow || head).appendChild(fbox);
+  var panel = document.createElement("div");
+  panel.className = "fpanel";
+  panel.id = "fPanel";
+  panel.innerHTML =
     '<div class="f-row"><span class="f-label">Жанр</span><div class="f-chips" id="fGenres"></div></div>' +
-    '<div class="f-row"><span class="f-label">Метки</span><div class="f-chips" id="fTags"></div></div>';
-  grid.parentNode.insertBefore(box, grid);
+    '<div class="f-row"><span class="f-label">Метки</span><div class="f-chips" id="fTags"></div></div>' +
+    '<div class="f-foot"><span class="f-found"></span><button class="chip f-reset" type="button">Сбросить всё</button></div>';
+  head.appendChild(panel);
+  var toggleBtn = fbox.querySelector(".ftoggle");
+  function setOpen(on) {
+    panel.classList.toggle("open", on);
+    fbox.classList.toggle("open", on);
+    toggleBtn.setAttribute("aria-expanded", on ? "true" : "false");
+  }
+  toggleBtn.addEventListener("click", function (e) { e.stopPropagation(); setOpen(!panel.classList.contains("open")); });
+  fbox.querySelector(".fclear").addEventListener("click", function (e) { e.stopPropagation(); reset(); });
+  panel.querySelector(".f-reset").addEventListener("click", reset);
+  panel.addEventListener("click", function (e) { e.stopPropagation(); });
+  document.addEventListener("click", function () { setOpen(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") setOpen(false); });
+  if (window.MayakView) MayakView.onChange(function () { setOpen(false); });
+
   var empty = document.createElement("div");
   empty.className = "f-empty";
   empty.innerHTML = 'Под такие фильтры игр пока нет. <button class="chip" type="button">Сбросить</button>';
@@ -108,11 +137,6 @@
       tBox.appendChild(b);
     });
     tBox.parentNode.hidden = !anyTag;
-    if (state.genre || state.tags.length) {
-      var r = chip("✕ сбросить", null, false, reset);
-      r.classList.add("reset");
-      tBox.appendChild(r);
-    }
 
     var shown = 0;
     cards.forEach(function (c) {
@@ -123,6 +147,16 @@
     var active = !!(state.genre || state.tags.length);
     if (soon) soon.classList.toggle("filtered", active);
     empty.hidden = shown > 0;
+    // что видно в самой рамке: выбранные жанр и метки и сколько игр под них подходит
+    var names = [];
+    if (state.genre) GENRES.forEach(function (g) { if (g[0] === state.genre) names.push(g[1]); });
+    state.tags.forEach(function (t) { TAGS.forEach(function (x) { if (x[0] === t) names.push(x[1]); }); });
+    fbox.querySelector(".f-sum").textContent = names.length ? names.join(" · ") : "Жанры и метки";
+    fbox.querySelector(".f-count").textContent = shown;
+    fbox.classList.toggle("active", active);
+    fbox.querySelector(".fclear").hidden = !active;
+    panel.querySelector(".f-found").textContent = active ? "Подходит игр: " + shown + " из " + vis.length : "Всего игр: " + vis.length;
+    panel.querySelector(".f-reset").hidden = !active;
     renderFeed();
   }
 
@@ -131,7 +165,7 @@
   var feedChips = document.getElementById("feedChips");
   var feedMore = document.getElementById("feedMore");
   var feedGame = "";
-  var feedLimit = 6;
+  var feedLimit = 15;
   var MONTHS = ["янв", "фев", "мар", "апр", "мая", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"];
 
   function cardOf(g) { return grid.querySelector('.card[data-game="' + g + '"]'); }
@@ -148,10 +182,10 @@
       feedChips.innerHTML = "";
       var seen = [];
       list.forEach(function (u) { if (seen.indexOf(u.g) < 0) seen.push(u.g); });
-      feedChips.appendChild(chip("Всё", null, !feedGame, function () { feedGame = ""; feedLimit = 6; renderFeed(); }));
+      feedChips.appendChild(chip("Всё", null, !feedGame, function () { feedGame = ""; feedLimit = 15; renderFeed(); }));
       seen.forEach(function (g) {
         var on = feedGame === g;
-        feedChips.appendChild(chip(esc(gameName(g)), null, on, function () { feedGame = on ? "" : g; feedLimit = 6; renderFeed(); }));
+        feedChips.appendChild(chip(esc(gameName(g)), null, on, function () { feedGame = on ? "" : g; feedLimit = 15; renderFeed(); }));
       });
     }
     var rows = list.filter(function (u) { return !feedGame || u.g === feedGame; });
@@ -179,11 +213,101 @@
       feedMore.textContent = "Показать ещё (" + (rows.length - feedLimit) + ")";
     }
   }
-  if (feedMore) feedMore.addEventListener("click", function () { feedLimit += 10; renderFeed(); });
+  if (feedMore) feedMore.addEventListener("click", function () { feedLimit += 20; renderFeed(); });
 
   // секретная игра открылась — пересчитать фильтры и ленту
   var mo = new MutationObserver(render);
   cards.forEach(function (c) { mo.observe(c, { attributes: true, attributeFilter: ["hidden"] }); });
+
+
+  // ---------- метки «новое» и «новое обновление» ----------
+  // «новое» — игра вышла не раньше NEW_DAYS дней назад (первая запись в updates.js) и человек её ещё не видел.
+  // «новое обновление» — в игре вышло обновление за NEW_DAYS дней, а человек видел её до этого обновления.
+  // «Видел» = карточка пробыла на экране SEEN_MS (хотя бы наполовину). Тогда метка плавно гаснет и больше не появляется.
+  // Проверка: ./?new — «новое» на всех играх, ./?upd — «новое обновление» на всех (просмотры не запоминаются).
+  var NEW_DAYS = 7, SEEN_MS = 500;
+  var DEMO_UNTIL = Date.parse("2026-11-22T00:00:00");   // до этой даты «новое» показывается на всех играх, которые человек ещё не видел
+  var SEEN_KEY = "mayak-seen", DEMO_KEY = "mayak-seen-demo";
+  var firstByGame = {}, keyByGame = {};
+  UPD.forEach(function (u) {
+    var t = Date.parse(u.d);
+    if (!firstByGame[u.g] || t < firstByGame[u.g]) firstByGame[u.g] = t;
+    if (!keyByGame[u.g] && t === lastByGame[u.g]) keyByGame[u.g] = u.d + "|" + (u.v || "") + "|" + (u.n || "");
+  });
+  function load(k) { try { return JSON.parse(localStorage.getItem(k) || "{}") || {}; } catch (e) { return {}; } }
+  function store(k, o) { try { localStorage.setItem(k, JSON.stringify(o)); } catch (e) {} }
+  var seen = load(SEEN_KEY), demoSeen = load(DEMO_KEY);
+  var qs = location.search;
+  var force = /[?&]new\b/.test(qs) ? "new" : /[?&]upd\b/.test(qs) ? "upd" : "";
+  var demo = !force && now < DEMO_UNTIL;
+
+  function badgeFor(c) {
+    var g = c.dataset.game;
+    if (force) return force;
+    var added = c.dataset.added ? Date.parse(c.dataset.added) : firstByGame[g];
+    var last = lastByGame[g];
+    if (demo && !demoSeen[g]) return "new";
+    if (added && now - added < NEW_DAYS * 864e5 && !(g in seen)) return "new";
+    if (last && added && last > added && now - last < NEW_DAYS * 864e5 && seen[g] !== keyByGame[g]) return "upd";
+    return "";
+  }
+  function markSeen(g) {
+    if (force) return;
+    seen[g] = keyByGame[g] || "1"; store(SEEN_KEY, seen);
+    if (demo) { demoSeen[g] = 1; store(DEMO_KEY, demoSeen); }
+  }
+
+  var watching = [];
+  cards.forEach(function (c) {
+    var kind = badgeFor(c);
+    var cover = c.querySelector(".cover");
+    if (!cover) return;
+    var flags = document.createElement("div");
+    flags.className = "flags";
+    var sec = cover.querySelector(".flag.secret");
+    if (sec) flags.appendChild(sec);
+    cover.appendChild(flags);
+    if (!kind) {
+      if (!(c.dataset.game in seen) && !force) markSeen(c.dataset.game);   // старые игры сразу считаются просмотренными
+      return;
+    }
+    var b = document.createElement("span");
+    b.className = "flag fresh-" + kind;
+    b.innerHTML = kind === "new" ? "<i></i>новое" : "<i></i>новое обновление";
+    flags.appendChild(b);
+    watching.push({ card: c, badge: b, timer: 0, done: false });
+  });
+
+  // «просмотрел»: карточка видна хотя бы наполовину SEEN_MS подряд, на главной и при открытой вкладке
+  var order = 0, orderReset = 0;
+  function fade(w) {
+    if (w.done) return;
+    w.done = true;
+    markSeen(w.card.dataset.game);
+    // несколько карточек на экране гаснут по очереди, а не все разом
+    var delay = (order++) * 140;
+    clearTimeout(orderReset); orderReset = setTimeout(function () { order = 0; }, 600);
+    setTimeout(function () {
+      w.badge.classList.add("gone");
+      setTimeout(function () { w.badge.remove(); }, 1300);
+    }, delay);
+  }
+  if (watching.length && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var w = null;
+        watching.forEach(function (x) { if (x.card === en.target) w = x; });
+        if (!w || w.done) return;
+        clearTimeout(w.timer);
+        if (en.isIntersecting && en.intersectionRatio >= 0.5) {
+          w.timer = setTimeout(function () {
+            if (document.visibilityState === "visible" && (!window.MayakView || MayakView.current() === "home")) fade(w);
+          }, SEEN_MS);
+        }
+      });
+    }, { threshold: [0, 0.5, 1] });
+    watching.forEach(function (w) { io.observe(w.card); });
+  }
 
   render();
 })();

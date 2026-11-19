@@ -1347,3 +1347,181 @@ footer .vb-c { cursor: default; user-select: none; -webkit-tap-highlight-color: 
 @keyframes nsstop { 0%, 100% { transform: scale(.7); opacity: .35; } 50% { transform: scale(1.15); opacity: 1; } }
 @media (max-width: 820px) { .d-ns { background-position: 70% center; opacity: calc(var(--d-ns) * .6); } .d-ns i { display: none; } }
 @media (prefers-reduced-motion: reduce) { .d-ns i { animation: none; } }
+
+/* ---------- разделы одной страницы (spa.js): Игры · Обновления · Музыка ---------- */
+.view { display: none; }
+html:not([data-view]) #v-home, html[data-view="updates"] #v-updates, html[data-view="music"] #v-music { display: block; }
+#v-updates, #v-music { min-height: calc(100vh - 150px); padding-bottom: 40px; }
+html.view-out main.view { opacity: 0; transform: translateY(-6px); transition: opacity .16s ease, transform .16s ease; }
+html.view-in main.view { animation: page-in .38s ease both; }
+
+/* ---------- музыка ---------- */
+.tracks { display: grid; gap: 12px; margin: 8px 0 30px; }
+.track { display: grid; grid-template-columns: 64px 1fr auto; gap: 16px; align-items: center;
+  background: var(--panel); border: var(--bw) solid var(--border); border-radius: var(--radius); padding: 12px 16px 12px 12px; cursor: pointer;
+  transition: border-color .15s, background .15s; }
+.track:hover { border-color: var(--border-hover); }
+.track.on { border-color: var(--accent); background: var(--panel-solid); }
+.track .art { position: relative; width: 64px; height: 64px; border-radius: 10px; background: #0b0e16 78% center / cover no-repeat; overflow: hidden; }
+.track .art::after { content: "▶"; position: absolute; inset: 0; display: grid; place-items: center; font-size: 22px; color: #fff;
+  background: rgba(0, 0, 0, .35); opacity: 0; transition: opacity .15s; }
+.track:hover .art::after, .track.on .art::after { opacity: 1; }
+.track.on.playing .art::after { content: "❚❚"; font-size: 18px; }
+.track h3 { margin: 0; font-size: 20px; }
+.track .from { color: var(--muted); font-size: 15px; margin-top: 2px; }
+.track .from b { color: var(--accent); font-weight: 500; }
+.track .right { display: flex; align-items: center; gap: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.track .dl { color: var(--muted); font-size: 20px; text-decoration: none; padding: 4px 6px; border-radius: 6px; }
+.track .dl:hover { color: var(--accent); background: var(--btn2); }
+.eq { display: none; gap: 2px; align-items: flex-end; height: 16px; }
+.track.on.playing .eq { display: flex; }
+.eq i, .nav-eq i { width: 3px; background: var(--accent); animation: eq .9s ease-in-out infinite; }
+.eq i:nth-child(2), .nav-eq i:nth-child(2) { animation-delay: .2s; }
+.eq i:nth-child(3), .nav-eq i:nth-child(3) { animation-delay: .4s; }
+@keyframes eq { 0%, 100% { height: 4px; } 50% { height: 16px; } }
+/* в меню возле «Музыки» пляшут столбики, пока играет трек */
+.nav-eq { display: none; gap: 2px; align-items: flex-end; height: 12px; margin-left: 6px; vertical-align: -1px; }
+.nav-eq i { width: 2px; animation-name: eqs; }
+@keyframes eqs { 0%, 100% { height: 3px; } 50% { height: 12px; } }
+html.music-on .nav-eq { display: inline-flex; }
+
+/* плеер внизу: в «Музыке» — всегда, в других разделах — мини, пока выбран трек */
+.nowbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; background: var(--header-bg);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border-top: var(--bw) solid var(--border); padding: 12px 0;
+  transform: translateY(110%); visibility: hidden;
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1), visibility 0s .35s, padding .25s ease;
+  view-transition-name: nowbar; }
+html[data-view="music"] .nowbar, html.has-track .nowbar { transform: none; visibility: visible; transition: transform .35s cubic-bezier(.2, .8, .2, 1), padding .25s ease; }
+html[data-view="music"] body, html.has-track body { padding-bottom: 86px; }
+.nowbar .wrap { display: grid; grid-template-columns: auto 1fr auto auto; gap: 18px; align-items: center; }
+.nowbar .ctl { display: flex; gap: 8px; align-items: center; }
+.nowbar button { width: 44px; height: 44px; border-radius: 50%; border: 0; cursor: pointer; font-size: 16px;
+  background: var(--btn2); color: var(--btn2-text); transition: width .25s, height .25s, background .15s; }
+.nowbar button:hover { background: var(--btn2-hover); }
+.nowbar button.play { width: 52px; height: 52px; background: var(--btn); color: var(--btn-text); font-size: 19px; }
+.nowbar button.play:hover { background: var(--btn-hover); }
+.nowbar button.toggle.on { color: var(--accent); box-shadow: inset 0 0 0 2px var(--accent); }
+.nowbar button.close { width: 36px; height: 36px; font-size: 14px; color: var(--muted); display: none; }
+html.has-track .nowbar button.close { display: block; }
+.nowbar .mid { min-width: 0; }
+.nowbar .title { display: block; color: var(--text); text-decoration: none; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nowbar .title small { color: var(--muted); font-weight: 400; margin-left: 6px; }
+.seek { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; margin-top: 4px; }
+.seek input { flex: 1; }
+input[type=range] { accent-color: var(--accent); cursor: pointer; }
+.vol { display: flex; align-items: center; gap: 8px; color: var(--muted); }
+.vol input { width: 100px; }
+/* мини-плеер в разделах «Игры» и «Обновления» */
+html.has-track:not([data-view="music"]) .nowbar { padding: 7px 0; }
+html.has-track:not([data-view="music"]) .nowbar button { width: 36px; height: 36px; font-size: 14px; }
+html.has-track:not([data-view="music"]) .nowbar button.play { width: 42px; height: 42px; font-size: 16px; }
+html.has-track:not([data-view="music"]) .nowbar #mLoop { display: none; }
+html.has-track:not([data-view="music"]) .nowbar .title:hover { color: var(--accent); }
+html.has-track:not([data-view="music"]) body { padding-bottom: 66px; }
+@media (max-width: 700px) {
+  .nowbar .wrap { grid-template-columns: 1fr auto; gap: 8px; }
+  .nowbar .mid { grid-column: 1 / -1; }
+  .nowbar .ctl { justify-content: center; order: 2; }
+  .nowbar button.close { order: 3; }
+  .vol { display: none; }
+  html[data-view="music"] body, html.has-track body { padding-bottom: 130px; }
+  html.has-track:not([data-view="music"]) .nowbar .wrap { grid-template-columns: auto 1fr auto; }
+  html.has-track:not([data-view="music"]) .nowbar .mid { grid-column: auto; order: 2; }
+  html.has-track:not([data-view="music"]) .nowbar .ctl { order: 1; }
+  html.has-track:not([data-view="music"]) .nowbar #mPrev, html.has-track:not([data-view="music"]) .nowbar .seek span { display: none; }
+  html.has-track:not([data-view="music"]) body { padding-bottom: 70px; }
+  .track { grid-template-columns: 52px 1fr auto; gap: 12px; }
+  .track .art { width: 52px; height: 52px; }
+  .track h3 { font-size: 17px; }
+}
+
+/* ---------- метки на карточках: «секрет», «новое», «новое обновление» (ставит catalog.js) ---------- */
+.card .flags { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: flex-start; pointer-events: none; }
+.card .flag { position: relative; display: inline-flex; align-items: center; gap: 6px; overflow: hidden; white-space: nowrap;
+  border-radius: 8px; padding: 2px 10px; font-size: 13px; font-weight: 600; line-height: 1.5; max-width: 240px; }
+.flag.secret { background: var(--btn); color: var(--btn-text); }
+.flag i { flex: none; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+/* «новое»: вылетает с отскоком, мягко светится, по нему пробегает блик */
+.flag.fresh-new { background: var(--btn); color: var(--btn-text);
+  animation: flag-in .6s cubic-bezier(.2, 1.5, .4, 1) both, flag-glow 2.4s ease-in-out .6s infinite; }
+.flag.fresh-new::after { content: ""; position: absolute; inset: 0; transform: translateX(-130%);
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .6) 50%, transparent 70%);
+  animation: flag-shine 3s ease-in-out 1s infinite; }
+.flag.fresh-new i { animation: flag-dot 1.2s ease-in-out infinite; }
+/* «новое обновление»: контурная, с пульсирующей точкой */
+.flag.fresh-upd { background: var(--badge-bg); color: var(--accent); box-shadow: inset 0 0 0 var(--bw) var(--accent);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); animation: flag-in .6s cubic-bezier(.2, 1.5, .4, 1) both; }
+.flag.fresh-upd i { position: relative; overflow: visible; }
+.flag.fresh-upd i::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: currentColor; animation: flag-ping 1.6s ease-out infinite; }
+/* увидел — метка вспыхивает и плавно растворяется, соседние метки съезжают на её место */
+.card .flag.gone { animation: flag-out 1.2s cubic-bezier(.4, 0, .2, 1) forwards; }
+.card .flag.gone::after, .card .flag.gone i, .card .flag.gone i::after { animation: none; }
+@keyframes flag-in { from { opacity: 0; transform: translateY(-8px) scale(.7); } }
+@keyframes flag-glow { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--btn) 0%, transparent); }
+  50% { box-shadow: 0 0 14px 2px color-mix(in srgb, var(--btn) 70%, transparent); } }
+@keyframes flag-shine { 0% { transform: translateX(-130%); } 45%, 100% { transform: translateX(130%); } }
+@keyframes flag-dot { 0%, 100% { opacity: .45; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.15); } }
+@keyframes flag-ping { from { transform: scale(1); opacity: .8; } to { transform: scale(3.2); opacity: 0; } }
+@keyframes flag-out {
+  0% { opacity: 1; transform: scale(1); filter: blur(0); max-width: 240px; }
+  16% { opacity: 1; transform: scale(1.14); filter: blur(0); box-shadow: 0 0 18px 4px color-mix(in srgb, var(--accent) 70%, transparent); }
+  70% { opacity: 0; transform: scale(.75) translateY(-6px); filter: blur(5px); max-width: 240px; padding-left: 10px; padding-right: 10px; }
+  100% { opacity: 0; transform: scale(.6) translateY(-6px); filter: blur(6px); max-width: 0; padding-left: 0; padding-right: 0; margin-right: -6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flag.fresh-new, .flag.fresh-upd, .flag.fresh-new::after, .flag i, .flag i::after { animation: none; }
+  .card .flag.gone { animation: none; opacity: 0; transition: opacity .6s; }
+}
+
+/* ---------- фильтры: рамка справа над играми + выпадающая панель ---------- */
+.section-title.has-filter { position: relative; z-index: 6; }
+.fbox { position: relative; display: inline-flex; align-items: center; margin-left: 6px;
+  border: var(--bw) solid var(--border); border-radius: 12px; background: var(--panel); transition: border-color .15s, background .15s; }
+.fbox:hover, .fbox.open { border-color: var(--border-hover); }
+.fbox.active { border-color: var(--accent); }
+.ftoggle { font: inherit; font-size: 14px; display: inline-flex; align-items: center; gap: 9px; padding: 6px 12px;
+  background: none; border: 0; color: var(--text); cursor: pointer; max-width: 340px; }
+.ftoggle .f-ico { flex: none; width: 16px; height: 16px; color: var(--muted); }
+.fbox.active .f-ico { color: var(--accent); }
+.section-title .fbox .f-sum { color: var(--text); font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.section-title .fbox .f-count { flex: none; font-size: 12px; min-width: 24px; padding: 1px 7px; border-radius: 99px; text-align: center;
+  background: var(--tag-bg); color: var(--muted); font-variant-numeric: tabular-nums; }
+.fbox.active .f-count { background: var(--accent) !important; color: var(--on-accent) !important; }
+.ftoggle .f-arrow { flex: none; width: 12px; height: 8px; color: var(--muted); transition: transform .3s cubic-bezier(.3, 1.4, .5, 1); }
+.fbox.open .f-arrow { transform: rotate(180deg); color: var(--accent); }
+.fclear { border: 0; background: none; color: var(--muted); cursor: pointer; padding: 6px 11px 6px 2px; font-size: 13px; }
+.fclear:hover { color: var(--text); }
+.fclear[hidden] { display: none; }
+.fpanel { position: absolute; right: 0; top: calc(100% + 10px); width: min(500px, 100%);
+  background: var(--panel-solid); border: var(--bw) solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 16px 18px; display: flex; flex-direction: column; gap: 14px;
+  opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-8px) scale(.97); transform-origin: top right;
+  transition: opacity .18s ease, transform .25s cubic-bezier(.2, .9, .3, 1.15), visibility 0s .25s; }
+.fpanel.open { opacity: 1; visibility: visible; pointer-events: auto; transform: none;
+  transition: opacity .18s ease, transform .25s cubic-bezier(.2, .9, .3, 1.15); }
+.fpanel .f-row { flex-direction: column; gap: 7px; }
+.fpanel .f-label { flex: none; padding-top: 0; }
+.fpanel .f-chips { flex-wrap: wrap; overflow: visible; }
+.fpanel .f-chips .chip { white-space: nowrap; }
+.f-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  border-top: 1px solid var(--border); padding-top: 12px; color: var(--muted); font-size: 14px; }
+.f-foot .chip[hidden] { display: none; }
+@media (max-width: 640px) {
+  .fbox { margin-left: 0; }
+  .ftoggle { max-width: 230px; }
+  .fpanel { left: 0; width: auto; transform-origin: top center; }
+}
+
+/* шапка на телефоне: меню целиком влезает в экран (раньше «О сайте» вылезало за край и страница уменьшалась) */
+.nav a { white-space: nowrap; }
+@media (max-width: 520px) {
+  .top .wrap { gap: 10px; }
+  .brand { font-size: 22px; gap: 7px; }
+  .brand svg { width: 24px; height: 24px; }
+  .nav { gap: 13px; font-size: 14.5px; }
+  .nav-eq { margin-left: 4px; }
+}
+@media (max-width: 400px) {
+  .nav a:last-child { display: none; }
+}

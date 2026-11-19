@@ -10,8 +10,9 @@
 <meta property="og:image" content="img/turniket_cover.webp">
 <meta name="theme-color" content="#0e0e10">
 <link rel="icon" href="img/mayak.svg" type="image/svg+xml">
-<script>try { var t = sessionStorage.getItem("mayak-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
-<link rel="stylesheet" href="style.css?v=17d456d6">
+<script>try { var t = sessionStorage.getItem("mayak-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+(function () { var h = location.hash.slice(1); if (h === "updates" || h === "music") document.documentElement.dataset.view = h; })();</script>
+<link rel="stylesheet" href="style.css?v=96a5513d">
 </head>
 <body>
 
@@ -22,14 +23,15 @@
       <span class="brand-name">МАЯК</span> <small>игры в браузере</small>
     </a>
     <nav class="nav">
-      <a href="#games" class="on">Игры</a>
-      <a href="updates/">Обновления</a>
-      <a href="music/">Музыка</a>
-      <a href="#about">О сайте</a>
+      <a href="#games" data-view="home" class="on">Игры</a>
+      <a href="#updates" data-view="updates">Обновления</a>
+      <a href="#music" data-view="music">Музыка<span class="nav-eq" aria-hidden="true"><i></i><i></i><i></i></span></a>
+      <a href="#about" data-view="home">О сайте</a>
     </nav>
   </div>
 </header>
 
+<main id="v-home" class="view">
 <div class="hero">
   <!-- нейтральный вид сайта: мозаика из кадров всех игр (берутся из data-shots у карточек) -->
   <!-- «Следующая остановка»: город и мигающие остановки -->
@@ -296,7 +298,7 @@
     <div class="games">
       <article class="card" data-game="nextstop" data-genre="manage" data-tags="pc long 3d wip" data-href="nextstop/"
                data-shots="ns_map ns_cover ns_zones ns_night ns_route ns_snow">
-        <div class="cover" style="background-image:url(img/ns_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.9 · «Депо и банк»</span></div>
+        <div class="cover" style="background-image:url(img/ns_cover_s.webp)"><span class="badge">v0.9 · «Депо и банк»</span></div>
         <div class="body">
           <h3>Следующая остановка</h3>
           <p>Строй автобусные маршруты по большой области: четыре зоны, свои города и посёлки, трассы между ними. У каждого жителя есть дом и работа, утром все едут в центр, а по вечерам у стадиона толпа. Начни со «Старичка» 1960-х и дойди до электробусов.</p>
@@ -306,7 +308,7 @@
       </article>
       <article class="card" data-game="razlom" data-genre="shooter" data-tags="pc bots pixel long" data-href="razlom/"
                data-shots="rz_cover rz_titan rz_blast rz_drones rz_fight rz_carrier rz_hangar">
-        <div class="cover" style="background-image:url(img/rz_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.7.1 · «Звук и взрывы»</span></div>
+        <div class="cover" style="background-image:url(img/rz_cover_s.webp)"><span class="badge">v0.7.1 · «Звук и взрывы»</span></div>
         <div class="body">
           <h3>Разлом</h3>
           <p>Пиксельные космические бои пять на пять против ботов. Корпус разваливается по пикселю, турели отстреливаются, а погибший корабль раскалывается на горящие обломки. 33 корабля, 36 орудий, ветки до 10 уровня.</p>
@@ -316,7 +318,7 @@
       </article>
       <article class="card" data-game="pulse" data-genre="arcade" data-tags="browser pc phone short" data-href="pulse/"
                data-shots="pl_phase3 pl_core pl_shards pl_halves pl_walls pl_boss">
-        <div class="cover" style="background-image:url(img/pl_phase3_s.webp)"><span class="new">новое</span><span class="badge">v0.2 · «Осколки и Ядро»</span></div>
+        <div class="cover" style="background-image:url(img/pl_phase3_s.webp)"><span class="badge">v0.2 · «Осколки и Ядро»</span></div>
         <div class="body">
           <h3>Пульс</h3>
           <p>Ритм-игра в духе Just Shapes &amp; Beats. Всё розовое бьёт, а каждая атака падает точно в такт музыке. Уворачивайся, делай рывок сквозь опасность и доберись до босса.</p>
@@ -326,7 +328,7 @@
       </article>
       <article class="card" data-game="dispatcher" data-genre="sim" data-tags="browser pc long" data-href="dispatcher/"
                data-shots="ds_silence ds_trunk ds_fire ds_hostage ds_garage ds_report">
-        <div class="cover" style="background-image:url(img/ds_silence_s.webp)"><span class="new">новое</span><span class="badge">v0.3 · «Третья ночь»</span></div>
+        <div class="cover" style="background-image:url(img/ds_silence_s.webp)"><span class="badge">v0.3 · «Третья ночь»</span></div>
         <div class="body">
           <h3>Диспетчер</h3>
           <p>Ночная смена в службе 112. Выясни, что случилось, найди адрес на карте сам и отправь нужные машины. А иногда в трубке только тишина и дыхание.</p>
@@ -336,7 +338,7 @@
       </article>
       <article class="card" data-game="kot" data-genre="sandbox" data-tags="browser pc phone pixel endings" data-href="kotovasiya/"
                data-shots="kot_cover kot_kitchen kot_mouse kot_window kot_dinner kot_attic kot_night kot_chaos">
-        <div class="cover" style="background-image:url(img/kot_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.0.2 · «Лапки на экране»</span></div>
+        <div class="cover" style="background-image:url(img/kot_cover_s.webp)"><span class="badge">v0.0.2 · «Лапки на экране»</span></div>
         <div class="body">
           <h3>Котовасия</h3>
           <p>Ты — рыжий кот Барсик, и впереди целый день. Роняй вещи со столов, лови мышь, ласкайся к хозяйке или сбеги в открытое окно. Пиксельный дом, тайны чердака и 7 концовок.</p>
@@ -346,7 +348,7 @@
       </article>
       <article class="card" data-game="arsenal" data-genre="casual" data-tags="browser pc phone long" data-href="arsenal/"
                data-shots="arsenal_cover arsenal_forge arsenal_inventory arsenal_orders arsenal_tower arsenal_merge arsenal_blades arsenal_chests">
-        <div class="cover" style="background-image:url(img/arsenal_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.3.0 · «Слитки и заказы»</span></div>
+        <div class="cover" style="background-image:url(img/arsenal_cover_s.webp)"><span class="badge">v0.3.0 · «Слитки и заказы»</span></div>
         <div class="body">
           <h3>Арсенал Удачи</h3>
           <p>Открывай сундуки со 120 видами оружия — от ржавой сковороды до Secret-клинка. Куй в ритм метронома, сливай и точи находки, выполняй заказы и рискуй в мини-играх.</p>
@@ -356,7 +358,7 @@
       </article>
       <article class="card" data-game="golf" data-genre="sport" data-tags="browser pc phone duo bots short" data-href="minigolf/"
                data-shots="golf_cover golf_river golf_spiral golf_bumpers golf_spinners golf_tunnels golf_ice golf_finish golf_editor golf_duel">
-        <div class="cover" style="background-image:url(img/golf_river_s.webp)"><span class="new">новое</span><span class="badge">v0.3.1 · «Свои лунки»</span></div>
+        <div class="cover" style="background-image:url(img/golf_river_s.webp)"><span class="badge">v0.3.1 · «Свои лунки»</span></div>
         <div class="body">
           <h3>Безумная лунка</h3>
           <p>Мини-гольф: тяни мяч назад, как рогатку, и отпускай. 50 лунок, редактор своих полей и дуэль с ботом или другом — выбей мяч соперника!</p>
@@ -366,7 +368,7 @@
       </article>
       <article class="card" data-game="metro" data-genre="idle" data-tags="browser pc phone long" data-href="metro/"
                data-shots="metro_city1 metro_city2 metro_city3 metro_city4 metro_city5 metro_push">
-        <div class="cover" style="background-image:url(img/metro_cover_s.webp)"><span class="new">новое</span><span class="badge">v0.9 · «Капремонт»</span></div>
+        <div class="cover" style="background-image:url(img/metro_cover_s.webp)"><span class="badge">v0.9 · «Капремонт»</span></div>
         <div class="body">
           <h3>Метро</h3>
           <p>Строй метро в пяти городах — от речного городка до столицы с кольцевой. Покупай станции, запускай составы, а в час пик жми на станцию — пушеры утрамбуют толпу в вагоны.</p>
@@ -386,7 +388,7 @@
       </article>
       <article class="card" data-game="dota" data-genre="strategy" data-tags="pc bots friends short" data-href="dota3/" hidden
                data-shots="d3_cover d3_heroes d3_ults d3_fight d3_borov d3_push d3_post">
-        <div class="cover" style="background-image:url(img/d3_cover_s.webp)"><span class="new">секрет</span><span class="badge">v0.3 · «Новый состав»</span></div>
+        <div class="cover" style="background-image:url(img/d3_cover_s.webp)"><span class="flag secret">секрет</span><span class="badge">v0.3 · «Новый состав»</span></div>
         <div class="body">
           <h3>Дота 3</h3>
           <p>Маяк тебе подмигнул! Как Дота, только герои — наши: Mazomus, Doki8new, Dawwwg, Pozitiv, Crossbow и ещё семь. Три линии, башни, поросята, Мега Боров и матч на 15 минут против ботов.</p>
@@ -396,7 +398,7 @@
       </article>
       <article class="card" data-game="mazomus" data-genre="arcade" data-tags="browser pc friends short" data-href="mazomus/" hidden
                data-shots="mazo_cover mazo_cb_shield mazo_pig mazo_cb_cube mazo_shield mazo_rage mazo_night">
-        <div class="cover" style="background-image:url(img/mazo_cover_s.webp)"><span class="new">секрет</span><span class="badge">v0.2 · «Ответка Кроссбова»</span></div>
+        <div class="cover" style="background-image:url(img/mazo_cover_s.webp)"><span class="flag secret">секрет</span><span class="badge">v0.2 · «Ответка Кроссбова»</span></div>
         <div class="body">
           <h3>Мазомус Ран</h3>
           <p>Ты нашёл секретное яйцо! Догоняй Кроссбова за Мазомуса — яйцо с пятачком и удочкой — или убегай за Кроссбова от него. Сенсел ставит щиты, Арима кидает кубы, princeOMG ведёт стрим.</p>
@@ -406,7 +408,7 @@
       </article>
       <article class="card" data-game="budka" data-genre="story" data-tags="browser pc friends endings long" data-href="budka/" hidden
                data-shots="bk_cover bk_map bk_morning bk_evening bk_memes bk_news">
-        <div class="cover" style="background-image:url(img/bk_cover_s.webp)"><span class="new">секрет</span><span class="badge">v1.0 · «Полночь»</span></div>
+        <div class="cover" style="background-image:url(img/bk_cover_s.webp)"><span class="flag secret">секрет</span><span class="badge">v1.0 · «Полночь»</span></div>
         <div class="body">
           <h3>Будка</h3>
           <p>Кроссбов устроился на новую работу: сидеть в будке, смотреть в окошко и иногда кое-что решать. Десять дней до Нового года, четыре страны, семья дома и одна рация. Что может пойти не так?</p>
@@ -416,7 +418,7 @@
       </article>
       <article class="card" data-game="ozrapad" data-genre="arcade" data-tags="browser pc friends short" data-href="ozrapad/" hidden
                data-shots="ozra_cover ozra_flip ozra_clone ozra_cards ozra_catch ozra_menu">
-        <div class="cover" style="background-image:url(img/ozra_cover_s.webp)"><span class="new">секрет</span><span class="badge">v0.1 · «Первое яйцо»</span></div>
+        <div class="cover" style="background-image:url(img/ozra_cover_s.webp)"><span class="flag secret">секрет</span><span class="badge">v0.1 · «Первое яйцо»</span></div>
         <div class="body">
           <h3>Ozraпад</h3>
           <p>Куры услышали своё имя! Как «Ну, погоди!», только вместо волка — Ozra в четырёх скинах. Лови яйца, бери улучшения 1 из 3 и сходи с ума: клон, джетпак, яйца-бомбы и перевёрнутый экран.</p>
@@ -426,7 +428,7 @@
       </article>
       <article class="card" data-game="vladblast" data-genre="puzzle" data-tags="browser pc phone friends long" data-href="vladblast/" hidden
                data-shots="vb_cover vb_clear vb_big vb_board vb_themes vb_start">
-        <div class="cover" style="background-image:url(img/vb_cover_s.webp)"><span class="new">секрет</span><span class="badge">v0.1 · «Первый блок»</span></div>
+        <div class="cover" style="background-image:url(img/vb_cover_s.webp)"><span class="flag secret">секрет</span><span class="badge">v0.1 · «Первый блок»</span></div>
         <div class="body">
           <h3>Vlad-Blast</h3>
           <p>Как Block Blast, только каждая фигура — Влад. 3×1 — Влад в полный рост, лёжа — Влад лежит, 3×3 — один огромный растянутый Влад. 34 скина, комбо, рекорд дня и шесть тем.</p>
@@ -436,7 +438,7 @@
       </article>
       <article class="card" data-game="vpital" data-genre="story" data-tags="browser pc friends endings" data-href="vpital/" hidden
                data-shots="vp_cover vp_voice vp_story vp_manual vp_boss vp_perk">
-        <div class="cover" style="background-image:url(img/vp_cover_s.webp)"><span class="new">секрет</span><span class="badge">v0.6 · «Свои подколы»</span></div>
+        <div class="cover" style="background-image:url(img/vp_cover_s.webp)"><span class="flag secret">секрет</span><span class="badge">v0.6 · «Свои подколы»</span></div>
         <div class="body">
           <h3>ВПИТАЛ</h3>
           <p>Ну ты и впитал. Перепалка в дискорде: выбирай ответ на подкол, не впитывай и сливай соперников. Стресс, опечатки, КАПС-срыв, сюжет, войс, вызовы в ЛС и свои подколы.</p>
@@ -466,6 +468,51 @@
     </div>
   </div>
 </section>
+</main>
+
+<!-- Обновления и Музыка — разделы этой же страницы: переключаются без перезагрузки (spa.js) -->
+<main id="v-updates" class="view">
+  <div class="wrap">
+    <div class="game-head">
+      <div class="crumbs"><a href="#games" data-view="home">Главная</a> / Обновления</div>
+      <h1>Обновления</h1>
+      <p class="sub">Что добавили и что исправили в каждой игре — новые сверху.</p>
+    </div>
+    <div class="chips upd-chips" id="feedChips"></div>
+    <div class="feed" id="feed"></div>
+    <button class="btn btn-small feed-more" id="feedMore" type="button" hidden>Показать ещё</button>
+  </div>
+</main>
+
+<main id="v-music" class="view">
+  <div class="wrap">
+    <div class="game-head">
+      <div class="crumbs"><a href="#games" data-view="home">Главная</a> / Музыка</div>
+      <h1>Музыка</h1>
+      <p class="sub">Саундтреки из наших игр. Слушай прямо здесь или скачивай — бесплатно. Музыка играет дальше, даже если перейти в другой раздел.</p>
+    </div>
+    <div class="tracks" id="tracks"></div>
+  </div>
+</main>
+
+<div class="nowbar" id="nowbar">
+  <div class="wrap">
+    <div class="ctl">
+      <button id="mPrev" title="Предыдущий">⏮</button>
+      <button id="mPlay" class="play" title="Играть / пауза">▶</button>
+      <button id="mNext" title="Следующий">⏭</button>
+      <button id="mLoop" class="toggle" title="Повтор трека">🔁</button>
+    </div>
+    <div class="mid">
+      <a class="title" id="mTitle" href="#music" data-view="music">Выбери трек</a>
+      <div class="seek"><span id="mCur">0:00</span><input type="range" id="mSeek" min="0" max="1000" value="0"><span id="mDur">0:00</span></div>
+    </div>
+    <div class="vol">🔊 <input type="range" id="mVol" min="0" max="100" value="80"></div>
+    <button id="mClose" class="close" title="Выключить музыку">✕</button>
+  </div>
+</div>
+<audio id="audio" preload="metadata"></audio>
+
 
 <footer>
   <div class="wrap">
@@ -855,7 +902,8 @@
   }
 })();
 </script>
-<script src="updates.js?v=baac4634"></script>
-<script src="catalog.js?v=b88c4486"></script>
+<script src="updates.js?v=98d2ff75"></script>
+<script src="spa.js?v=5a5f619b"></script>
+<script src="catalog.js?v=8508cc61"></script>
 </body>
 </html>
