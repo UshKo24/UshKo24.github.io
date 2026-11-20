@@ -84,6 +84,8 @@
         <button data-full="../img/golf_spiral.webp"><img src="../img/golf_spiral_s.webp" alt="Карусель — спираль внутрь" loading="lazy"></button>
         <button data-full="../img/golf_editor.webp"><img src="../img/golf_editor_s.webp" alt="Редактор своих уровней" loading="lazy"></button>
         <button data-full="../img/golf_skins.webp"><img src="../img/golf_skins_s.webp" alt="Скины за звёзды" loading="lazy"></button>
+        <button data-full="../img/golf_settings.webp"><img src="../img/golf_settings_s.webp" alt="Настройки" loading="lazy"></button>
+        <button data-full="../img/golf_german.webp"><img src="../img/golf_german_s.webp" alt="Игра на немецком" loading="lazy"></button>
         <button data-full="../img/golf_duel.webp"><img src="../img/golf_duel_s.webp" alt="Дуэль на двоих" loading="lazy"></button>
       </div>
     </div>
@@ -105,12 +107,12 @@
       <div class="box">
         <h3>Об игре</h3>
         <dl class="meta">
-          <dt>Версия</dt><dd>0.4 «Новые лунки»</dd>
+          <dt>Версия</dt><dd>0.5 «Звук и настройки»</dd>
           <dt>Жанр</dt><dd>мини-гольф, головоломка</dd>
           <dt>Игроки</dt><dd>1, 2 за одним экраном или против бота</dd>
           <dt>Платформы</dt><dd>браузер, Windows, Android</dd>
           <dt>Управление</dt><dd>мышка или палец</dd>
-          <dt>Язык</dt><dd>русский</dd>
+          <dt>Язык</dt><dd>русский, English, Deutsch</dd>
           <dt>Движок</dt><dd>Godot 4</dd>
         </dl>
       </div>
@@ -119,14 +121,15 @@
         <h3>Скачать</h3>
         <p style="margin:0 0 14px;color:var(--muted);font-size:15px">Прогресс в браузере и в скачанной версии — свой у каждой.</p>
         <div class="downloads">
-          <a class="btn btn-small" href="../downloads/BezumnayaLunka_v0.4_windows.zip" download>Windows · 40 МБ</a>
-          <a class="btn btn-small" href="../downloads/BezumnayaLunka_v0.4_android.apk" download>Android · 53 МБ</a>
+          <a class="btn btn-small" href="../downloads/BezumnayaLunka_v0.5_windows.zip" download>Windows · 40 МБ</a>
+          <a class="btn btn-small" href="../downloads/BezumnayaLunka_v0.5_android.apk" download>Android · 53 МБ</a>
         </div>
       </div>
 
       <div class="box">
         <h3>Что нового</h3>
         <ul class="changelog">
+          <li><b>0.5 «Звук и настройки»:</b> три языка — русский, английский и немецкий (выбирается сам по языку системы, меняется в настройках); экран настроек: графика (качество, частицы, тени, украшения, тряска экрана, полный экран, ограничение кадров), звук (громкость общая, музыки и звуков, голос толпы, замедление у лунки, тишина в фоне, вибрация), игра (чувствительность удара, линия прицела, камера, удар «назад» или «вперёд», кнопки для левшей, таймер) и сохранение (код прогресса для переноса на другое устройство, сброс); новые звуки — песок, лёд, ускоритель, вертушка, аплодисменты и «ох!» толпы, фанфары за три звезды; новые эффекты — пыль из песка, искры льда и отбойников, брызги воды; замедление, когда мяч еле докатывается до лунки; боты стали умнее: просчитывают сотни ударов, используют отскоки, ускорители и туннели и не боятся рискнуть, а профи играет в пар и лучше; играть с ботом можно и на своих уровнях. На Android перед установкой удали старую версию</li>
           <li><b>0.4 «Новые лунки»:</b> все 50 уровней переделаны и проверены — каждый проходится без «пиксельных» ударов; новые формы трасс: зигзаги, петли, спираль, буква W; уровень 17 «Остров на реке» сделан заново; исправлено: мяч больше не застревает в петле «ускоритель — горка» (уровень 46) и не тонет в тонкой полоске воды у края мостика (уровень 50); пар пересчитан под новые уровни. На Android перед установкой удали старую версию</li>
           <li><b>0.3.1:</b> игра больше не тормозит на больших уровнях — поле рисуется один раз, а каждый кадр обновляется только то, что движется; в меню появилась настройка «Качество» для слабых телефонов</li>
           <li><b>0.3 «Свои лунки»:</b> редактор уровней и обмен кодами; игра против бота (новичок, любитель, профи); скины мяча, следов и попаданий за звёзды; своя музыка в каждой десятке; выбор сложности лунок в дуэли; уровни 21–50 стали длинными трассами — камера следит за мячом, пробел — обзор</li>
@@ -178,7 +181,7 @@
   }
 
   // движок начинает качаться в фоне сразу, пока читаешь страницу
-  MayakPreload.startIdle("../", ["../games/minigolf/minigolf-7c786cda.pck"], 200);
+  MayakPreload.startIdle("../", ["../games/minigolf/minigolf-aff2d00f.pck"], 200);
 
   document.getElementById("play").addEventListener("click", function () {
     var btn = this;
@@ -194,7 +197,7 @@
 
   function launch() {
     var frame = document.createElement("iframe");
-    frame.src = "../games/minigolf/index.html?v=040";
+    frame.src = "../games/minigolf/index.html?v=050";
     frame.allow = "autoplay; fullscreen; gamepad";
     frame.setAttribute("allowfullscreen", "");
     frame.title = "Безумная лунка";
