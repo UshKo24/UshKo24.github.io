@@ -11,8 +11,8 @@
 <meta name="theme-color" content="#0e0e10">
 <link rel="icon" href="img/mayak.svg" type="image/svg+xml">
 <script>try { var t = sessionStorage.getItem("mayak-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
-(function () { var h = location.hash.slice(1); if (h === "updates" || h === "music") document.documentElement.dataset.view = h; })();</script>
-<link rel="stylesheet" href="style.css?v=96a5513d">
+(function () { var h = location.hash.slice(1).split("/")[0]; if (h === "updates" || h === "music") document.documentElement.dataset.view = h; })();</script>
+<link rel="stylesheet" href="style.css?v=dfe89f1b">
 </head>
 <body>
 
@@ -358,7 +358,7 @@
       </article>
       <article class="card" data-game="golf" data-genre="sport" data-tags="browser pc phone duo bots short" data-href="minigolf/"
                data-shots="golf_cover golf_river golf_spiral golf_bumpers golf_spinners golf_tunnels golf_ice golf_finish golf_space golf_galaxy golf_editor golf_duel">
-        <div class="cover" style="background-image:url(img/golf_river_s.webp)"><span class="badge">v1.0 · «Космос»</span></div>
+        <div class="cover" style="background-image:url(img/golf_river_s.webp)"><span class="badge">v1.0.1 · «Космос»</span></div>
         <div class="body">
           <h3>Безумная лунка</h3>
           <p>Мини-гольф: тяни мяч назад, как рогатку, и отпускай. 100 лунок в десяти мирах, золотые лунки, редактор своих полей и дуэль с ботом или другом — выбей мяч соперника!</p>
@@ -521,7 +521,7 @@
   </div>
 </footer>
 
-<script src="theme.js?v=894a710e"></script>
+<script src="theme.js?v=837c2e51"></script>
 <script src="preload.js?v=d357fec2"></script>
 <script>
 (function () {
@@ -902,8 +902,8 @@
   }
 })();
 </script>
-<script src="updates.js?v=c671adf3"></script>
-<script src="spa.js?v=5a5f619b"></script>
-<script src="catalog.js?v=dcd16e6e"></script>
+<script src="updates.js?v=e3a79bd2"></script>
+<script src="spa.js?v=1e2285b1"></script>
+<script src="catalog.js?v=52744a09"></script>
 </body>
 </html>

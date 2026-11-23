@@ -10,7 +10,7 @@ window.MayakView = (function () {
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function viewOf(hash) {
-    var h = (hash || "").replace(/^#/, "");
+    var h = (hash || "").replace(/^#/, "").split("/")[0];   // #updates/golf — лента сразу по одной игре
     return h === "updates" || h === "music" ? h : "home";
   }
   function current() { return root.dataset.view || "home"; }

@@ -49,3 +49,47 @@ window.MayakTheme = (function () {
     setTimeout(function () { location.href = a.href; }, 200);
   });
 })();
+
+// Страница игры: блок «Что нового» кончается вровень с последним скриншотом,
+// дальше текст растворяется и стоит кнопка в ленту обновлений, где уже выбрана эта игра.
+// На телефоне (одна колонка) — блок высотой около экрана и та же кнопка.
+(function () {
+  var list = document.querySelector("aside .changelog");
+  var shots = document.querySelector(".cols .shots");
+  if (!list || !shots) return;
+  var box = list.closest(".box");
+  var cols = list.closest(".cols");
+  var game = document.documentElement.dataset.theme || "";
+  var PHONE_H = 560, MIN_BOX = 240;
+
+  var more = document.createElement("a");
+  more.className = "btn btn-small cl-more";
+  more.href = "../#updates" + (game ? "/" + game : "");
+  more.textContent = "Все обновления →";
+  more.hidden = true;
+  box.appendChild(more);
+
+  function reset() {
+    box.classList.remove("cl-cut");
+    box.style.height = "";
+    more.hidden = true;
+  }
+  function fit() {
+    reset();
+    var oneCol = getComputedStyle(cols).gridTemplateColumns.split(" ").length < 2;
+    var top = box.getBoundingClientRect().top;
+    // две колонки — до низа скриншотов; на телефоне колонка одна — около экрана текста
+    var h = oneCol ? PHONE_H : Math.max(MIN_BOX, shots.getBoundingClientRect().bottom - top);
+    var natural = box.getBoundingClientRect().height;
+    if (natural <= h + 2) return;          // и так помещается — кнопка не нужна
+    more.hidden = false;
+    box.classList.add("cl-cut");
+    box.style.height = h + "px";
+  }
+  var raf = 0;
+  function later() { cancelAnimationFrame(raf); raf = requestAnimationFrame(fit); }
+  fit();
+  if (window.ResizeObserver) new ResizeObserver(later).observe(shots);
+  window.addEventListener("resize", later);
+  window.addEventListener("load", later);
+})();

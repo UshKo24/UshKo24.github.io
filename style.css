@@ -1525,3 +1525,13 @@ html.has-track:not([data-view="music"]) body { padding-bottom: 66px; }
 @media (max-width: 400px) {
   .nav a:last-child { display: none; }
 }
+
+/* «Что нового» на странице игры: обрезка вровень со скринами (theme.js) */
+.box.cl-cut { display: flex; flex-direction: column; overflow: hidden; }
+.box.cl-cut .changelog {
+  flex: 1 1 auto; min-height: 0; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 90px), transparent);
+          mask-image: linear-gradient(to bottom, #000 calc(100% - 90px), transparent);
+}
+.cl-more { margin-top: 14px; align-self: flex-start; }
+.cl-more[hidden] { display: none; }

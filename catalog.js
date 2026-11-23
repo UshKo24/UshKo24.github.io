@@ -208,10 +208,10 @@
       feedChips.innerHTML = "";
       var seen = [];
       list.forEach(function (u) { if (seen.indexOf(u.g) < 0) seen.push(u.g); });
-      feedChips.appendChild(chip("Всё", null, !feedGame, function () { feedGame = ""; feedLimit = 15; renderFeed(); }));
+      feedChips.appendChild(chip("Всё", null, !feedGame, function () { feedGame = ""; feedLimit = 15; renderFeed(); feedToHash(); }));
       seen.forEach(function (g) {
         var on = feedGame === g;
-        feedChips.appendChild(chip(esc(gameName(g)), null, on, function () { feedGame = on ? "" : g; feedLimit = 15; renderFeed(); }));
+        feedChips.appendChild(chip(esc(gameName(g)), null, on, function () { feedGame = on ? "" : g; feedLimit = 15; renderFeed(); feedToHash(); }));
       });
     }
     var rows = list.filter(function (u) { return !feedGame || u.g === feedGame; });
@@ -240,6 +240,27 @@
     }
   }
   if (feedMore) feedMore.addEventListener("click", function () { feedLimit += 20; renderFeed(); });
+
+  // адрес #updates/<игра> (кнопка «Все обновления» на странице игры) — лента сразу по этой игре
+  function feedFromHash() {
+    var m = /^#updates(?:\/([\w-]+))?$/.exec(location.hash);
+    if (!m) return false;
+    var g = m[1] || "";
+    if (g === feedGame) return false;
+    feedGame = g; feedLimit = 15;
+    return true;
+  }
+  function feedToHash() {
+    if (!/^#updates/.test(location.hash)) return;
+    var h = "#updates" + (feedGame ? "/" + feedGame : "");
+    if (location.hash !== h) history.replaceState(history.state, "", h);
+  }
+  feedFromHash();
+  window.addEventListener("popstate", function () { if (feedFromHash()) renderFeed(); });
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#updates"]');
+    if (a) setTimeout(function () { if (feedFromHash()) renderFeed(); }, 0);
+  });
 
   // секретная игра открылась — пересчитать фильтры и ленту
   var mo = new MutationObserver(render);
